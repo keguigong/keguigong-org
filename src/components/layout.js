@@ -45,7 +45,7 @@ const styles = {
         a: {
             textDecoration: `none`
         },
-        paddingBottom: 'env(safe-area-inset-bottom)'
+        // paddingBottom: 'env(safe-area-inset-bottom)'
     },
     "content": {
         flexGrow: 1,
