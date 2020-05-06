@@ -44,7 +44,8 @@ const styles = {
         minHeight: `100vh`,
         a: {
             textDecoration: `none`
-        }
+        },
+        paddingBottom: 'env(safe-area-inset-bottom)'
     },
     "content": {
         flexGrow: 1,

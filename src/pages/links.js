@@ -6,18 +6,16 @@ import { transitions } from "../utils/styles"
 import presents, { colors } from "../utils/presets"
 import { LayoutA } from "../components/layout"
 
-class LinkBlock extends React.Component {
-    render(){
-        return(
-            <div css={styles.block}>
-                <a href={this.props.href}>
-                    {this.props.children}
-                    <h1>{this.props.name}</h1>
-                </a>
-            </div>
-        )
-    }
-}
+const LinkBlock = ({
+  href,
+  children,
+  name
+}) => <div css={styles.block}>
+  <a href={href}>
+      {children}
+      <h1>{name}</h1>
+  </a>
+</div>
 
 class LinksPage extends React.Component {
     render() {
