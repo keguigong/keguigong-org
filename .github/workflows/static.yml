@@ -40,11 +40,12 @@ jobs:
           yarn -v
           yarn
           yarn build
+          yarn export
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload entire repository
-          path: './dist'
+          path: './out'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
