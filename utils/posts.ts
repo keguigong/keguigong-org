@@ -3,6 +3,7 @@ import path from "path"
 import matter from "gray-matter"
 import { remark } from "remark"
 import html from "remark-html"
+import prism from "remark-prism"
 
 const postsDirectory = path.join(process.cwd(), "posts")
 
@@ -18,12 +19,12 @@ export function getSortedPostsData() {
     const fileContents = fs.readFileSync(fullPath, "utf8")
 
     // Use gray-matter to parse the post metadata section
-    const matterResult = matter(fileContents)
+    const frontMatter = matter(fileContents)
 
     // Combine the data with the id
     return {
       id,
-      ...matterResult.data
+      ...frontMatter.data
     }
   })
 
@@ -53,10 +54,14 @@ export async function getPostData(id: string) {
   const fileContents = fs.readFileSync(fullPath, "utf-8")
 
   // Use gray-matter to parse the post metadata section
-  const matterResult = matter(fileContents)
+  const frontMatter = matter(fileContents)
 
   // Use remark to convert markdown into HTML string
-  const processContent = await remark().use(html).process(matterResult.content)
+  const processContent = await remark()
+    // https://github.com/sergioramos/remark-prism/issues/265
+    .use(html, { sanitize: false })
+    .use(prism, { plugins: ["line-numbers"] })
+    .process(frontMatter.content)
 
   const contentHtml = processContent.toString()
 
@@ -64,6 +69,6 @@ export async function getPostData(id: string) {
   return {
     id,
     contentHtml,
-    ...matterResult.data
+    ...frontMatter.data
   }
 }
