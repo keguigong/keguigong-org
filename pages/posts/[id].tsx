@@ -12,7 +12,6 @@ export default function Post({ postData }: { [key: string]: any }) {
       <main>
         <h1>{postData.title}</h1>
         <br />
-        {/* Replace {postData.date} with this */}
         <Date dateString={postData.date} />
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }}></div>
       </main>

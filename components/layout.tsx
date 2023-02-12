@@ -5,7 +5,7 @@ import utilStyles from "../styles/utils.module.css"
 import Link from "next/link"
 
 const name = "keguigong"
-export const siteTitle = "Next.js Sample Website"
+export const siteTitle = "keguigong's blog."
 
 export default function Layout({ children, home }: { [key: string]: any }) {
   return (
@@ -29,8 +29,8 @@ export default function Layout({ children, home }: { [key: string]: any }) {
               priority
               src="/images/profile.jpg"
               className={utilStyles.borderCircle}
-              height={144}
-              width={144}
+              height={120}
+              width={120}
               alt={name}
             />
             <h1 className={utilStyles.heading2Xl}>{name}</h1>
@@ -42,8 +42,8 @@ export default function Layout({ children, home }: { [key: string]: any }) {
                 priority
                 src="/images/profile.jpg"
                 className={utilStyles.borderCircle}
-                height={108}
-                width={108}
+                height={96}
+                width={96}
                 alt={name}
               />
             </Link>
@@ -56,11 +56,20 @@ export default function Layout({ children, home }: { [key: string]: any }) {
         )}
       </header>
       <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">← Back to home</Link>
-        </div>
-      )}
+      <div className={styles.footer}>
+        {!home ? (
+          <div className={styles.backToHome}>
+            <Link href="/">← Back to home</Link>
+          </div>
+        ) : (
+          <div />
+        )}
+        <p className={styles.backToHome}>
+          <a href="https://github.com/keguigong">GitHub</a> •{" "}
+          <a href="https://www.behance.net/keguigong">Behance</a> •{" "}
+          <a href="https://www.instagram.com/keguigong/">Instagram</a>
+        </p>
+      </div>
     </div>
   )
 }

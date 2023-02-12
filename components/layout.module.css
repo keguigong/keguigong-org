@@ -10,6 +10,11 @@
   align-items: center;
 }
 
+.footer {
+  display: flex;
+  justify-content: space-between;
+}
+
 .backToHome {
   margin: 3rem 0 0;
 }

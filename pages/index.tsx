@@ -6,7 +6,7 @@ import utilStyles from "@/styles/utils.module.css"
 import Layout from "../components/layout"
 
 const personalDescription =
-  "Hi there, I am keguigong, a web develeper living in Shanghai. I write my notes here, from front-end questions to anything that interests me."
+  "Hi there, I am keguigong, a front-end web develeper living in Shanghai. I write my notes here, from front-end questions to anything that interests me."
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData()
@@ -31,7 +31,7 @@ export default function Home({ allPostsData }: { [key: string]: any }) {
       </section>
       <section>
         <h2 className={utilStyles.headingLg}>Blog.</h2>
-        <ul>
+        <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }: { [key: string]: any }) => (
             <li className={utilStyles.listItem} key={id}>
               <Link href={`/posts/${id}`}>{title}</Link>
@@ -43,12 +43,6 @@ export default function Home({ allPostsData }: { [key: string]: any }) {
           ))}
         </ul>
       </section>
-      <p>
-        <br />
-        <a href="https://github.com/keguigong">GitHub</a> •{" "}
-        <a href="https://www.behance.net/keguigong">Behance</a> •{" "}
-        <a href="https://www.instagram.com/keguigong/">Instagram</a>
-      </p>
     </Layout>
   )
 }

@@ -1,3 +1,5 @@
+@import url("/fonts/Libre_Baskerville/stylesheet.css");
+
 html,
 body {
   padding: 0;
@@ -5,7 +7,16 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
     Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   line-height: 1.6;
-  font-size: 18px;
+  font-size: 16px;
+  transition: font-size ease-in-out 0.15s;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Libre Baskerville";
 }
 
 * {
@@ -26,7 +37,23 @@ img {
   display: block;
 }
 
-code {
-  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
-  font-size: ;
+@media (max-width: 700px) {
+  html,
+  body {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 1120px) {
+  html,
+  body {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1121px) {
+  html,
+  body {
+    font-size: 18px;
+  }
 }
