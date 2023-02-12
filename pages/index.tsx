@@ -8,15 +8,6 @@ import Layout from "../components/layout"
 const personalDescription =
   "Hi there, I am keguigong, a front-end web develeper living in Shanghai. I write my notes here, from front-end questions to anything that interests me."
 
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData()
-  return {
-    props: {
-      allPostsData
-    }
-  }
-}
-
 export default function Home({ allPostsData }: { [key: string]: any }) {
   return (
     <Layout home>
@@ -45,4 +36,13 @@ export default function Home({ allPostsData }: { [key: string]: any }) {
       </section>
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  const allPostsData = getSortedPostsData()
+  return {
+    props: {
+      allPostsData
+    }
+  }
 }

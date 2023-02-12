@@ -1,4 +1,5 @@
 const path = require("path")
+const mdxPrism = require("mdx-prism")
 
 const withMDX = require("@next/mdx")({
   extension: /\.mdx?$/,
@@ -7,7 +8,7 @@ const withMDX = require("@next/mdx")({
     // as the package is ESM only
     // https://github.com/remarkjs/remark-gfm#install
     remarkPlugins: [],
-    rehypePlugins: []
+    rehypePlugins: [mdxPrism]
     // If you use `MDXProvider`, uncomment the following line.
     // providerImportSource: "@mdx-js/react",
   }
