@@ -1,5 +1,5 @@
 ---
-title: "Understanding Number in JavaScript 理解JavaScript中的Number"
+title: "了解一下JavaScript中的Number类型"
 date: "2022-11-23"
 ---
 
@@ -17,17 +17,11 @@ typeof 1.0 // number
 
 根据国际标准 [IEEE 754](https://en.wikipedia.org/wiki/IEEE_754)，JavaScript 浮点数包含64个二进制位。
 
-32位浮点数表示
-
-![Float_example.svg](/blogcontent/Float_example.svg)
-
-64位浮点数表示方法类似
-
 ![IEEE_754_Double_Floating_Point_Format.svg](/blogcontent/IEEE_754_Double_Floating_Point_Format.svg)
 
 - 第一部分（蓝色）：用来存储符号位（sign），第1位：符号位，0表示正数，1表示负数
-- 第二部分（绿色）：用来存储指数（exponent），第2位到第12位（共11位）：指数部分
-- 第三部分（红色）：用来存储小数（fraction），第13位到第64位（共52位）：小数部分（即有效数字）
+- 第二部分（绿色）：用来存储指数（exponent），第2位到第12位（共11位），指数部分
+- 第三部分（红色）：用来存储小数（fraction），第13位到第64位（共52位），小数部分（即有效数字）
 
 fraction决定了整数安全表示范围，也就是
 
@@ -88,7 +82,7 @@ Number.MIN_SAFE_INTEGER // 常数表示
 
 ```bash
 0.1 + 0.2
-// 0.3000000000000004
+// 0.30000000000000004
 ```
 
 ```bash

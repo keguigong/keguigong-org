@@ -1,3 +1,4 @@
+/* Import Prism code highlight styles */
 @import url("prism-themes/themes/prism-one-dark.min.css");
 
 html,
@@ -7,21 +8,28 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
     Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   line-height: 1.6;
-  font-size: 15px;
+  font-size: 16px;
   transition: font-size ease-in-out 0.15s;
 }
 
 @media (max-width: 700px) {
   html,
   body {
-    font-size: 13px;
+    font-size: 15px;
   }
 }
 
 @media (min-width: 701px) and (max-width: 1120px) {
   html,
   body {
-    font-size: 15px;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1121px) {
+  html,
+  body {
+    font-size: 17px;
   }
 }
 
@@ -63,4 +71,5 @@ span > code {
 
 pre {
   border-radius: 10px;
+  font-size: 0.9em;
 }

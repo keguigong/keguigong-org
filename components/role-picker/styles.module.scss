@@ -1,0 +1,118 @@
+.roles-container {
+  position: relative;
+  background: #f6bc58;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  overflow: hidden;
+  padding: 0 2rem;
+  border-radius: 5px;
+  // left: 50%;
+  // transform: translateX(-50%);
+  // transition: transform 0.15s ease-in-out;
+  // transform-origin: 50% 50%;
+
+  &:focus {
+    outline: none;
+    // transform: scale(1.01);
+  }
+}
+
+@mixin disable-drag-select {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+@mixin mask-transition {
+  mask-size: 105% 100%;
+  mask-repeat: no-repeat;
+  transition: mask-size 0.8s cubic-bezier(0.42, 0.65, 0.27, 0.99);
+  &.active {
+    mask-size: 100% 100%;
+  }
+}
+
+.left-mask {
+  @include mask-transition;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 8%);
+  mask-position: left top;
+}
+
+.right-mask {
+  @include mask-transition;
+  mask-image: linear-gradient(90deg, #000 92%, transparent 100%);
+  mask-position: right top;
+}
+
+.source-item-wrap {
+  @include disable-drag-select;
+  list-style: none;
+  white-space: nowrap;
+  width: 25%;
+  max-width: 124px;
+  min-width: 80px;
+  padding: 2rem 0;
+  margin: 0;
+  transition: transform 0.5s cubic-bezier(0.42, 0.65, 0.27, 0.99);
+
+  &.draggable {
+    transition: none;
+  }
+}
+
+.source-item {
+  display: inline-block;
+  width: 100%;
+  margin: 0 0.5rem;
+  transition: scale 0.15s cubic-bezier(0.04, 0.31, 0.5, 1.74), margin 0.15s ease-in;
+  transform-origin: center;
+
+  &.active {
+    scale: 1.2;
+    margin: 0 1rem;
+
+    & .avatar-bg {
+      display: block;
+      transform: scale(1.08);
+    }
+  }
+
+  &:hover {
+    .avatar-bg {
+      display: block;
+      animation: pop 1s cubic-bezier(0.02, 1.2, 1, 1),
+        pop 1s cubic-bezier(0, 0, 0.36, 1.14) infinite alternate;
+    }
+  }
+}
+
+@keyframes pop {
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.avatar-wrap {
+  position: relative;
+}
+
+.avatar-bg {
+  @include disable-drag-select;
+  display: none;
+  scale: 1.5;
+  position: absolute;
+  top: 8%;
+  width: 100%;
+  pointer-events: none;
+  transition: scale 2s;
+}
+
+.avatar-source {
+  @include disable-drag-select;
+  position: relative;
+  width: 100%;
+  vertical-align: top;
+  transition: filter 0.07s ease-in-out;
+  &:active {
+    filter: brightness(96%);
+  }
+}

@@ -1,13 +1,13 @@
 import Head from "next/head"
 import Image from "next/image"
-import styles from "./layout.module.css"
+import styles from "./layout.module.scss"
 import utilStyles from "../styles/utils.module.css"
 import Link from "next/link"
 
 const name = "keguigong"
 export const siteTitle = "keguigong's blog."
 
-export default function Layout({ children, home }: { [key: string]: any }) {
+export default function Layout({ children, home, meta }: { [key: string]: any }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -21,6 +21,13 @@ export default function Layout({ children, home }: { [key: string]: any }) {
         />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
+        {meta ? (
+          <title>
+            {meta.title} | {siteTitle}
+          </title>
+        ) : (
+          ""
+        )}
       </Head>
       <header className={styles.header}>
         {home ? (
@@ -36,23 +43,7 @@ export default function Layout({ children, home }: { [key: string]: any }) {
             <h1 className={utilStyles.heading2Xl}>{name}</h1>
           </>
         ) : (
-          <>
-            <Link href="/">
-              <Image
-                priority
-                src="/images/profile.jpg"
-                className={utilStyles.borderCircle}
-                height={96}
-                width={96}
-                alt={name}
-              />
-            </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/" className={utilStyles.colorInherit}>
-                {name}
-              </Link>
-            </h2>
-          </>
+          <></>
         )}
       </header>
       <main>{children}</main>

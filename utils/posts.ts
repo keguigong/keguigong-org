@@ -7,6 +7,15 @@ import prism from "remark-prism"
 
 const postsDirectory = path.join(process.cwd(), "posts")
 
+const articles = [
+  {
+    id: "a-role-picker-referring-to-party-animals",
+    title: "A Draggable Role Picker Demo Referring to Party Animals",
+    date: "2023-02-13",
+    type: "article"
+  }
+]
+
 export function getSortedPostsData() {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory)
@@ -29,13 +38,15 @@ export function getSortedPostsData() {
   })
 
   // Sort posts by date
-  return allPostsData.sort((a: { [key: string]: any }, b: { [key: string]: any }) => {
-    if (a.date < b.date) {
-      return 1
-    } else {
-      return -1
-    }
-  })
+  return allPostsData
+    .concat(articles)
+    .sort((a: { [key: string]: any }, b: { [key: string]: any }) => {
+      if (a.date < b.date) {
+        return 1
+      } else {
+        return -1
+      }
+    })
 }
 
 export function getAllPostIds() {

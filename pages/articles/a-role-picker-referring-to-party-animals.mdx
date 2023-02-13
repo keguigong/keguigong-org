@@ -1,0 +1,172 @@
+import Head from "next/head"
+
+import Layout from "@/components/layout"
+import PostMeta from "@/components/post-meta"
+import MotionEffectVideo from "@/components/role-picker/motion-effect-video"
+import RolePickerStatic from "@/components/role-picker/role-picker-stage-1"
+import RolePicker from "@/components/role-picker"
+
+export const videoUrl =
+  "https://user-images.githubusercontent.com/29125211/217710234-7f6ef0e2-a3e2-4c64-b804-86159deceffc.mp4"
+
+export const meta = {
+  title: "A Draggable Role Picker Demo Referring to Party Animals",
+  date: "2023-02-13"
+}
+
+# A Draggable Role Picker Demo Referring to Party Animals
+
+<PostMeta meta={meta} />
+
+Party Animals is a physical based party game, and I found that its official website looks great, then I decided to learn something from it.
+
+What I decided to do is to realize a demonstration web page referring to the "Motion Effect Demonstration.mp4" below, and make sure the demo satifying
+
+1. The visual perception should be consistent with the video, including all animation details such as scaling, easing, and rebound.
+2. Pay attention to observe the video, do not miss the interaction details.
+3. Use mouse to drag the list and hide the scrollbar.
+4. Press left or right arrow key to change selection, and make selected role centered if possible.
+5. Use materials from [Party Animals official website](https://partyanimals.com/).
+
+<MotionEffectVideo src={videoUrl} />
+
+Let's refer to [Thinking in React](https://reactjs.org/docs/thinking-in-react.html) and start our work.
+
+## Build Static Component in React
+
+Referring to the video, we can build the static react components, and it should be like this
+
+```tsx
+export default function RolePicker() {
+  return (
+    <div className={styles["roles-container"]}>
+      <ul className={styles["source-item-wrap"]}>
+        {rolesList.map((role, index) => (
+          <RoleAvatar key={index} name={role} isActive={index === 0} />
+        ))}
+      </ul>
+    </div>
+  )
+}
+```
+
+The `RoleAvatar` has an `isActive` prop affecting how it looks, we can use `classNames` to merge two or more classNames.
+
+```tsx
+export default function RoleAvatar({ name, onClick, isActive }) {
+  return (
+    <li
+      onClick={onClick}
+      className={classNames(styles["source-item"], isActive && styles["active"])}
+    >
+      <div className={styles["avatar-wrap"]}>
+        <img
+          className={styles["avatar-bg"]}
+          src="/articlecontent/party-animals/characters_avatar_hover.png"
+        />
+        <img
+          className={styles["avatar-source"]}
+          src={`/articlecontent/party-animals/characters_${name}_avatar.png`}
+          alt={name}
+        />
+      </div>
+    </li>
+  )
+}
+```
+
+And it looks like this
+
+<RolePickerStatic />
+
+Be careful that when `RoleAvatar` gets hovered, it has a two-stage pop animation, which can be described as
+
+```scss
+.avatar-bg {
+  ...
+  animation: pop 1s cubic-bezier(0.02, 1.2, 1, 1), pop 1s cubic-bezier(0, 0, 0.36, 1.14) infinite alternate;
+}
+
+@keyframes pop {
+  100% {
+    transform: scale(1.1);
+  }
+}
+```
+
+## Handle Dragging
+
+Add event listeners to hanlde mouse moving, we can use `onmousedown`, `onmousemove` and `onmouseup` to catch the moving.
+
+```tsx
+<div
+  onMouseDown={handleMouseDown}
+  onMouseMove={handleMouseMove}
+  onMouseUp={handleMouseUp}
+  onMouseOut={handleMouseUp}
+>
+```
+
+Make role list move left or right with `translateX()`.
+
+```tsx
+<ul ... style={{ transform: `translateX(-${divLeft}px)` }}>...</ul>
+```
+
+Please keep your role list in the safe area with some border conditions. Calculate the container's width and role list's width.
+
+```ts
+// 0 < divLeft < innerWidth - conWidth
+const [divLeft, setDivLeft] = useState(0)
+const [innerWidth, setInnerWidth] = useState(0)
+const [conWidth, setConWidth] = useState(0)
+
+const containerEl = useRef<HTMLDivElement>(null)
+const innerEl = useRef<HTMLUListElement>(null)
+
+function moveX(deltaX: number) {
+  let newValue =
+    divLeft - deltaX > 0
+      ? divLeft - deltaX < innerWidth - conWidth
+        ? divLeft - deltaX
+        : innerWidth - conWidth
+      : 0
+  setDivLeft(newValue)
+}
+
+useEffect(() => {
+  if (!containerEl.current || !innerEl.current) return
+  setInnerWidth(innerEl.current.scrollWidth)
+  setConWidth(containerEl.current.offsetWidth)
+}, [])
+```
+
+Besides, we can add touch support to make it work properly on mobile devices.
+
+```ts
+const [startX, setStartX] = useState(0)
+
+function handleTouchStart(e: TouchEvent) {
+  setStartX(e.touches[0].clientX)
+}
+
+function handleTouchMove(e: TouchEvent) {
+  let x = e.touches[0].clientX
+  let deltaX = x - startX
+  moveX(deltaX)
+  setStartX(x)
+}
+function handleTouchEnd() {
+  setStartX(0)
+}
+```
+
+Then we get a component that can be dragged and picked.
+
+<RolePicker />
+
+## Handle Keyboard Input
+
+TODO: Next, we need to handle left arrow and right arrow key input, and make picked role placed in the center of the view.
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

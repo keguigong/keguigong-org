@@ -1,18 +1,15 @@
 import Head from "next/head"
+
 import { getAllPostIds, getPostData } from "@/utils/posts"
-import Date from "@/components/date"
 import Layout from "@/components/layout"
+import PostMeta from "@/components/post-meta"
 
 export default function Post({ postData }: { [key: string]: any }) {
   return (
-    <Layout home={false}>
-      <Head>
-        <title>{postData.title}</title>
-      </Head>
+    <Layout home={false} meta={postData}>
       <main>
         <h1>{postData.title}</h1>
-        <br />
-        <Date dateString={postData.date} />
+        <PostMeta meta={postData} />
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }}></div>
       </main>
     </Layout>
