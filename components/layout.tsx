@@ -29,7 +29,7 @@ export default function Layout({ children, home, meta }: { [key: string]: any })
           ""
         )}
       </Head>
-      <header className={styles.header}>
+      {/* <header className={styles.header}>
         {home ? (
           <>
             <Image
@@ -45,12 +45,12 @@ export default function Layout({ children, home, meta }: { [key: string]: any })
         ) : (
           <></>
         )}
-      </header>
+      </header> */}
       <main>{children}</main>
       <div className={styles.footer}>
         {!home ? (
           <div className={styles.backToHome}>
-            <Link href="/">← Back to home</Link>
+            <Link href="/">← Back Home</Link>
           </div>
         ) : (
           <div />

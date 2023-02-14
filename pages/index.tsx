@@ -17,11 +17,11 @@ export default function Home({ allPostsData }: { [key: string]: any }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section className={utilStyles.headingMd}>
+      {/* <section className={utilStyles.headingMd}>
         <p>{personalDescription}</p>
-      </section>
+      </section> */}
       <section>
-        <h2 className={utilStyles.headingLg}>Blog.</h2>
+        <h2 className={utilStyles.headingXl}>keguigong&apos;s Blog.</h2>
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title, type }: { [key: string]: any }) => (
             <li className={utilStyles.listItem} key={id}>
