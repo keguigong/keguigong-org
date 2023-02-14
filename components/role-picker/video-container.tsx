@@ -1,4 +1,4 @@
-export default function MotionEffectVideo({ ...props }) {
+export default function VideoContainer({ ...props }) {
   return (
     <div style={{ width: "100%" }}>
       <video

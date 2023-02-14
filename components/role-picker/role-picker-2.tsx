@@ -1,12 +1,4 @@
-import {
-  KeyboardEvent,
-  MouseEvent,
-  TouchEvent,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState
-} from "react"
+import { MouseEvent, TouchEvent, useEffect, useRef, useState } from "react"
 import classNames from "classnames"
 
 import styles from "./styles.module.scss"
@@ -81,7 +73,6 @@ export default function RolePicker() {
         onMouseDown={handleMoveStart}
         onMouseMove={handleMove}
         onMouseUp={handleMoveEnd}
-        onMouseOut={handleMoveEnd}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleMoveEnd}

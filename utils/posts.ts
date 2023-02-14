@@ -11,7 +11,7 @@ const articles = [
   {
     id: "a-role-picker-referring-to-party-animals",
     title: "A Draggable Role Picker Demo Referring to Party Animals",
-    date: "2023-02-13",
+    date: "2023-02-12",
     type: "article"
   }
 ]
