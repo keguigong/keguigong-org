@@ -24,6 +24,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/role-picker/styles.scss"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/role-picker/styles.scss", "posts/lalala.js", "components/bouncing-balls-start/bouncing-balls.jsx", "components/bouncing-balls-start/bouncing-balls.jsx"],
   "exclude": ["node_modules"]
 }

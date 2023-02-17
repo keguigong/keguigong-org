@@ -12,20 +12,6 @@
   font-weight: 800;
   letter-spacing: -0.05rem;
   margin: 1.5rem 0;
-  position: relative;
-}
-
-.headingXl::after {
-  content: "";
-  left: 0;
-  top: 0;
-  position: absolute;
-  filter: blur(45px);
-  transform: translateZ(0);
-  background: var(--primary-glow);
-  width: 240px;
-  height: 180px;
-  z-index: -1;
 }
 
 .headingLg {
@@ -68,6 +54,10 @@
 
 .listItem::before {
   content: "";
+}
+
+.listItem:first-of-type {
+  margin-top: 3rem;
 }
 
 .lightText {

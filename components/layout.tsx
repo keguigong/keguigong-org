@@ -1,10 +1,9 @@
 import Head from "next/head"
-import Image from "next/image"
-import styles from "./layout.module.scss"
-import utilStyles from "../styles/utils.module.css"
 import Link from "next/link"
+import styles from "./layout.module.scss"
+import { DayNight } from "./animated-day-night"
+import { PersonalBriefing } from "./layout-parts"
 
-const name = "keguigong"
 export const siteTitle = "keguigong's blog."
 
 export default function Layout({ children, home, meta }: { [key: string]: any }) {
@@ -29,23 +28,13 @@ export default function Layout({ children, home, meta }: { [key: string]: any })
           ""
         )}
       </Head>
-      {/* <header className={styles.header}>
-        {home ? (
-          <>
-            <Image
-              priority
-              src="/images/profile.jpg"
-              className={utilStyles.borderCircle}
-              height={120}
-              width={120}
-              alt={name}
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
-        ) : (
-          <></>
-        )}
-      </header> */}
+      <header className={styles.header}>
+        <h2 className={styles.headerTitle}>
+          <Link href="/">Blog.</Link>
+        </h2>
+        <DayNight />
+      </header>
+      {home && <PersonalBriefing />}
       <main>{children}</main>
       <div className={styles.footer}>
         {!home ? (

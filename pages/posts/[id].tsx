@@ -2,7 +2,7 @@ import Head from "next/head"
 
 import { getAllPostIds, getPostData } from "@/utils/posts"
 import Layout from "@/components/layout"
-import PostMeta from "@/components/post-meta"
+import { PostMeta } from "@/components/layout-parts"
 
 export default function Post({ postData }: { [key: string]: any }) {
   return (

@@ -12,16 +12,12 @@ export default function Home({ allPostsData }: { [key: string]: any }) {
   return (
     <Layout home>
       <Head>
-        <title>Blog. - Where keguigong&apos;s thougts built</title>
+        <title>Blog. - Where keguigong&apos;s thoughts built</title>
         <meta name="description" content={personalDescription} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <section className={utilStyles.headingMd}>
-        <p>{personalDescription}</p>
-      </section> */}
       <section>
-        <h2 className={utilStyles.headingXl}>keguigong&apos;s Blog.</h2>
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title, type }: { [key: string]: any }) => (
             <li className={utilStyles.listItem} key={id}>

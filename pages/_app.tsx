@@ -1,6 +1,6 @@
 import type { AppProps } from "next/app"
 // Global styles
-import "@/styles/globals.css"
+import "@/styles/globals.scss"
 // Import Prism code highlight styles
 import "prism-themes/themes/prism-one-dark.css"
 // Custom styles

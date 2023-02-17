@@ -6,8 +6,40 @@
 
 .header {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  padding-right: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.headerTitle {
+  font-size: 2rem;
+  line-height: 1.3;
+  font-weight: 800;
+  letter-spacing: -0.05rem;
+  margin: 0;
+  position: relative;
+
+  a {
+    color: inherit;
+  }
+
+  &::after {
+    content: "";
+    left: 0;
+    top: 0;
+    position: absolute;
+    filter: blur(45px);
+    transform: translateZ(0);
+    background: var(--primary-glow);
+    width: 240px;
+    height: 180px;
+    z-index: -1;
+  }
+}
+
+.daynight {
+  margin: 2rem;
 }
 
 .footer {
