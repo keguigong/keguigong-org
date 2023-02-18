@@ -7,7 +7,10 @@ type prop = {
 }
 
 export default function DayNight({ darkMode, onModeChange }: prop) {
-  // const [isDarkMode, setDarkMode] = useState(false)
+  const toggleDarkMode = () => {
+    // setDarkMode((prev) => !prev)
+    onModeChange(!darkMode)
+  }
 
   const properties = {
     dark: {
@@ -29,11 +32,6 @@ export default function DayNight({ darkMode, onModeChange }: prop) {
       tension: 250,
       friction: 35
     }
-  }
-
-  const toggleDarkMode = () => {
-    // setDarkMode((prev) => !prev)
-    onModeChange(!darkMode)
   }
 
   const { r, transform, cx, cy, opacity } = properties[darkMode ? "dark" : "light"]

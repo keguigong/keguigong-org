@@ -72,10 +72,11 @@ function loop(ctx, width, height) {
       size
     )
     balls.push(ball)
-    console.log(ball.velX, ball.velY)
   }
 
-  function _loop() {
+  console.log("asdasdasd")
+
+  return () => {
     ctx.fillStyle = "rgba(0, 0, 0, 0.25)"
     ctx.fillRect(0, 0, width, height)
 
@@ -84,9 +85,7 @@ function loop(ctx, width, height) {
       balls[i].update(width, height)
       balls[i].collisionDetect()
     }
-    return requestAnimationFrame(_loop)
   }
-  return _loop
 }
 
 export { loop }

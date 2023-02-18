@@ -70,20 +70,20 @@ export default function RolePicker() {
   }
 
   // Keyboard events
-  const savedHandler = useRef<(e: any) => void>()
-  function handler(e: KeyboardEvent) {
-    console.log("key: ", e.code)
-  }
+  // const savedHandler = useRef<(e: any) => void>()
+  // function handler(e: KeyboardEvent) {
+  //   console.log("key: ", e.code)
+  // }
 
-  useEffect(() => {
-    savedHandler.current = handler
-    // @ts-ignore
-    document.addEventListener("keydown", savedHandler.current)
-    return () => {
-      // @ts-ignore
-      document.removeEventListener("keydown", savedHandler.current)
-    }
-  }, [handler])
+  // useEffect(() => {
+  //   savedHandler.current = handler
+  //   // @ts-ignore
+  //   document.addEventListener("keydown", savedHandler.current)
+  //   return () => {
+  //     // @ts-ignore
+  //     document.removeEventListener("keydown", savedHandler.current)
+  //   }
+  // }, [handler])
 
   return (
     <div tabIndex={0} className={styles["roles-container"]}>

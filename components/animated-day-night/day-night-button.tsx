@@ -2,8 +2,8 @@ import { useEffect, useState } from "react"
 import { checkDarkMode, clearMode, setMode, watchDarkMode } from "@/utils/day-night"
 import DayNight from "./day-night"
 
-export default function DayNightButton({ ...props }) {
-  const [isDarkMode, setDarkMode] = useState(checkDarkMode())
+export default function DayNightButton() {
+  const [isDarkMode, setDarkMode] = useState(() => checkDarkMode())
 
   const handleModeChange = (darkMode: boolean) => {
     setMode(darkMode)
@@ -20,7 +20,7 @@ export default function DayNightButton({ ...props }) {
     return () => {
       removeListener()
     }
-  })
+  }, [isDarkMode])
 
   return <DayNight darkMode={isDarkMode} onModeChange={handleModeChange} />
 }

@@ -1,31 +1,41 @@
-import { useEffect, useRef } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import styles from "./bouncing-balls.module.scss"
-import { loop } from "./main"
+import { loop as getStartFn } from "./ball"
 
 export default function BouncingBalls() {
-  let startLoop: () => number
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [canvasCtx, setCtx] = useState<CanvasRenderingContext2D>()
+  const [width, setWidth] = useState(0)
+  const [height, setHeight] = useState(0)
+
+  const memoLoop = useCallback(
+    canvasCtx && width && height ? getStartFn(canvasCtx, width, height) : () => {},
+    [canvasCtx, width, height]
+  )
 
   useEffect(() => {
-    const canvas = canvasRef.current!!
-    const ctx = canvas.getContext("2d")
-    const width = canvas.clientWidth
-    const height = canvas.clientHeight
+    const canvas = canvasRef.current
+    if (canvas == null) return
+    setCtx(canvas.getContext("2d") as CanvasRenderingContext2D)
+    setWidth(canvas.clientWidth)
+    setHeight(canvas.clientHeight)
     canvas.width = width
     canvas.height = height
-    console.log(width, height)
-    if (!startLoop) {
-      startLoop = loop(ctx, width, height)
+
+    let animationId = 0
+    const start = () => {
+      memoLoop()
+      animationId = requestAnimationFrame(start)
     }
-    let animationId = startLoop()
+    animationId = requestAnimationFrame(start)
     console.log(animationId, " started")
 
     return function () {
-      ctx?.clearRect(0, 0, width, height)
+      canvasCtx?.clearRect(0, 0, width, height)
       cancelAnimationFrame(animationId)
       console.log(animationId, " canceled")
     }
-  })
+  }, [canvasCtx, width, height, memoLoop])
 
   return (
     <div className={styles.container}>
