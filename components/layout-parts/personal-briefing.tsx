@@ -19,7 +19,7 @@ export default function PersonalBriefing() {
       />
       <div className={styles.textContainer}>
         <p>
-          Personal Blog of <Link href="/">keguigong</Link>.
+          Personal Blog of <Link href="https://github.com/keguigong">keguigong</Link>.
         </p>
         <p>Where keguigong&apos;s thoughts were built.</p>
       </div>

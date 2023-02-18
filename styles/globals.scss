@@ -34,8 +34,6 @@
 }
 
 @mixin dark-theme {
-  color-scheme: dark;
-
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 0, 0, 0;
   --background-end-rgb: 0, 0, 0;
@@ -64,7 +62,7 @@
   --callout-border-rgb: 108, 108, 108;
   --card-rgb: 100, 100, 100;
   --card-border-rgb: 200, 200, 200;
-  --link-color: #0071f3d5;
+  --link-color: #58a0fe;
   --pre-background-color: rgba(var(--callout-rgb), 0.3);
 }
 
@@ -86,20 +84,20 @@
   }
 }
 
-:root.light {
-  @include light-theme();
-
-  html {
-    color-scheme: light;
-  }
-}
-
-:root.dark {
-  @include dark-theme();
-
+@media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
+}
+
+.light {
+  @include light-theme();
+  color-scheme: light;
+}
+
+.dark {
+  @include dark-theme();
+  color-scheme: dark;
 }
 
 * {
