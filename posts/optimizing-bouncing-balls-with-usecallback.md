@@ -107,7 +107,7 @@ useEffect(() => {
   }
   animationId = requestAnimationFrame(loop)
   ...
-}, [[canvasCtx, width, height, memoLoop]])
+}, [canvasCtx, width, height, memoLoop])
 ```
 
 注意在 `useEffect` 中使用了 `memoLoop`，记得将其添加进数组中。

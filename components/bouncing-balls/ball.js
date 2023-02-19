@@ -74,8 +74,6 @@ function loop(ctx, width, height) {
     balls.push(ball)
   }
 
-  console.log("asdasdasd")
-
   return () => {
     ctx.fillStyle = "rgba(0, 0, 0, 0.25)"
     ctx.fillRect(0, 0, width, height)

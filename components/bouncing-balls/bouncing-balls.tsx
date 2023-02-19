@@ -19,23 +19,45 @@ export default function BouncingBalls() {
     setCtx(canvas.getContext("2d") as CanvasRenderingContext2D)
     setWidth(canvas.clientWidth)
     setHeight(canvas.clientHeight)
-    canvas.width = width
-    canvas.height = height
+    canvas.width = canvas.clientWidth
+    canvas.height = canvas.clientHeight
 
+    return function () {
+      canvasCtx?.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight)
+    }
+  }, [canvasRef, canvasCtx])
+
+  useEffect(() => {
     let animationId = 0
     const start = () => {
       memoLoop()
       animationId = requestAnimationFrame(start)
     }
     animationId = requestAnimationFrame(start)
-    console.log(animationId, " started")
+    // console.log(animationId, " started")
 
-    return function () {
-      canvasCtx?.clearRect(0, 0, width, height)
+    return () => {
       cancelAnimationFrame(animationId)
-      console.log(animationId, " canceled")
+      // console.log(animationId, " canceled")
     }
-  }, [canvasCtx, width, height, memoLoop])
+  }, [memoLoop])
+
+  const memoResize = useCallback(() => {
+    const canvas = canvasRef.current
+    if (canvas == null) return
+    setCtx(canvas.getContext("2d") as CanvasRenderingContext2D)
+    setWidth(canvas.clientWidth)
+    setHeight(canvas.clientHeight)
+    canvas.width = canvas.clientWidth
+    canvas.height = canvas.clientHeight
+  }, [canvasRef])
+
+  useEffect(() => {
+    window.addEventListener("resize", () => memoResize())
+    return () => {
+      window.removeEventListener("resize", () => memoResize())
+    }
+  }, [memoResize])
 
   return (
     <div className={styles.container}>
