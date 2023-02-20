@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import styles from "./bouncing-balls.module.scss"
 import { loop as getStartFn } from "./ball"
 
@@ -8,10 +8,10 @@ export default function BouncingBalls() {
   const [width, setWidth] = useState(0)
   const [height, setHeight] = useState(0)
 
-  const memoLoop = useCallback(
-    canvasCtx && width && height ? getStartFn(canvasCtx, width, height) : () => {},
-    [canvasCtx, width, height]
-  )
+  const memoLoop = useMemo(() => {
+    if (canvasCtx && width && height) return getStartFn(canvasCtx, width, height)
+    else return () => {}
+  }, [canvasCtx, width, height])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -25,7 +25,7 @@ export default function BouncingBalls() {
     return function () {
       canvasCtx?.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight)
     }
-  }, [canvasRef, canvasCtx])
+  }, [])
 
   useEffect(() => {
     let animationId = 0
