@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import styles from "./animated-sorting.module.scss"
 import { bubble } from "./sorting"
 import { DrawFrame, Frame } from "./canvas-draw"
+import SlideBlock from "./slide-block"
 
 export default function BouncingBalls() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -47,20 +48,21 @@ export default function BouncingBalls() {
     }
   }, [])
 
+  const [interTime, setInterTime] = useState(0)
+
+  const [frameIndex, setIndex] = useState(0)
+
   useEffect(() => {
-    let index = 0
     let timer = setInterval(() => {
-      requestAnimationFrame(() => memoLoop?.draw(frameArr[index]))
-      index++
-      if (index >= frameArr.length) {
-        clearInterval(timer)
-      }
-    }, 45)
+      requestAnimationFrame(() => memoLoop?.draw(frameArr[frameIndex]))
+      if (frameIndex >= frameArr.length - 1) clearInterval(timer)
+      else setIndex((prev) => prev + 1)
+    }, interTime)
 
     return () => {
       clearInterval(timer)
     }
-  }, [frameArr, memoLoop])
+  }, [frameArr, memoLoop, interTime, frameIndex])
 
   const memoResize = useCallback(() => {
     const canvas = canvasRef.current
@@ -79,9 +81,17 @@ export default function BouncingBalls() {
     }
   }, [memoResize])
 
+  const handleIntervalChange = (value: number) => {
+    setInterTime(0 + Math.floor(1000 * value))
+  }
+
   return (
-    <div className={styles.container}>
-      <canvas className={styles.canvas} ref={canvasRef}></canvas>
-    </div>
+    <>
+      <p>Frame Interval: {interTime}ms</p>
+      <SlideBlock onChange={handleIntervalChange}></SlideBlock>
+      <div className={styles.container}>
+        <canvas className={styles.canvas} ref={canvasRef}></canvas>
+      </div>
+    </>
   )
 }

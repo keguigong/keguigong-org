@@ -19,5 +19,6 @@ export const bubble = (
       callback && callback.call(undefined, arr.slice(), i, i + 1, swapped)
     }
   }
+
   return arr
 }

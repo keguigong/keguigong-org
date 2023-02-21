@@ -23,11 +23,11 @@ export class DrawFrame {
   }
 
   fillStyle = "black"
-  highlight!: string
+  // highlight!: string
 
-  updateStyle(fillStyle: string, highlight: string) {
+  updateStyle(fillStyle: string, highlight?: string) {
     this.fillStyle = fillStyle
-    this.highlight = highlight
+    // this.highlight = highlight
   }
 
   draw(frame: Frame) {

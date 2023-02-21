@@ -29,6 +29,12 @@ const nextConfig = {
   // Read more: https://nextjs.org/docs/basic-features/built-in-css-support#customizing-sass-options
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")]
+  },
+  // Read more: https://nextjs.org/docs/advanced-features/compiler#styled-components
+  compiler: {
+    styledComponents: {
+      ssr: true
+    }
   }
 }
 
