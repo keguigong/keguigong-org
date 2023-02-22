@@ -2,7 +2,7 @@ import { getSortedPostsData } from "@/utils/posts"
 import Link from "next/link"
 import Date from "../components/date"
 import utilStyles from "@/styles/utils.module.css"
-import Layout from "../components/layout"
+import Layout from "../components/layouts/layout"
 
 export default function Home({ allPostsData }: { [key: string]: any }) {
   return (

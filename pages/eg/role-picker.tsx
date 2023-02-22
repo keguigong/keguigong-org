@@ -1,5 +1,5 @@
 import { Layout } from "@/components"
-import { RolePicker3 } from "@/components/role-picker"
+import { RolePicker3 } from "@/components/eg/role-picker"
 
 export default function App() {
   return (

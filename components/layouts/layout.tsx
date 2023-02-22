@@ -1,8 +1,8 @@
 import Head from "next/head"
 import Link from "next/link"
 import styles from "./layout.module.scss"
-import { DayNight } from "./animated-day-night"
-import { PersonalBriefing } from "./layout-parts"
+import { DayNight } from "../animated-day-night"
+import { PersonalBriefing } from "."
 
 const siteTitle = "Blog."
 const description = "Where keguigong's thoughts were built"

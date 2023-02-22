@@ -1,41 +1,19 @@
-import Head from "next/head"
+---
+title: "A Draggable Role Picker Demo Referring to Party Animals"
+date: "2023-02-12"
+---
 
-import Layout from "@/components/layout"
-import { PostMeta } from "@/components/layout-parts"
-import {
-  RolePicker1,
-  RolePicker2,
-  RolePicker3,
-  VideoContainer,
-  MdxWrap
-} from "@/components/role-picker"
+Party Animals is a physical based party game, and I found that its official website looks great, then I decided to learn something from it.
 
-export const videoUrl =
-  "https://user-images.githubusercontent.com/29125211/217710234-7f6ef0e2-a3e2-4c64-b804-86159deceffc.mp4"
+What I decided to do is to realize a demonstration web page referring to the "motion_effect_demo.mp4" below, and make sure the demo satifying
 
-export const meta = {
-  title: "A Draggable Role Picker Demo Referring to Party Animals",
-  date: "2023-02-12"
-}
+- The visual perception should be consistent with the video, including all animation details such as scaling, easing, and rebound.
+- Pay attention to observe the video, do not miss the interaction details.
+- Use mouse to drag the list and hide the scrollbar.
+- Press left or right arrow key to change selection, and make selected role centered if possible.
+- Use materials from [Party Animals official website](https://partyanimals.com/).
 
-# A Draggable Role Picker Demo Referring to Party Animals
-
-<PostMeta meta={meta} />
-
-Party Animals is a physical based party game, and I found that its official website looks great,
-then I decided to learn something from it.
-
-What I decided to do is to realize a demonstration web page referring to the "Motion Effect
-Demonstration.mp4" below, and make sure the demo satifying
-
-1. The visual perception should be consistent with the video, including all animation details such
-   as scaling, easing, and rebound.
-2. Pay attention to observe the video, do not miss the interaction details.
-3. Use mouse to drag the list and hide the scrollbar.
-4. Press left or right arrow key to change selection, and make selected role centered if possible.
-5. Use materials from [Party Animals official website](https://partyanimals.com/).
-
-<VideoContainer src={videoUrl} />
+Watch [motion_effect_demo.mp4](https://user-images.githubusercontent.com/29125211/217710234-7f6ef0e2-a3e2-4c64-b804-86159deceffc.mp4) and see my final live demo [here](/eg/role-picker).
 
 Let's refer to [Thinking in React](https://reactjs.org/docs/thinking-in-react.html) and start our
 work.
@@ -58,8 +36,7 @@ export default function RolePicker() {
 }
 ```
 
-The `RoleAvatar` has an `isActive` prop affecting how it looks, we can use `classNames` to merge two
-or more classNames.
+The `RoleAvatar` has an `isActive` prop affecting how it looks, we can use `classNames` to merge two or more classNames.
 
 ```tsx
 export default function RoleAvatar({ name, onClick, isActive }) {
@@ -84,14 +61,7 @@ export default function RoleAvatar({ name, onClick, isActive }) {
 }
 ```
 
-And it looks like this
-
-<MdxWrap title="Static RolePicker Component">
-  <RolePicker1 />
-</MdxWrap>
-
-Be careful that when `RoleAvatar` gets hovered, it has a two-stage pop animation, which can be
-described as
+Thene we'll get the static component. Be careful that when `RoleAvatar` gets hovered, it has a two-stage pop animation, which can be described as
 
 ```scss
 .avatar-bg {
@@ -108,8 +78,7 @@ described as
 
 ## Handle Dragging
 
-Add event listeners to hanlde mouse moving, we can use `onmousedown`, `onmousemove` and `onmouseup`
-to catch the moving.
+Add event listeners to hanlde mouse moving, we can use `onmousedown`, `onmousemove` and `onmouseup` to catch the moving.
 
 ```tsx
 <div
@@ -147,8 +116,7 @@ Make role list move left or right with `translateX()`.
 <ul ... style={{ transform: `translateX(-${divLeft}px)` }}>...</ul>
 ```
 
-Please keep your role list in the safe area with some border conditions. Calculate the container's
-width and role list's width.
+Please keep your role list in the safe area with some border conditions. Calculate the container's width and role list's width.
 
 ```ts
 // 0 < divLeft < innerWidth - conWidth
@@ -197,29 +165,14 @@ function handleTouchEnd() {
 }
 ```
 
-Then add a pick function by using `onClick` callback and `isActive` prop, and we get a component
-that can be dragged and picked.
-
-<MdxWrap title="Can Drag and Pick Roles">
-  <RolePicker2 />
-</MdxWrap>
+Then add a pick function by using `onClick` callback and `isActive` prop, and we get a component that can be dragged and picked.
 
 ## TODO: Handle Keyboard Input
 
-Next, we need to handle left arrow and right arrow key input, and make picked role placed in the
-center of the view.
-
-{/* <MdxWrap title="Can Use Keyboard to Control">
-  <RolePicker3 />
-</MdxWrap> */}
+Next, we need to handle left arrow and right arrow key input, and make picked role placed in the center of the view.
 
 ## Conclusion and Next Steps
 
-In this article, we learned how to build a draggable role picker in React from scratch. As you saw
-here, this doesn't require a lot of code, and there are lots of thing can be done better, such as
-css animations, moving curves, etc. and we can update our code later.
+In this article, we learned how to build a draggable role picker in React from scratch. As you saw here, this doesn't require a lot of code, and there are lots of thing can be done better, such as css animations, moving curves, etc. and we can update our code later.
 
-View and download the code
-[here](https://github.com/keguigong/next-blog/tree/blog/components/role-picker).
-
-export default ({ children }) => <Layout meta={meta}>{children}</Layout>
+View and download the code [here](https://github.com/keguigong/next-blog/tree/blog/components/role-picker).

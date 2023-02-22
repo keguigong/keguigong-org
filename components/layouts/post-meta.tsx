@@ -3,7 +3,7 @@ import Link from "next/link"
 
 import Date from "@/components/date"
 import utilStyles from "@/styles/utils.module.css"
-import { profileImg64 } from "@/components/layout-parts/profile-base64"
+import { profileImg64 } from "@/components/layouts/profile-base64"
 
 const fallbackMeta = {
   author: "keguigong",

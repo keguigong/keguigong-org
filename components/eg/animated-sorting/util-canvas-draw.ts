@@ -4,7 +4,7 @@ export type Frame = {
   swapped: boolean
 }
 
-export class DrawFrame {
+export class CanvasDraw {
   ctx!: CanvasRenderingContext2D
   width!: number
   height!: number
@@ -22,7 +22,7 @@ export class DrawFrame {
     this.height = height
   }
 
-  fillStyle = "black"
+  fillStyle = "rgba(128, 128, 128, 0.6)"
   // highlight!: string
 
   updateStyle(fillStyle: string, highlight?: string) {
