@@ -3,9 +3,9 @@ title: "使用useCallback优化使用Canvas开发碰撞小球"
 date: "2023-02-19"
 ---
 
-最近在学习 2D `canvas` 有关知识，并参照 MDN 文档（[Let's bounce some balls](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_building_practice#lets_bounce_some_balls)）使用 `canvas` 编写一个碰撞小球程序，在将该程序结合 React Hook 进行开发的时候遇到了一些问题，这儿将一些遇到的问题以及对应的解决方案记录一下。
+> 查看最终实现的效果：[Bouncing Balls Start](https://keguigong.github.io/bubble-sort-animation/bouncing-balls)。
 
-查看最终实现的效果：[Bouncing Balls Start](/eg/bouncing-balls)。
+最近在学习 2D `canvas` 有关知识，并参照 MDN 文档（[Let's bounce some balls](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_building_practice#lets_bounce_some_balls)）使用 `canvas` 编写一个碰撞小球程序，在将该程序结合 React Hook 进行开发的时候遇到了一些问题，这儿将一些遇到的问题以及对应的解决方案记录一下。
 
 ## `cancelAnimationFrame` 无法取消动画
 
