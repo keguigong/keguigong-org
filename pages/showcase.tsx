@@ -1,14 +1,11 @@
-import Link from "next/link"
 import Head from "next/head"
+import { ContentBox } from "@/components/showcase"
+import content from "@/components/showcase/content.json"
 
-import { getSortedPostsData } from "@/utils/posts"
-import Date from "../components/date"
-import utilStyles from "@/styles/utils.module.css"
-
-const siteTitle = "Blog."
+const siteTitle = "Showcase."
 const description = "Where keguigong's thoughts were built"
 
-export default function Home({ allPostsData }: { [key: string]: any }) {
+export default function Home() {
   return (
     <section>
       <Head>
@@ -27,26 +24,15 @@ export default function Home({ allPostsData }: { [key: string]: any }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <ul className={utilStyles.list}>
-        {allPostsData.map(({ id, date, title, type }: { [key: string]: any }) => (
-          <li className={utilStyles.listItem} key={id}>
-            <Link href={type === "article" ? `/articles/${id}` : `/posts/${id}`}>{title}</Link>
-            <br />
-            <small className={utilStyles.lightText}>
-              <Date dateString={date} />
-            </small>
-          </li>
-        ))}
-      </ul>
+      {content.map((content) => (
+        <ContentBox key={content.url} content={content} />
+      ))}
     </section>
   )
 }
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData()
   return {
-    props: {
-      allPostsData
-    }
+    props: {}
   }
 }

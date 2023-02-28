@@ -1,4 +1,7 @@
 import type { AppProps } from "next/app"
+import { useRouter } from "next/router"
+import { Layout } from "@/components/layouts"
+
 // Global styles
 import "@/styles/globals.scss"
 // Import Prism code highlight styles
@@ -7,5 +10,11 @@ import "prism-themes/themes/prism-one-dark.css"
 import "@/styles/now-styles.scss"
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  const router = useRouter()
+
+  return (
+    <Layout home={"/" === router.pathname}>
+      <Component {...pageProps} />
+    </Layout>
+  )
 }

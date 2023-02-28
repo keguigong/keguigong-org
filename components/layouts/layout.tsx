@@ -1,34 +1,48 @@
-import Head from "next/head"
 import Link from "next/link"
+import { useRouter } from "next/router"
+import { useEffect, useState } from "react"
+
 import styles from "./layout.module.scss"
 import { DayNight } from "../animated-day-night"
 import { PersonalBriefing } from "."
 
-const siteTitle = "Blog."
-const description = "Where keguigong's thoughts were built"
+const links = [
+  {
+    title: "Blog.",
+    pathname: "/"
+  },
+  {
+    title: "Showcase.",
+    pathname: "/showcase"
+  }
+]
 
 export default function Layout({ children, home, meta }: { [key: string]: any }) {
+  const router = useRouter()
+  const [activeTitle, setTitle] = useState(0)
+
+  useEffect(() => {
+    const index = links.map((e) => e.pathname).indexOf(router.pathname)
+    if (index >= 0) {
+      setTitle(index)
+    }
+  }, [router])
+
   return (
     <div className={styles.container}>
-      <Head>
-        <title>
-          {meta && meta.title ? `${meta.title} - ${siteTitle}` : `${siteTitle} - ${description}`}
-        </title>
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="description" content={description} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta
-          property="og:image"
-          content={`https://og-image.vercel.app/${encodeURI(
-            meta && meta.title ? meta.title : description
-          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
-        />
-        <meta name="og:title" content={siteTitle} />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
       <header className={styles.header}>
         <h2 className={styles.headerTitle}>
-          <Link href="/">Blog.</Link>
+          {links.map((link, index) => (
+            <>
+              <Link
+                key={link.pathname}
+                className={index === activeTitle ? styles.activeLink : ""}
+                href={link.pathname}
+              >
+                {link.title}
+              </Link>{" "}
+            </>
+          ))}
         </h2>
         <DayNight />
       </header>

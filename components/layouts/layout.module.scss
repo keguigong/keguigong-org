@@ -55,3 +55,8 @@
 .headerNav {
   width: 100%;
 }
+
+.activeLink {
+  color: rgba(var(--background-end-rgb), 1) !important;
+  background: rgba(var(--foreground-rgb), 1);
+}
