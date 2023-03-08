@@ -4,14 +4,13 @@ import content from "@/components/showcase/content.json"
 
 const siteTitle = "Showcase."
 const description = "Where keguigong's thoughts were built"
+const title = siteTitle + " - " + description
 
 export default function Home() {
   return (
     <section>
       <Head>
-        <title>
-          {siteTitle} - {description}
-        </title>
+        <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

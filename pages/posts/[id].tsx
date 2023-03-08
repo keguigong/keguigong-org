@@ -7,12 +7,12 @@ import { PostMeta } from "@/components/layouts"
 const description = "Where keguigong's thoughts were built"
 
 export default function Post({ postData }: { [key: string]: any }) {
+  const title = postData.title + " - " + description
+
   return (
     <main>
       <Head>
-        <title>
-          {postData.title} - {description}
-        </title>
+        <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

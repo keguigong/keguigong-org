@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
+import classNames from "classnames"
 
 import styles from "./layout.module.scss"
 import { DayNight } from "../animated-day-night"
@@ -33,15 +34,13 @@ export default function Layout({ children, home, meta }: { [key: string]: any })
       <header className={styles.header}>
         <h2 className={styles.headerTitle}>
           {links.map((link, index) => (
-            <>
-              <Link
-                key={link.pathname}
-                className={index === activeTitle ? styles.activeLink : ""}
-                href={link.pathname}
-              >
-                {link.title}
-              </Link>{" "}
-            </>
+            <Link
+              key={link.pathname}
+              className={classNames(styles.link, index === activeTitle && styles.activeLink)}
+              href={link.pathname}
+            >
+              {link.title}
+            </Link>
           ))}
         </h2>
         <DayNight />
