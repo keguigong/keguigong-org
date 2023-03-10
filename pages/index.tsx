@@ -4,6 +4,7 @@ import Head from "next/head"
 import { getSortedPostsData } from "@/utils/posts"
 import Date from "../components/date"
 import utilStyles from "@/styles/utils.module.css"
+import { BlogListItem } from "@/components/blogs"
 
 const siteTitle = "Blog."
 const description = "Where keguigong's thoughts were built"
@@ -27,14 +28,8 @@ export default function Home({ allPostsData }: { [key: string]: any }) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <ul className={utilStyles.list}>
-        {allPostsData.map(({ id, date, title, type }: { [key: string]: any }) => (
-          <li className={utilStyles.listItem} key={id}>
-            <Link href={type === "article" ? `/articles/${id}` : `/posts/${id}`}>{title}</Link>
-            <br />
-            <small className={utilStyles.lightText}>
-              <Date dateString={date} />
-            </small>
-          </li>
+        {allPostsData.map((data: any) => (
+          <BlogListItem key={data.id} content={data}></BlogListItem>
         ))}
       </ul>
     </section>
