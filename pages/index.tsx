@@ -1,9 +1,6 @@
-import Link from "next/link"
 import Head from "next/head"
-
 import { getSortedPostsData } from "@/utils/posts"
-import Date from "../components/date"
-import utilStyles from "@/styles/utils.module.css"
+import styles from "@/components/blogs/blog-list-item.module.scss"
 import { BlogListItem } from "@/components/blogs"
 
 const siteTitle = "Blog."
@@ -27,7 +24,7 @@ export default function Home({ allPostsData }: { [key: string]: any }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <ul className={utilStyles.list}>
+      <ul className={styles.list}>
         {allPostsData.map((data: any) => (
           <BlogListItem key={data.id} content={data}></BlogListItem>
         ))}

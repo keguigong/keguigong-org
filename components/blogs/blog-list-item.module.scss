@@ -27,3 +27,21 @@
 .lightText {
   color: rgba(var(--foreground-rgb), 0.4);
 }
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+// @media screen and (min-width: 721px) {
+//   .list {
+//     display: flex;
+//     flex-wrap: wrap;
+//     align-content: center;
+//   }
+
+//   .blogListItem {
+//     width: 33.33%;
+//   }
+// }
