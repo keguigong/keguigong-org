@@ -11,7 +11,6 @@ import "@/styles/now-styles.scss"
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
-
   return (
     <Layout home={"/" === router.pathname}>
       <Component {...pageProps} />

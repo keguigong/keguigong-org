@@ -1,7 +1,7 @@
 import Head from "next/head"
+
 import { getSortedPostsData } from "@/utils/posts"
-import styles from "@/components/blogs/blog-list-item.module.scss"
-import { BlogListItem } from "@/components/blogs"
+import { AllPosts } from "@/components/posts"
 
 const siteTitle = "Blog."
 const description = "Where keguigong's thoughts were built"
@@ -24,11 +24,7 @@ export default function Home({ allPostsData }: { [key: string]: any }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <ul className={styles.list}>
-        {allPostsData.map((data: any) => (
-          <BlogListItem key={data.id} content={data}></BlogListItem>
-        ))}
-      </ul>
+      <AllPosts allPostsData={allPostsData}></AllPosts>
     </section>
   )
 }

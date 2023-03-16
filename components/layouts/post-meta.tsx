@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 import Date from "@/components/date"
-import utilStyles from "@/styles/utils.module.css"
+import styles from "./post-meta.module.scss"
 import { profileImg64 } from "@/components/layouts/profile-base64"
 
 const fallbackMeta = {
@@ -10,21 +10,21 @@ const fallbackMeta = {
   authorAvatar: profileImg64
 }
 
-export default function PostMeta({ meta }: { [key: string]: any }) {
+export function PostMeta({ meta }: { [key: string]: any }) {
   meta = {
     ...fallbackMeta,
     ...meta
   }
 
   return (
-    <div className={utilStyles.subHeader}>
+    <div className={styles.subHeader}>
       <Date dateString={meta.date} />
       {meta.author ? (
-        <div className={utilStyles.avatarContainer}>
+        <div className={styles.avatarContainer}>
           <Image
             priority
             src={meta.authorAvatar}
-            className={utilStyles.borderCircle}
+            className={styles.avatar}
             height={24}
             width={24}
             alt={meta.authorAvatar}

@@ -4,8 +4,8 @@ import { useEffect, useState } from "react"
 import classNames from "classnames"
 
 import styles from "./layout.module.scss"
-import { DayNight } from "../animated-day-night"
-import { PersonalBriefing } from "."
+import { ToggleTheme } from "../toggle-theme"
+import { Briefing } from "./briefing"
 
 const links = [
   {
@@ -43,11 +43,13 @@ export default function Layout({ children, home, meta }: { [key: string]: any })
             </Link>
           ))}
         </h2>
-        <DayNight />
+        <ToggleTheme />
       </header>
-      {home && <PersonalBriefing />}
-      <main>{children}</main>
-      <div className={styles.footer}>
+      <main>
+        {home && <Briefing />}
+        {children}
+      </main>
+      <footer className={styles.footer}>
         {!home ? (
           <div className={styles.backToHome}>
             <Link href="/">← Back Home</Link>
@@ -60,7 +62,7 @@ export default function Layout({ children, home, meta }: { [key: string]: any })
           <a href="https://www.behance.net/keguigong">Behance</a> •{" "}
           <a href="https://www.instagram.com/keguigong/">Instagram</a>
         </p>
-      </div>
+      </footer>
     </div>
   )
 }

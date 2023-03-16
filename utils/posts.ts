@@ -4,6 +4,8 @@ import matter from "gray-matter"
 import { remark } from "remark"
 import html from "remark-html"
 import prism from "remark-prism"
+import readingTime from "reading-time"
+
 import { getLastModifiedDate } from "./git-info"
 
 export const postsDirectory = path.join(process.cwd(), "posts")
@@ -21,10 +23,12 @@ export function getSortedPostsData() {
 
     // Use gray-matter to parse the post metadata section
     const frontMatter = matter(fileContents)
+    const timeToRead = readingTime(fileContents)
 
     // Combine the data with the id
     return {
       id,
+      timeToRead,
       ...frontMatter.data
     }
   })

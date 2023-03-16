@@ -18,17 +18,7 @@ export function ContentBox({ content }: Props) {
           background: `url(showcasecontent/${content.image}) center center no-repeat`,
           backgroundSize: "cover"
         }}
-      >
-        <div className={styles.content}>
-          <div className={styles.text}>
-            <h1>{content.title}</h1>
-            <p>{content.description}</p>
-            <a href={content.url} target="_blank" rel="noreferrer">
-              <b>{content.url}</b>
-            </a>
-          </div>
-        </div>
-      </div>
+      ></div>
       <div className={styles.mobileContent}>
         <a href={content.url} target="_blank" rel="noreferrer">
           <h1>{content.title}</h1>

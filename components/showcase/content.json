@@ -3,30 +3,30 @@
     "title": "Search Box Component",
     "description": "A search box developed with Next.js and Sass. Smooth, simple, and functional.",
     "url": "https://digital-creative-search-box.vercel.app/",
-    "image": "search-box.png"
+    "image": "search-box.gif"
   },
   {
     "title": "Role Picker Referring to Party Animals",
     "description": "Developed with Next.js. Use you left or right arrow key to control the picker.",
     "url": "https://role-picker-referring-to-party-animals.vercel.app/",
-    "image": "role-picker.png"
+    "image": "role-picker.gif"
   },
   {
     "title": "Alarm Analysis Platform",
-    "description": "A demo platform designed for alarm analysis. Utilized ECharts, Vue, and AMap",
+    "description": "A demo platform designed for alarm analysis. Utilized ECharts, Vue, and AMap.",
     "url": "https://keguigong.github.io/alarm-analysis-platform-demo/",
-    "image": "alarm-analysis.png"
+    "image": "alarm-analysis.gif"
   },
   {
     "title": "Canvas Practice: Animated Sort",
-    "description": "Use Canvas to make sort process animated",
+    "description": "Use Canvas to make sort process animated.",
     "url": "https://keguigong.github.io/bubble-sort-animation/",
-    "image": "animated-sort.png"
+    "image": "animated-sort.gif"
   },
   {
     "title": "Canvas Practice: Bouncing Balls",
-    "description": "A Canvas starter demo",
+    "description": "A Canvas starter demo.",
     "url": "https://keguigong.github.io/bubble-sort-animation/bouncing-balls",
-    "image": "bouncing-balls.png"
+    "image": "bouncing-balls.gif"
   }
 ]
