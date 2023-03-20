@@ -15,11 +15,11 @@ type Props = {
 
 export const Header = ({ mobileMenu, toggleMenu }: Props) => {
   const router = useRouter()
-  const [pathname, setPathname] = useState("Blogs.")
+  const [pathname, setPathname] = useState("Blog.")
 
   useEffect(() => {
     const index = navList.map((nav) => nav.pathname).indexOf(router.pathname)
-    const pathname = index < 0 ? "Blogs." : navList[index].title
+    const pathname = index < 0 ? "Blog." : navList[index].title
     setPathname(pathname)
   }, [router.pathname])
 
@@ -30,29 +30,29 @@ export const Header = ({ mobileMenu, toggleMenu }: Props) => {
     setVisibility((prev) => ({ ...prev, mobileMenu: mobileMenu }))
   }, [mobileMenu])
 
-  useEffect(() => {
-    const cb = () => {
-      const top = document.documentElement.scrollTop || document.body.scrollTop
-      const delta = top - scrollTop.top
-      setScrollTop({ top, delta })
-    }
-    window.addEventListener("scroll", cb)
+  // useEffect(() => {
+  //   const cb = () => {
+  //     const top = document.documentElement.scrollTop || document.body.scrollTop
+  //     const delta = top - scrollTop.top
+  //     setScrollTop({ top, delta })
+  //   }
+  //   window.addEventListener("scroll", cb)
 
-    return () => {
-      window.removeEventListener("scroll", cb)
-    }
-  }, [scrollTop])
+  //   return () => {
+  //     window.removeEventListener("scroll", cb)
+  //   }
+  // }, [scrollTop])
 
-  useEffect(() => {
-    const delta = scrollTop.delta
-    if (Math.abs(delta) >= 10) {
-      if (delta > 0) setVisibility((prev) => ({ ...prev, header: false }))
-      else setVisibility((prev) => ({ ...prev, header: true }))
-    }
+  // useEffect(() => {
+  //   const delta = scrollTop.delta
+  //   if (Math.abs(delta) >= 10) {
+  //     if (delta > 0) setVisibility((prev) => ({ ...prev, header: false }))
+  //     else setVisibility((prev) => ({ ...prev, header: true }))
+  //   }
 
-    const top = scrollTop.top
-    if (top < 10) setVisibility((prev) => ({ ...prev, header: true }))
-  }, [scrollTop])
+  //   const top = scrollTop.top
+  //   if (top < 10) setVisibility((prev) => ({ ...prev, header: true }))
+  // }, [scrollTop])
 
   const toggleMobileMenu = () => {
     toggleMenu?.call(null, !visibility.mobileMenu)

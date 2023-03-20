@@ -28,3 +28,17 @@
     }
   }
 }
+
+@media screen and (min-width: 891px) {
+  .textContainer {
+    p, p:first-of-type {
+      font-size: 1.15rem;
+    }
+  }
+
+  .avatar {
+    height: 80px;
+    width: 80px;
+    border-radius: 108px;
+  }
+}

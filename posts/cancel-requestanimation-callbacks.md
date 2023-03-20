@@ -1,5 +1,5 @@
 ---
-title: "使用useCallback优化使用Canvas开发碰撞小球"
+title: "如何取消requestAnimationFrame发起的动画"
 date: "2023-02-19"
 ---
 

@@ -10,6 +10,8 @@ type Props = {
   onClick?: () => void
 }
 
+const isProd = process.env.NODE_ENV === "production"
+
 export const MobileMenu = ({ isOpen, onClick }: Props) => {
   const router = useRouter()
 
@@ -20,7 +22,7 @@ export const MobileMenu = ({ isOpen, onClick }: Props) => {
   return (
     <div className={classNames(styles.mobileMenuWrapper, isOpen && styles.show)}>
       <div className={styles.mobileMenu}>
-        {navList.map((link) => (
+        {(isProd ? navList.slice(0, -1) : navList).map((link) => (
           <Link
             className={classNames(
               styles.link,

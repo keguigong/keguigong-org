@@ -1,7 +1,7 @@
 ---
 title: "作为一名Web开发工程师"
 date: "2020-12-06"
-coverImage: "blogcontent/Typescript-01.svg"
+coverImage: "blogcontent/pixeltrue-web-development.svg"
 ---
 
 从第一次接触 HTML 开始，和前端开发，或者更贴却的说法是 Web 开发，打交道已经三年有余。当然我理解的前端不局限于网页，而是包括千万个终端，不管是手机、平板还是电脑，或者新兴的 VR、AR 等设备，它们与使用者直接产生交互，是机器与人交流的媒介。

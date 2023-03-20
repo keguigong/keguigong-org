@@ -1,9 +1,9 @@
 .header {
-  position: sticky;
-  top: 0;
-  border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.5);
-  background: rgba(var(--callout-rgb), 0.6);
-  backdrop-filter: saturate(100%) blur(25px);
+  // position: sticky;
+  // top: 0;
+  // border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.5);
+  // background: rgba(var(--callout-rgb), 0.6);
+  // backdrop-filter: saturate(100%) blur(25px);
   transition: transform 0.5s ease-out;
   overflow-y: hidden;
 }
@@ -14,7 +14,7 @@
 
 .headerWrapper {
   margin: 0 auto;
-  max-width: 80rem;
+  max-width: 52rem;
   padding: 0 1rem;
 }
 

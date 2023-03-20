@@ -1,10 +1,10 @@
 ---
-title: "虚拟DOM和真实DOM的相互转换"
+title: "虚拟DOM和DOM的转换"
 date: "2023-03-15"
 coverImage: "blogcontent/React-example-virtual-dom-diff.svg"
 ---
 
-> React 以及 Vue 都采用了虚拟 DOM（VNode）的形式进行 diff 比较，避免了频繁操作真实 DOM 元素带来的性能开销，通过 VNode 以及 DOM 之间的相互转换，可以高效的将对 VNode 更改同步给浏览器，并最终呈现给用户。
+React 以及 Vue 都采用了虚拟 DOM（VNode）的形式进行 diff 比较，避免了频繁操作 DOM 元素带来的性能开销，通过 VNode 以及 DOM 之间的相互转换，可以高效的将对 VNode 更改同步给浏览器，并最终呈现给用户。
 
 定义好 VNode 类型
 
@@ -24,7 +24,7 @@ class VNode {
 }
 ```
 
-## 虚拟 DOM 转换为真实 DOM
+## 虚拟 DOM 转换为 DOM
 
 ```js
 function getRealNode(vnode) {
@@ -50,7 +50,7 @@ function getRealNode(vnode) {
 }
 ```
 
-## 真实 DOM 转换为虚拟 DOM
+## DOM 转换为虚拟 DOM
 
 ```js
 // 遍历节点生成虚拟Dom

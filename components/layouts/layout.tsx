@@ -33,7 +33,9 @@ export default function Layout({ children, home }: Props) {
             <Link href="/">← Back Home</Link>
           </div>
         ) : (
-          <div />
+          <div>
+            With <a href="https://www.nextjs.org/">Next.js</a>.
+          </div>
         )}
         <div className={styles.backToHome}>
           <a href="https://github.com/keguigong">GitHub</a> •{" "}

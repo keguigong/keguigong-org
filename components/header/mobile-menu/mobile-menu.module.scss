@@ -1,11 +1,15 @@
 .mobileMenuWrapper {
   position: sticky;
-  display: none;
+  display: block;
   top: calc(5rem + 1px);
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
 }
 
 .show {
-  display: block;
+  transform: translateX(0);
+  opacity: 1;
 }
 
 .mobileMenu {
@@ -29,7 +33,7 @@
 .link {
   text-decoration: none;
   color: rgba(var(--foreground-rgb), 0.7);
-  font-size: 1.5rem;
+  font-size: 1.15rem;
 
   &.activeLink {
     color: var(--link-active-color);
