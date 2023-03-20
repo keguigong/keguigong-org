@@ -42,9 +42,9 @@
   --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
   --secondary-glow: linear-gradient(
     to bottom right,
-    rgba(1, 65, 255, 0),
-    rgba(1, 65, 255, 0),
-    rgba(1, 65, 255, 0.3)
+    rgb(219, 219, 219),
+    rgba(219, 219, 219, 1),
+    rgba(219, 219, 219, 1)
   );
 
   --tile-start-rgb: 2, 13, 46;

@@ -1,7 +1,7 @@
 import Head from "next/head"
 
 import { getAllPostIds, getPostData } from "@/utils/posts"
-import { Briefing, PostMeta } from "@/components/layouts"
+import { PostMeta } from "@/components/layouts"
 
 const description = "Where keguigong's thoughts were built"
 

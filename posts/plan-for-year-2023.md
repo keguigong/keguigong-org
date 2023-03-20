@@ -1,6 +1,7 @@
 ---
 title: "2023年，我自己的一些计划"
 date: "2023-02-14"
+coverImage: "blogcontent/Ting_Mobile_Planspage_Illustration.svg"
 ---
 
 > 怀疑并不是缺点。总是疑，而并不下断语，这才是缺点。 ——鲁迅

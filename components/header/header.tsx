@@ -15,7 +15,7 @@ type Props = {
 
 export const Header = ({ mobileMenu, toggleMenu }: Props) => {
   const router = useRouter()
-  const [pathname, setPathname] = useState("/")
+  const [pathname, setPathname] = useState("Blogs.")
 
   useEffect(() => {
     const index = navList.map((nav) => nav.pathname).indexOf(router.pathname)

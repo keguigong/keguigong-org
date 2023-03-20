@@ -13,11 +13,9 @@
   width: 100%;
   height: calc(100vh - 5rem);
   background: rgba(var(--callout-rgb), 1);
-  // backdrop-filter: saturate(100%) blur(25px);
   display: flex;
   flex-direction: column;
   align-items: center;
-  // justify-content: center;
 
   & > * {
     margin: 1.5rem;
@@ -31,6 +29,7 @@
 .link {
   text-decoration: none;
   color: rgba(var(--foreground-rgb), 0.7);
+  font-size: 1.5rem;
 
   &.activeLink {
     color: var(--link-active-color);

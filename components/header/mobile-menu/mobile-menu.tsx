@@ -4,7 +4,6 @@ import classNames from "classnames"
 
 import styles from "./mobile-menu.module.scss"
 import navList from "../nav.json"
-import { ColorScheme } from "../color-scheme"
 
 type Props = {
   isOpen: boolean
@@ -34,9 +33,6 @@ export const MobileMenu = ({ isOpen, onClick }: Props) => {
             {link.title}
           </Link>
         ))}
-        {/* <div className={styles.colorScheme}>
-          <ColorScheme />
-        </div> */}
       </div>
     </div>
   )

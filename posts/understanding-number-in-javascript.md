@@ -1,6 +1,7 @@
 ---
 title: "了解一下JavaScript中的Number类型"
 date: "2022-11-23"
+coverImage: "blogcontent/IEEE_754_Double_Floating_Point_Format.svg"
 ---
 
 > 这篇笔记主要是在看了掘金上 [全栈然叔](https://juejin.cn/user/1978776660216136) 的“365天打卡记录”整理而来的，发现就算是js这种和byte打交道比较少的语言，在处理数字上也会有一些注意点。
