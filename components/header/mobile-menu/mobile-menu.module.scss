@@ -1,0 +1,43 @@
+.mobileMenuWrapper {
+  position: sticky;
+  display: none;
+  top: calc(5rem + 1px);
+}
+
+.show {
+  display: block;
+}
+
+.mobileMenu {
+  position: absolute;
+  width: 100%;
+  height: calc(100vh - 5rem);
+  background: rgba(var(--callout-rgb), 1);
+  // backdrop-filter: saturate(100%) blur(25px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // justify-content: center;
+
+  & > * {
+    margin: 1.5rem;
+  }
+
+  & > *:first-child {
+    margin-top: 3rem;
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: rgba(var(--foreground-rgb), 0.7);
+
+  &.activeLink {
+    color: var(--link-active-color);
+  }
+}
+
+.colorScheme {
+  justify-self: flex-end;
+  z-index: 100;
+}

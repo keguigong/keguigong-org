@@ -16,7 +16,8 @@ export function ContentBox({ content }: Props) {
         className={styles.contentBox}
         style={{
           background: `url(showcasecontent/${content.image}) center center no-repeat`,
-          backgroundSize: "cover"
+          backgroundSize: "cover",
+          zIndex: 0
         }}
       ></div>
       <div className={styles.mobileContent}>

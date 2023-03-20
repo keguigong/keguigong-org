@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Blog.",
+    "pathname": "/"
+  },
+  {
+    "title": "Showcase.",
+    "pathname": "/showcase"
+  },
+  {
+    "title": "Playground.",
+    "pathname": "/playground"
+  }
+]

@@ -4,13 +4,10 @@
   // border-bottom: 3px solid rgba(var(--card-border-rgb), 0.25);
   border-top: none;
   padding: 1rem;
+  padding-left: 0;
 
   &::before {
     content: "";
-  }
-
-  &:first-child {
-    // margin-top: 3rem;
   }
 
   &:not(:last-child) {
@@ -20,6 +17,10 @@
   h2 {
     margin: 0.5rem 0;
     font-size: 1.25rem;
+  }
+
+  a {
+    text-decoration: none;
   }
 }
 
@@ -32,15 +33,3 @@
   padding: 0;
   margin: 0;
 }
-
-// @media screen and (min-width: 721px) {
-//   .list {
-//     display: flex;
-//     flex-wrap: wrap;
-//     align-content: center;
-//   }
-
-//   .blogListItem {
-//     width: 33.33%;
-//   }
-// }

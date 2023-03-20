@@ -1,12 +1,10 @@
 import Head from "next/head"
-import { ContentBox } from "@/components/showcase"
-import content from "@/components/showcase/content.json"
 
-const siteTitle = "Showcase."
+const siteTitle = "Playground."
 const description = "Where keguigong's thoughts were built"
 const title = siteTitle + " - " + description
 
-export default function Showcase() {
+export default function Playground() {
   return (
     <>
       <Head>
@@ -23,9 +21,6 @@ export default function Showcase() {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      {content.map((content) => (
-        <ContentBox key={content.url} content={content} />
-      ))}
     </>
   )
 }

@@ -1,51 +1,29 @@
 import Link from "next/link"
-import { useRouter } from "next/router"
-import { useEffect, useState } from "react"
-import classNames from "classnames"
+import { useState } from "react"
 
 import styles from "./layout.module.scss"
-import { ToggleTheme } from "../toggle-theme"
-import { Briefing } from "./briefing"
+import { Briefing } from "./briefing/briefing"
+import { Header, MobileMenu } from "@/components/header"
 
-const links = [
-  {
-    title: "Blog.",
-    pathname: "/"
-  },
-  {
-    title: "Showcase.",
-    pathname: "/showcase"
-  }
-]
+type Props = {
+  children?: JSX.Element
+  home?: boolean
+}
 
-export default function Layout({ children, home, meta }: { [key: string]: any }) {
-  const router = useRouter()
-  const [activeTitle, setTitle] = useState(0)
-
-  useEffect(() => {
-    const index = links.map((e) => e.pathname).indexOf(router.pathname)
-    if (index >= 0) {
-      setTitle(index)
-    }
-  }, [router])
+export default function Layout({ children, home }: Props) {
+  const [visibility, setVisibility] = useState({ mobileMenu: false })
 
   return (
-    <div className={styles.container}>
-      <header className={styles.header}>
-        <h2 className={styles.headerTitle}>
-          {links.map((link, index) => (
-            <Link
-              key={link.pathname}
-              className={classNames(styles.link, index === activeTitle && styles.activeLink)}
-              href={link.pathname}
-            >
-              {link.title}
-            </Link>
-          ))}
-        </h2>
-        <ToggleTheme />
-      </header>
-      <main>
+    <>
+      <Header
+        mobileMenu={visibility.mobileMenu}
+        toggleMenu={(e) => setVisibility((prev) => ({ ...prev, mobileMenu: e }))}
+      ></Header>
+      <MobileMenu
+        isOpen={visibility.mobileMenu}
+        onClick={() => setVisibility((prev) => ({ ...prev, mobileMenu: !prev.mobileMenu }))}
+      ></MobileMenu>
+      <main className={styles.contentLayout}>
         {home && <Briefing />}
         {children}
       </main>
@@ -57,12 +35,12 @@ export default function Layout({ children, home, meta }: { [key: string]: any })
         ) : (
           <div />
         )}
-        <p className={styles.backToHome}>
+        <div className={styles.backToHome}>
           <a href="https://github.com/keguigong">GitHub</a> •{" "}
           <a href="https://www.behance.net/keguigong">Behance</a> •{" "}
           <a href="https://www.instagram.com/keguigong/">Instagram</a>
-        </p>
+        </div>
       </footer>
-    </div>
+    </>
   )
 }

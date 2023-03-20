@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import styles from "./briefing.module.scss"
-import { profileImg64 } from "./profile-base64"
+import { profileImg64 } from "../profile-base64"
 
 const name = "keguigong"
 
@@ -18,7 +18,7 @@ export function Briefing() {
       />
       <div className={styles.textContainer}>
         <p>
-          Personal Blog of <Link href="https://github.com/keguigong">keguigong</Link>.
+          Blog of <Link href="https://github.com/keguigong">keguigong</Link>.
         </p>
         <p>Where keguigong&apos;s thoughts were built.</p>
       </div>

@@ -2,16 +2,10 @@ import { useSpring, animated } from "@react-spring/web"
 import styles from "./icon.module.scss"
 
 type Props = {
-  darkMode: boolean
-  onModeChange: (prev: boolean) => void
+  darkMode?: boolean
 }
 
-export default function Icon({ darkMode, onModeChange }: Props) {
-  const toggleDarkMode = () => {
-    // setDarkMode((prev) => !prev)
-    onModeChange(!darkMode)
-  }
-
+export default function Icon({ darkMode = false }: Props) {
   const properties = {
     dark: {
       r: 9,
@@ -51,7 +45,6 @@ export default function Icon({ darkMode, onModeChange }: Props) {
       strokeLinecap="round"
       strokeLinejoin="round"
       className={styles.svg}
-      onClick={toggleDarkMode}
       style={svgContainerProps}
     >
       <mask id="mask">
