@@ -2,14 +2,20 @@ import Head from "next/head"
 
 import { getAllPostIds, getPostData } from "@/utils/posts"
 import { PostMeta } from "@/components/layouts"
+import { PostCover } from "@/components/posts"
 
 const description = "Where keguigong's thoughts were built"
 
-export default function Post({ postData }: { [key: string]: any }) {
+type Props = {
+  postData: { [key: string]: any }
+}
+
+export default function Post({ postData }: Props) {
+  const { coverImage } = postData
   const title = postData.title + " - " + description
 
   return (
-    <main>
+    <>
       <Head>
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
@@ -24,10 +30,13 @@ export default function Post({ postData }: { [key: string]: any }) {
         <meta name="og:title" content={postData.id} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <h1>{postData.title}</h1>
-      <PostMeta meta={postData} />
-      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }}></div>
-    </main>
+      <PostCover coverImage={coverImage}></PostCover>
+      <article className="blog-content">
+        <h1>{postData.title}</h1>
+        <PostMeta meta={postData} />
+        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }}></div>
+      </article>
+    </>
   )
 }
 

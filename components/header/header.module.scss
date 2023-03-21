@@ -4,12 +4,12 @@
   // border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.5);
   // background: rgba(var(--callout-rgb), 0.6);
   // backdrop-filter: saturate(100%) blur(25px);
-  transition: transform 0.5s ease-out;
+  transition: transform 0.5s ease-out, background 0.15s ease-out;
   overflow-y: hidden;
 }
 
-.hideHeader {
-  transform: translateY(-100%);
+.whiteHeader {
+  background: rgba(var(--callout-rgb), 1);
 }
 
 .headerWrapper {

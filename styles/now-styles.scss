@@ -1,60 +1,66 @@
-code {
-  font-family: var(--font-mono);
-  padding: 2px 4px;
-  color: rgba(var(--foreground-rgb), 0.7);
-  background: rgba(var(--callout-rgb), 0.5);
-  border: 1px solid rgba(var(--callout-border-rgb), 0.5);
-  border-radius: 5px;
-  word-break: break-word;
-  white-space: pre-wrap;
-  font-size: 0.9em;
-}
-
-pre[class*="language-"] {
-  background-color: var(--pre-background-color);
-  border: 1px solid rgba(var(--card-border-rgb), 0.25);
-  border-radius: var(--border-radius);
-
+.blog-content {
   code {
-    padding: 0;
     font-family: var(--font-mono);
-    border: none;
-    border-radius: none;
-    background: none;
+    padding: 1px 3px;
+    background: rgba(var(--callout-rgb), 0.5);
+    border: 1px solid rgba(var(--callout-border-rgb), 0.5);
+    border-radius: 5px;
+    word-break: break-word;
+    white-space: pre-wrap;
+    font-size: 0.9em;
   }
-}
 
-blockquote {
-  color: rgba(var(--foreground-rgb), 0.5);
-  background: rgba(var(--callout-rgb), 0.5);
-  border: 1px solid rgba(var(--callout-border-rgb), 0.3);
-  border-radius: var(--border-radius);
-  padding: 0 1.25rem;
-  margin: 1.5rem 0;
-}
+  pre[class*="language-"] {
+    background-color: var(--pre-background-color);
+    border: 1px solid rgba(var(--card-border-rgb), 0.25);
+    border-radius: var(--border-radius);
 
-ul {
-  padding-left: 1.5rem;
-  margin: 1.25rem 0;
-  list-style-type: none;
-}
+    code {
+      padding: 0;
+      font-family: var(--font-mono);
+      border: none;
+      border-radius: none;
+      background: none;
+    }
+  }
 
-ul li {
-  margin-bottom: 0.625rem;
-}
+  blockquote {
+    color: rgba(var(--foreground-rgb), 0.5);
+    background: rgba(var(--callout-rgb), 0.5);
+    border: 1px solid rgba(var(--callout-border-rgb), 0.3);
+    border-radius: var(--border-radius);
+    padding: 0 1.25rem;
+    margin: 1.5rem 0;
+  }
 
-ul li::before {
-  content: "-";
-  color: rgba(var(--callout-border-rgb), 1);
-  position: absolute;
-  margin-left: -1rem;
-}
+  ul {
+    padding-left: 1.5rem;
+    margin: 1.25rem 0;
+    list-style-type: none;
+  }
 
-img {
-  max-width: 100%;
-}
+  ul > li {
+    margin-bottom: 0.5rem;
+  }
 
-p,
-ul > li {
-  line-height: 1.5;
+  ul > li::before {
+    content: "-";
+    color: rgba(var(--callout-border-rgb), 1);
+    position: absolute;
+    margin-left: -1rem;
+  }
+
+  p,
+  ul > li {
+    line-height: 1.5rem;
+  }
+
+  p > img {
+    width: 100%;
+    object-fit: scale-down;
+    border-radius: var(--border-radius);
+    background: var(--secondary-glow);
+    box-shadow: 0px 30px 60px -30px rgba(var(--foreground-rgb), 0.25),
+      0px 50px 50px -20px rgba(var(--background-end-rgb), 0.25);
+  }
 }

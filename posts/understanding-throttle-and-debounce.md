@@ -1,7 +1,7 @@
 ---
 title: "了解节流和防抖"
 date: "2023-02-15"
-coverImage: "blogcontent/debounceThrottle.svg"
+coverImage: "/blogcontent/debounceThrottle.svg"
 ---
 
 节流和防抖在前端开发中使用的比较频繁，也是面试的时候几乎必问的问题，虽然名字比较高大上，但是原理其实比较简单。

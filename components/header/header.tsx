@@ -60,7 +60,7 @@ export const Header = ({ mobileMenu, toggleMenu }: Props) => {
   }
 
   return (
-    <header className={classNames(styles.header, !visibility.header && styles.hideHeader)}>
+    <header className={classNames(styles.header, visibility.mobileMenu && styles.whiteHeader)}>
       <div className={styles.headerWrapper}>
         <nav className={styles.navBar}>
           {/* Mobile menu */}

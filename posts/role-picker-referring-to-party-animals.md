@@ -3,27 +3,26 @@ title: "参考Party Animals制作游戏角色选择组件"
 date: "2023-02-12"
 ---
 
-> - View and download the code [here](https://github.com/keguigong/role-picker-referring-to-party-animals).
-> - See my final live demo [here](https://keguigong.github.io/role-picker-referring-to-party-animals).
+[Party Animals](https://partyanimals.com/) 是一个基于物理引擎的多人派对游戏，我在看到它的官网的时候发现一些还不错的实现方式，于是决定参照其中的角色选择功能，实现一个类似的效果。
 
-Party Animals is a physical based party game, and I found that its official website looks great, then I decided to learn something from it.
+效果如视频 [Motion Effect Demo.mp4](https://user-images.githubusercontent.com/29125211/217710234-7f6ef0e2-a3e2-4c64-b804-86159deceffc.mp4) 所示，需要满足：
 
-What I decided to do is to realize a demonstration web page referring to the "motion_effect_demo.mp4" below, and make sure the demo satifying
+- 视觉效果应该和视频中展现的一致，包括缩放、缓入缓出以及回弹等动画细节
+- 交互细节也应该和视频中一致，包括鼠标悬浮、点击、选中以及按压等效果
+- 可以使用鼠标左右拖动列表，并且不借助于滚动条
+- 可以使用左右按键操作选中的角色，并且将选中的角色居中
 
-- The visual perception should be consistent with the video, including all animation details such as scaling, easing, and rebound.
-- Pay attention to observe the video, do not miss the interaction details.
-- Use mouse to drag the list and hide the scrollbar.
-- Press left or right arrow key to change selection, and make selected role centered if possible.
-- Use materials from [Party Animals official website](https://partyanimals.com/).
+所有素材资源均可在官网上获取。
 
-Watch [motion_effect_demo.mp4](https://user-images.githubusercontent.com/29125211/217710234-7f6ef0e2-a3e2-4c64-b804-86159deceffc.mp4).
+查看 [在线演示](https://role-picker-referring-to-party-animals.vercel.app/)。
 
-Let's refer to [Thinking in React](https://reactjs.org/docs/thinking-in-react.html) and start our
-work.
+![role-picker.gif](/showcasecontent/role-picker.gif)
 
-## Build Static Component in React
+我们参考 React 官方指导手册 [Thinking in React](https://reactjs.org/docs/thinking-in-react.html) 来进行开发。
 
-Referring to the video, we can build the static react components, and it should be like this
+## 构建静态的组件
+
+参考视频中的样子，我们可以搭建起静态的框架。定义一个 `RolePicker` 组件，里面包含了一个由 `RoleAvatar` 组成的列表。
 
 ```tsx
 export default function RolePicker() {
@@ -39,7 +38,7 @@ export default function RolePicker() {
 }
 ```
 
-The `RoleAvatar` has an `isActive` prop affecting how it looks, we can use `classNames` to merge two or more classNames.
+`RoleAvatar` 组件有名为 `isActive` 的 props，会影响组件的样式，同时该组件也有自己的样式，针对需要应用多个样式的情况，可以使用 `classNames` 库来合并多个 `className`。
 
 ```tsx
 export default function RoleAvatar({ name, onClick, isActive }) {
@@ -64,7 +63,12 @@ export default function RoleAvatar({ name, onClick, isActive }) {
 }
 ```
 
-Thene we'll get the static component. Be careful that when `RoleAvatar` gets hovered, it has a two-stage pop animation, which can be described as
+观察视频可以发现，`RoleAvatar` 组件被 `hover` 的时候，存在一个两段的动画
+
+- 鼠标一进入，背景快速的变大
+- 鼠标长时间悬浮，背景呈现呼吸效果
+
+我们可以使用 `animation` 来实现这样的效果，它本身也支持将值设置为多个动画，并逐个执行。因为悬浮效果为变大，所以我们通过 `@keyframes` 定义了一个变大的效果，然后两段动画其实结果一样，只是变化的过程不一样，变化过程我们使用贝塞尔曲线来加以区别。最终的效果如下：
 
 ```scss
 .avatar-bg {
@@ -79,9 +83,11 @@ Thene we'll get the static component. Be careful that when `RoleAvatar` gets hov
 }
 ```
 
-## Handle Drag Events
+经过以上的步骤，我们基本完成了静态组件的开发，接下来我们来处理一些用户的输入。
 
-Add event listeners to hanlde mouse moving, we can use `onmousedown`, `onmousemove` and `onmouseup` to catch the moving.
+## 实现拖动效果
+
+若要实现鼠标拖动的效果，我们可以搭配使用 `onmousedown`，`onmousemove` 以及 `onmouseup` 三个事件来实现。
 
 ```tsx
 useEffect(() => {
@@ -100,7 +106,7 @@ useEffect(() => {
 }, [domRef, slideCallback])
 ```
 
-Use flag `dragFlag` to decide the start and end of drag.
+使用标志 `dragFlag` 来判断当前是否在按住并拖动鼠标，只有按下的时候鼠标移动才被认为是在拖动。同时在鼠标抬起之后需要将标志清除掉。
 
 ```ts
 const [dragFlag, setDragFlag] = useState(false)
@@ -121,13 +127,13 @@ function handleMoveEnd() {
 }
 ```
 
-Make role list move left or right with `translateX()`.
+这样就能在按下并拖动鼠标的时候获取到鼠标的移动量，transfrom 的 `translateX()` 属性可以移动元素，我们可以通过将鼠标移动量赋值给 `translateX()` 来实现拖动效果。
 
 ```tsx
 <ul ... style={{ transform: `translateX(${left}px)` }}>...</ul>
 ```
 
-Please keep your role list in the safe area with some border conditions. Calculate the container's width and role list's width.
+同时需要注意一些边界条件，不能将列表拖到容器外。计算容器的宽度以及列表的实际宽度（即滚动宽度 `scrollWidth`），左右两侧需要分别计算。
 
 ```ts
 const slideCallback = useCallback(
@@ -152,7 +158,7 @@ const slideCallback = useCallback(
 )
 ```
 
-Besides, we can add touch support to make it work properly on mobile devices.
+现在我们已经可以正常使用鼠标拖动我们的列表了，但是别忘了添加移动端的支持，我们将触摸滑动的事件对应的也进行一下处理，事件类型有些许区别，在获取指针位置的时候需要注意一下。
 
 ```ts
 const [startX, setStartX] = useState(0)
@@ -172,11 +178,11 @@ useEffect(() => {
 }, [domRef, slideCallback])
 ```
 
-Then add a pick function by using `onClick` callback and `isActive` prop, and we get a component that can be dragged and picked.
+最后再添加一个 `onClick` 事件用来处理角色选中。
 
-## Handle Keyboard Events
+## 使用左右方向按键控制选中角色
 
-Next, we need to handle left arrow and right arrow key input, and make picked role placed in the center of the view. Add keyboard event listener.
+这一步我们需要添加方向按键的支持，可以通过左右方向按键切换选中的角色，并将角色自动居中。我们首先监听一下键盘事件，按左方向键选中上一个角色，按右方向键选中下一个角色。
 
 ```ts
 const keyCallback = useCallback((e: KeyboardEvent) => {
@@ -195,7 +201,9 @@ useEffect(() => {
 }, [keyCallback])
 ```
 
-Then calculate `leftWidth` and `rightWidth`, compare both value with `halfConWidth`.
+之前使用鼠标拖动，我们只需要将拖动量转换为位移就可以了，并不需要进行太多的计算，而如果要实现居中的效果，我们需要进行一些计算。
+
+分别计算以当前选中角色的中心为切分点的左边的宽度 `leftWidth` 以及右边的宽度 `rightWidth`， 并将这个结果与容器的一半宽度 `halfConWidth` 做比较，如果 `leftWidth > halfConWidth` 则将位移量设置为差值，反之则不移动，因为已经到了列表的边界了。右侧 `rightWidth` 同理进行计算。
 
 ```ts
 useEffect(() => {
@@ -221,7 +229,7 @@ useEffect(() => {
 }, [domRef, conRef, activeIndex, arrowLeft])
 ```
 
-And finally, change our view when `left` changes.
+同样的，通过 `translateX()` 让列表动起来。
 
 ```ts
 useEffect(() => {
@@ -229,11 +237,11 @@ useEffect(() => {
 }, [domRef, left])
 ```
 
-Now you can use you left arrow key and right arrow key on your keyboard to control the component.
+现在我们可以使用左右方向按键切换选中的角色了。还有一个小细节，使用该方法进行居中的时候有一个缓入缓出的效果，即需要给 `translateX()` 添加一个 `ease-in-out` 的的过渡效果，但是需要注意的是拖动的时候不能有这个属性，不然拖不动，需要搭配拖动标志 `dragFlag` 来动态添加 `ease-in-out`。
 
-## Add Arrow Icon on Both Sides
+## 在两侧添加箭头按钮
 
-One more step, we can add two arrow icons on both sides of the list to do the same thing like keyboard does.
+键盘操作比较隐蔽，我们直接在列表的两侧添加两个箭头，实现与左右方向按键同样的功能。
 
 ```tsx
 <div>
@@ -254,8 +262,38 @@ One more step, we can add two arrow icons on both sides of the list to do the sa
 </div>
 ```
 
-Then you can click the icons to control the component.
+现在可以直接在屏幕上点击也可以切换选中的角色并将其居中显示。
 
-## Conclusion and Next Steps
+## 鼠标点击事件与拖动同时触发
 
-In this article, we learned how to build a draggable role picker in React from scratch. As you saw here, this doesn't require a lot of code, and there are lots of thing can be done better, such as css animations, moving curves, etc. and we can update our code later.
+使用中我们发现，我们使用鼠标进行拖动的时候，拖动结束鼠标松开，会触发 `RoleAvatar` 的 `onClick` 事件，导致那个角色被选中，但是我们并不想在拖动结束后选中某一个角色，所以在拖动的时候我们需要让 `onClick` 事件失效，可以通过一个简单的计时来判断，计算鼠标按下到松开的时间，如果超过 100ms，则认为不是点击事件。
+
+```tsx
+const [startTime, setTime] = useState(Date.now());
+
+useEffect(() => {
+  const mousedown = () => (setFlag(true), setTime(Date.now()));
+  ...
+}, [...])
+```
+
+在 `onClick` 事件触发的时候，计算一下时长。
+
+```tsx
+const toggle = (index: number) => {
+  if (Date.now() - startTime >= 100) return
+  setActive(index)
+}
+
+...
+<>
+  ...
+  <RoleAvatar
+    ...
+    isActive={index === activeIndex}
+    onClick={() => toggle(index)}
+  />
+</>
+```
+
+通过以上的步骤，我们就完成了一个还算看得过去的角色选择器，当然也还有很多可以优化的空间，比如 css 动画不够细致、角色选中以及未被选中两个状态切换的时候缺少回弹效果等，后面有机会可以再优化优化。
