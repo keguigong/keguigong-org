@@ -1,10 +1,15 @@
 import fs from "fs"
 import path from "path"
 import matter from "gray-matter"
-import { remark } from "remark"
-import html from "remark-html"
-import prism from "remark-prism"
 import readingTime from "reading-time"
+
+import { unified } from "unified"
+import remarkParse from "remark-parse"
+import remarkPrism from "remark-prism"
+import remarkRehype from "remark-rehype"
+import rehypeSlug from "rehype-slug"
+import rehypeAutolinkHeadings from "rehype-autolink-headings"
+import rehypeStringify from "rehype-stringify"
 
 import { getLastModifiedDate } from "./git-info"
 
@@ -63,10 +68,13 @@ export async function getPostData(id: string) {
   const frontMatter = matter(fileContents)
 
   // Use remark to convert markdown into HTML string
-  const processContent = await remark()
-    // https://github.com/sergioramos/remark-prism/issues/265
-    .use(html, { sanitize: false })
-    .use(prism, { plugins: ["line-numbers"] })
+  const processContent = await unified()
+    .use(remarkParse)
+    .use(remarkPrism, { plugins: ["line-numbers"] })
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeSlug)
+    .use(rehypeAutolinkHeadings, { behavior: "prepend" })
+    .use(rehypeStringify)
     .process(frontMatter.content)
 
   const contentHtml = processContent.toString()
