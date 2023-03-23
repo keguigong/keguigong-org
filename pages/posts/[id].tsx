@@ -31,7 +31,6 @@ export default function Post({ postData }: Props) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <article className="blog-content">
-        <PostCover coverImage={coverImage}></PostCover>
         <h1>{postData.title}</h1>
         <PostMeta meta={postData} />
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }}></div>

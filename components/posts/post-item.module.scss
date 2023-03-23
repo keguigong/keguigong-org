@@ -36,8 +36,11 @@
   width: 100%;
   height: auto;
   aspect-ratio: 16/9;
-  object-fit: scale-down;
+  object-fit: contain;
+  border-radius: var(--border-radius);
   background: var(--secondary-glow);
+  box-shadow: 0px 30px 60px -30px rgba(var(--foreground-rgb), 0.25),
+    0px 50px 50px -20px rgba(var(--background-end-rgb), 0.5);
 }
 
 .link {

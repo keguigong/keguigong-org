@@ -57,10 +57,14 @@ pre[class*="language-"] {
 
   code {
     padding: 0;
-    font-size: 1em;
+    font-size: 0.9em;
     font-family: var(--font-mono);
     border: none;
     border-radius: none;
     background: none;
   }
+}
+
+.line-numbers-rows > span {
+  font-size: 1rem;
 }
