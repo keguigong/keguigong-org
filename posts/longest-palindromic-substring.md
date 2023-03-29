@@ -40,7 +40,7 @@ coverImage: "/blogcontent/leetcode-logo.svg"
 
 通过遍历字符串，从位置 `i` 依次截取长度从 `1` 到 `len - i` 的子串，判断子串是否回文子串以及是否为最长的子串，直到遍历完成。判断方法也比较粗暴，直接讲字符串反回来判断是否相等即可，通过转换为数组，再使用数组的 `reverse` 方法实现。
 
-```ts[class="line-numbers"]
+```ts
 function longestPalindrome(s: string) {
   let maxLen = 0
   let ans = ""
@@ -76,7 +76,7 @@ function longestPalindrome(s: string) {
 
 这样的好处是对 `s` 只进行了一次完整的遍历，且不用单独判断回文子串的合法性，通过上述方式框选的子串肯定是回文子串。
 
-```ts[class="line-numbers"]
+```ts
 function longestPalindrome(s: string): string {
   let str = ""
   for (let i = 0, start = 0, end = 0; i < s.length; i++) {
@@ -113,7 +113,7 @@ P(i,j) = P(i + 1,j − 1) && (Si == Sj)
 
 还需要考虑动态规划中的边界条件，即子串的长度为 1 或 2。对于长度为 1 的子串，它显然是个回文串；对于长度为 2 的子串，只要它的两个字母相同，它就是一个回文串。根据以上条件可以完成动态规划了。
 
-```ts[class="line-numbers"]
+```ts
 function longestPalindrome(s: string): string {
   if (s === null || s.length < 2) return s
 
