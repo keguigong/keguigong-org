@@ -2,6 +2,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --background-color: #ffffff;
 
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
@@ -39,6 +40,7 @@
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 40, 44, 53;
   --background-end-rgb: 52, 56, 65;
+  --background-color: #282c35;
 
   --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
   --secondary-glow: radial-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.8));

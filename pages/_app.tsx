@@ -5,8 +5,7 @@ import { Layout } from "@/components/layouts"
 // Global styles
 import "@/styles/globals.scss"
 // Import Prism code highlight styles
-// import "prism-themes/themes/prism-one-dark.min.css"
-import "prism-themes/themes/prism-vsc-dark-plus.min.css"
+import "prism-themes/themes/prism-one-dark.min.css"
 // import "prismjs/plugins/line-numbers/prism-line-numbers.min.css"
 // Custom styles
 import "@/styles/now-styles.scss"

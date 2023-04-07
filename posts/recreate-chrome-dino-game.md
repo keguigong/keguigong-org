@@ -6,7 +6,7 @@ coverImage: "/blogcontent/dino-sprite.png"
 
 **绘制元素**
 
-游戏的图片资源是一张 base64 格式的精灵图
+游戏的图片资源是一张 base64 格式的精灵图，可以使用工具 [Sprite Cow](http://www.spritecow.com/) 进行位置标记。
 
 ![dino-sprite](/blogcontent/dino-sprite.png)
 
