@@ -35,7 +35,7 @@ p > img {
   width: 100%;
   min-height: 10rem;
   object-fit: scale-down;
-  background-color: var(--color-canvas-subtle);
+  background-color: var(--color-canvas-image-default);
   border-radius: var(--border-radius-medium);
 }
 
@@ -50,7 +50,7 @@ p > code {
 }
 
 pre[class*="language-"] {
-  background-color: var(--color-pre-dark, --color-canvas-subtle);
+  background-color: var(--color-pre-dark);
   border-radius: var(--border-radius-medium);
 
   code {

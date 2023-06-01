@@ -21,6 +21,7 @@
     transparent 360deg
   );
   --color-pre-dark: #161b22;
+  --color-canvas-image-default: #f6f8fa;
 }
 
 @include color-mode-theme(light) {
