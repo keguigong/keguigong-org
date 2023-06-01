@@ -55,7 +55,7 @@ export const Header = ({ mobileMenu, toggleMenu }: Props) => {
   // }, [scrollTop])
 
   const toggleMobileMenu = () => {
-    toggleMenu?.call(null, !visibility.mobileMenu)
+    // toggleMenu?.call(null, !visibility.mobileMenu)
     setVisibility((prev) => ({ ...prev, mobileMenu: !prev.mobileMenu }))
   }
 

@@ -9,7 +9,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html data-color-mode="auto" data-light-theme="light" data-dark-theme="dark">
         <Head>
           <script
           // dangerouslySetInnerHTML={{

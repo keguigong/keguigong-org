@@ -1,31 +1,28 @@
 import { useEffect, useMemo, useState } from "react"
-import { checkColorScheme, setColorScheme } from "@/utils/color-scheme"
+import { setColorMode, COLOR_MODE } from "@/utils/color-mode"
 import Icon from "./icon"
+import styles from "./icon.module.scss"
+const COLOR_MODE_LIST = Object.values(COLOR_MODE)
 
 export const ColorScheme = () => {
-  // Read more: https://zh-hans.reactjs.org/docs/hooks-faq.html#how-to-create-expensive-objects-lazily
-  const [isDarkMode, setDarkMode] = useState(false)
-
-  // Read more: https://zh-hans.reactjs.org/docs/hooks-faq.html#how-to-memoize-calculations
-  const animatedIcon = useMemo(() => <Icon darkMode={isDarkMode} />, [isDarkMode])
-
-  useEffect(() => {
-    setDarkMode(checkColorScheme())
-    const media = window.matchMedia("(prefers-color-scheme: dark)")
-    const listener = (e: MediaQueryListEvent) => {
-      // setColorScheme(e.matches)
-      setDarkMode(e.matches)
-    }
-    media.addEventListener("change", listener)
-
-    return () => {
-      media.removeEventListener("change", listener)
-    }
-  }, [])
+  const [mode, setMode] = useState(COLOR_MODE.AUTO)
+  const animatedIcon = useMemo(
+    () => (mode === COLOR_MODE.AUTO ? <b>🖥️</b> : <Icon darkMode={mode === COLOR_MODE.DARK} />),
+    [mode]
+  )
 
   useEffect(() => {
-    Promise.resolve().then(() => setColorScheme(isDarkMode))
-  }, [isDarkMode])
+    Promise.resolve().then(() => setColorMode(mode))
+  }, [mode])
 
-  return <div onClick={() => setDarkMode((s) => !s)}>{animatedIcon}</div>
+  const toggleColorMode = () => {
+    const index = (COLOR_MODE_LIST.indexOf(mode) + 1) % COLOR_MODE_LIST.length
+    setMode(COLOR_MODE_LIST[index])
+  }
+
+  return (
+    <button className={styles.button} onClick={toggleColorMode}>
+      {animatedIcon}
+    </button>
+  )
 }

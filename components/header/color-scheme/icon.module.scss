@@ -2,8 +2,7 @@
   color: rgba(var(--foreground-rgb), 0.5);
   stroke: currentColor;
   fill: none;
-  cursor: pointer;
-  user-select: none;
+  height: 20px;
 }
 
 .circle {
@@ -12,9 +11,17 @@
 }
 
 .button {
-  border: none;
-  background: transparent;
-  display: inline-block;
-  cursor: pointer;
-  padding-top: 4px;
+  color: var(--color-fg-muted);
+  background-color: var(--color-canvas-subtle);
+  border-color: var(--color-border-subtle);
+  border-radius: var(--border-radius-small);
+  border-style: solid;
+  padding: 3px 3px;
+  font-size: 12px;
+  line-height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+  width: 48px;
 }
