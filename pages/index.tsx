@@ -3,7 +3,7 @@ import Head from "next/head"
 import { getSortedPostsData } from "@/utils/posts"
 import { AllPosts } from "@/components/posts"
 
-const siteTitle = "Blog."
+const siteTitle = "Writings."
 const description = "Where keguigong's thoughts were built"
 const title = siteTitle + " - " + description
 

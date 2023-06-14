@@ -21,14 +21,6 @@ export function PostMeta({ meta }: { [key: string]: any }) {
       <Date dateString={meta.date} />
       {meta.author ? (
         <div className={styles.avatarContainer}>
-          <Image
-            priority
-            src={meta.authorAvatar}
-            className={styles.avatar}
-            height={24}
-            width={24}
-            alt={meta.authorAvatar}
-          />
           <Link href="/">{meta.author}</Link>
         </div>
       ) : (

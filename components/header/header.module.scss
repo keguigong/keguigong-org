@@ -4,7 +4,7 @@
 }
 
 .whiteHeader {
-  background-color: rgba(var(--background-start-rgb), 0.8);
+  background-color: var(--color-canvas-default);
   backdrop-filter: saturate(100%) blur(20px);
   position: sticky;
   top: 0;

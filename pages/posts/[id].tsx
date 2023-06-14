@@ -2,7 +2,6 @@ import Head from "next/head"
 
 import { getAllPostIds, getPostData } from "@/utils/posts"
 import { PostMeta } from "@/components/layouts"
-import { PostCover } from "@/components/posts"
 
 const description = "Where keguigong's thoughts were built"
 
@@ -11,7 +10,6 @@ type Props = {
 }
 
 export default function Post({ postData }: Props) {
-  const { coverImage } = postData
   const title = postData.title + " - " + description
 
   return (

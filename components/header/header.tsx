@@ -15,11 +15,11 @@ type Props = {
 
 export const Header = ({ mobileMenu, toggleMenu }: Props) => {
   const router = useRouter()
-  const [pathname, setPathname] = useState("Blog.")
+  const [pathname, setPathname] = useState("Writings.")
 
   useEffect(() => {
     const index = navList.map((nav) => nav.pathname).indexOf(router.pathname)
-    const pathname = index < 0 ? "Blog." : navList[index].title
+    const pathname = index < 0 ? "Writings." : navList[index].title
     setPathname(pathname)
   }, [router.pathname])
 
@@ -55,7 +55,7 @@ export const Header = ({ mobileMenu, toggleMenu }: Props) => {
   // }, [scrollTop])
 
   const toggleMobileMenu = () => {
-    // toggleMenu?.call(null, !visibility.mobileMenu)
+    toggleMenu?.call(null, !visibility.mobileMenu)
     setVisibility((prev) => ({ ...prev, mobileMenu: !prev.mobileMenu }))
   }
 

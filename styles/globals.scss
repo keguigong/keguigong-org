@@ -8,7 +8,7 @@
 @import "./blog-content.scss";
 
 :root {
-  --font-mono-default: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace",
+  --font-mono-default: Menlo, Monaco, "Cascadia Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace",
     "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
   --font-text-default: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
     Droid Sans, Helvetica Neue, sans-serif;
@@ -21,7 +21,7 @@
     transparent 360deg
   );
   --color-pre-dark: #161b22;
-  --color-canvas-image-default: #f6f8fa;
+  --color-canvas-image-default: #f6f8fa9e;
 }
 
 @include color-mode-theme(light) {
@@ -39,13 +39,31 @@
 body {
   margin: 0;
   max-width: 100vw;
-  transition: color 0.15s ease-out, background-color 0.15s ease-out;
 }
 
 body {
   color: var(--color-fg-default);
   background-color: var(--color-canvas-default);
   font-family: var(--font-text-default);
+  transition: color 0.15s ease-out, background-color 0.15s ease-out;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 5%;
+    width: calc(100vw - 5%);
+    height: 30vh;
+    max-width: 600px;
+    max-height: 500px;
+    filter: blur(45px);
+    background: var(--glow-primary);
+    z-index: -1;
+    user-select: none;
+    pointer-events: none;
+  }
 }
 
 a {
@@ -59,4 +77,8 @@ a:hover {
 
 code {
   font-family: var(--font-mono-default);
+}
+
+html {
+  font-size: 14px;
 }

@@ -24,7 +24,6 @@ export default function Layout({ children, home }: Props) {
         onClick={() => setVisibility((prev) => ({ ...prev, mobileMenu: !prev.mobileMenu }))}
       ></MobileMenu>
       <main className={styles.contentLayout}>
-        {home && <Briefing />}
         {children}
       </main>
       <footer className={styles.footer}>

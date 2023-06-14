@@ -2,24 +2,14 @@
   display: flex;
   align-items: center;
   padding: 0.5rem 0;
-  margin: 2rem 0;
-
-  img {
-    border: 1px solid rgba(var(--callout-border-rgb), 0.3);
-    box-shadow: 0 2px 5px 0 rgba(var(--foreground-rgb), 0.2);
-  }
-}
-
-.avatar {
-  border-radius: 28px;
+  margin-bottom: 2rem;
 }
 
 .textContainer {
-  margin-left: 0.825rem;
+  margin-left: 0.5rem;
   p {
     margin: 0;
     font-size: 0.825rem;
-    // color: rgba(var(--foreground-rgb), 0.5);
 
     &:first-of-type {
       font-size: 1.125rem;
@@ -31,7 +21,8 @@
 
 @media screen and (min-width: 891px) {
   .textContainer {
-    p, p:first-of-type {
+    p,
+    p:first-of-type {
       font-size: 1.15rem;
     }
   }

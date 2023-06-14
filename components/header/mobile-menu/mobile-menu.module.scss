@@ -3,22 +3,20 @@
   display: block;
   top: calc(5rem + 0px);
   transform: translateX(-100%);
-  // opacity: 0;
   transition: transform 0.2s ease-out, opacity 0.2s ease-out;
   z-index: 99;
 }
 
 .show {
   transform: translateX(0);
-  // opacity: 1;
 }
 
 .mobileMenu {
   position: absolute;
   width: 100%;
   height: calc(100vh - 5rem);
-  border-top: 1px solid rgba(var(--callout-border-rgb), 0.3);
-  background-color: rgba(var(--background-start-rgb), 0.9);
+  border-top: 1px solid var(--color-border-muted);
+  background-color: var(--color-canvas-default);
   backdrop-filter: saturate(100%) blur(20px);
   display: flex;
   flex-direction: column;
@@ -35,11 +33,11 @@
 
 .link {
   text-decoration: none;
-  color: rgba(var(--foreground-rgb), 0.7);
+  color: var(--color-fg-default);
   font-size: 1.15rem;
 
   &.activeLink {
-    color: var(--link-active-color);
+    color: var(--color-accent-emphasis);
   }
 }
 
