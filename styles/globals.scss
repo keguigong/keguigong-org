@@ -21,7 +21,6 @@
     transparent 360deg
   );
   --color-pre-dark: #161b22;
-  --color-canvas-image-default: #f6f8fa9e;
 }
 
 @include color-mode-theme(light) {
@@ -47,23 +46,6 @@ body {
   font-family: var(--font-text-default);
   transition: color 0.15s ease-out, background-color 0.15s ease-out;
   position: relative;
-
-  &::before {
-    content: "";
-    position: absolute;
-    display: block;
-    top: 0;
-    left: 5%;
-    width: calc(100vw - 5%);
-    height: 30vh;
-    max-width: 600px;
-    max-height: 500px;
-    filter: blur(45px);
-    background: var(--glow-primary);
-    z-index: -1;
-    user-select: none;
-    pointer-events: none;
-  }
 }
 
 a {
@@ -80,5 +62,5 @@ code {
 }
 
 html {
-  font-size: 14px;
+  font-size: 16px;
 }

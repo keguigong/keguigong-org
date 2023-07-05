@@ -28,18 +28,18 @@
 }
 
 p {
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
-p > img {
+img {
   width: 100%;
   min-height: 10rem;
   object-fit: scale-down;
-  background-color: var(--color-canvas-image-default);
+  background-color: var(--color-canvas-subtle);
   border-radius: var(--border-radius-medium);
 }
 
-p > code {
+code {
   font-family: var(--font-mono-default);
   padding: 0.2em 0.4em;
   margin: 0;
