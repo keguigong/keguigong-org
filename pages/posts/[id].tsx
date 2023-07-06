@@ -28,11 +28,11 @@ export default function Post({ postData }: Props) {
         <meta name="og:title" content={postData.id} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <article className="blog-content">
+      <div className="blog-content">
         <h1>{postData.title}</h1>
         <PostMeta meta={postData} />
-        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }}></div>
-      </article>
+        <article dangerouslySetInnerHTML={{ __html: postData.contentHtml }}></article>
+      </div>
     </>
   )
 }

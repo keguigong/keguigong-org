@@ -19,15 +19,10 @@ export function PostMeta({ meta }: { [key: string]: any }) {
   return (
     <div className={styles.subHeader}>
       <Date dateString={meta.date} />
-      {meta.author ? (
-        <div className={styles.avatarContainer}>
-          <b>
-            <Link href="/">{meta.author}</Link>
-          </b>
-        </div>
-      ) : (
-        <></>
-      )}
+      <span>&nbsp;&nbsp;by&nbsp;&nbsp;</span>
+      <Link href="/">
+        {meta.author}
+      </Link>
     </div>
   )
 }

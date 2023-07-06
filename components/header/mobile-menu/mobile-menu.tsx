@@ -23,17 +23,15 @@ export const MobileMenu = ({ isOpen, onClick }: Props) => {
     <div className={classNames(styles.mobileMenuWrapper, isOpen && styles.show)}>
       <div className={styles.mobileMenu}>
         {(isProd ? navList.slice(0, -1) : navList).map((link) => (
-          <Link
-            className={classNames(
-              styles.link,
-              router.pathname === link.pathname && styles.activeLink
-            )}
-            key={link.pathname}
-            href={link.pathname}
-            onClick={handleClick}
-          >
-            {link.title}
-          </Link>
+          <h3 key={link.pathname}>
+            <Link
+              className={classNames(styles.link, router.pathname === link.pathname && styles.activeLink)}
+              href={link.pathname}
+              onClick={handleClick}
+            >
+              {link.title}
+            </Link>
+          </h3>
         ))}
       </div>
     </div>

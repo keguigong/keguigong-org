@@ -7,6 +7,8 @@
 @import "./color-modes.scss";
 @import "./blog-content.scss";
 
+@import url("/fonts/stylesheet.css");
+
 :root {
   --font-mono-default: Menlo, Monaco, "Cascadia Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace",
     "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
@@ -24,11 +26,11 @@
 }
 
 @include color-mode-theme(light) {
-  @include light.primer-colors-light();
+  @include light.primer-colors();
 }
 
 @include color-mode-theme(dark) {
-  @include dark.primer-colors-dark();
+  @include dark.primer-colors();
 }
 
 * {
@@ -63,4 +65,10 @@ code {
 
 html {
   font-size: 16px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Sanchez Slab", var(--font-text-default);
 }
