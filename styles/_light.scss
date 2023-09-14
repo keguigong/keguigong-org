@@ -23,13 +23,6 @@
     --color-accent-emphasis: #0969da;
     --color-accent-muted: rgba(84, 174, 255, 0.4);
     --color-accent-subtle: #ddf4ff;
-    --glow-primary: conic-gradient(
-      from 180deg at 50% 50%,
-      #16abff33 0deg,
-      #0885ff33 55deg,
-      #54d6ff33 120deg,
-      #0071ff33 160deg,
-      transparent 360deg
-    );
+    --shadow-card-default: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px;
   }
 }

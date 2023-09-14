@@ -1,46 +1,46 @@
 @font-face {
   font-family: "Sanchez Slab";
-  src: url(./SanchezSlab.otf);
+  src: url(/fonts/SanchezSlab.otf);
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Sanchez Slab";
-  src: url(./SanchezSlab-Light.otf);
+  src: url(/fonts/SanchezSlab-Light.otf);
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Sanchez Slab";
-  src: url(./SanchezSlab-ExtraLigh.otf);
+  src: url(/fonts/SanchezSlab-ExtraLigh.otf);
   font-weight: 200;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Sanchez Slab";
-  src: url(./SanchezSlab-SemiBold.otf);
+  src: url(/fonts/SanchezSlab-SemiBold.otf);
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Sanchez Slab";
-  src: url(./SanchezSlab-Bold.otf);
+  src: url(/fonts/SanchezSlab-Bold.otf);
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Sanchez Slab";
-  src: url(./SanchezSlab-Black.otf);
+  src: url(/fonts/SanchezSlab-Black.otf);
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Smiley Sans";
-  src: url(./SmileySans-Oblique.ttf.woff2);
+  src: url(/fonts/SmileySans-Oblique.ttf.woff2);
 }

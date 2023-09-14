@@ -1,23 +1,33 @@
-import { useEffect, useMemo, useState } from "react"
-import { setColorMode, COLOR_MODE } from "@/utils/color-mode"
+import { useCallback, useEffect, useMemo, useState } from "react"
+import { setColorMode, COLOR_MODE, getSystemPrefersColorScheme } from "@/utils/color-mode"
 import Icon from "./icon"
 import styles from "./icon.module.scss"
-const COLOR_MODE_LIST = Object.values(COLOR_MODE)
 
 export const ColorScheme = () => {
-  const [mode, setMode] = useState(COLOR_MODE.AUTO)
-  const animatedIcon = useMemo(
-    () => (mode === COLOR_MODE.AUTO ? <b>🖥️</b> : <Icon darkMode={mode === COLOR_MODE.DARK} />),
-    [mode]
-  )
+  const [mode, setMode] = useState(() => getSystemPrefersColorScheme())
+
+  const animatedIcon = useMemo(() => <Icon darkMode={mode === COLOR_MODE.DARK} />, [mode])
+
+  const onColorPreferenceChange = useCallback((e: MediaQueryListEvent) => {
+    if (e.matches) setMode(COLOR_MODE.DARK)
+    else setMode(COLOR_MODE.LIGHT)
+  }, [])
 
   useEffect(() => {
-    Promise.resolve().then(() => setColorMode(mode))
+    const darkModePreference = window.matchMedia("(prefers-color-scheme: dark)")
+    darkModePreference.addEventListener("change", onColorPreferenceChange)
+
+    return () => {
+      darkModePreference.removeEventListener("change", onColorPreferenceChange)
+    }
+  }, [onColorPreferenceChange])
+
+  useEffect(() => {
+    setColorMode(mode)
   }, [mode])
 
   const toggleColorMode = () => {
-    const index = (COLOR_MODE_LIST.indexOf(mode) + 1) % COLOR_MODE_LIST.length
-    setMode(COLOR_MODE_LIST[index])
+    setMode(mode === COLOR_MODE.DARK ? COLOR_MODE.LIGHT : COLOR_MODE.DARK)
   }
 
   return (

@@ -18,8 +18,8 @@ export function PostItem({ content }: Props) {
     <li className={styles.postItem}>
       <Image
         className={styles.image}
-        src={coverImage || "/images/cover.webp"}
-        alt={coverImage || "/images/cover.webp"}
+        src={coverImage || '/images/og-image.svg'}
+        alt={coverImage}
         width={100}
         height={100}
       ></Image>
