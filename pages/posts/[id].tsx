@@ -2,11 +2,12 @@ import Head from "next/head"
 
 import { getAllPostIds, getPostData } from "@/utils/posts"
 import { MetaInfo } from "@/components"
+import { Meta } from "@/types"
 
 const description = "Where keguigong's thoughts were built"
 
-type Props = {
-  postData: { [key: string]: any }
+interface Props {
+  postData: Meta
 }
 
 export default function Post({ postData }: Props) {
@@ -31,7 +32,7 @@ export default function Post({ postData }: Props) {
       <div className="blog-content">
         <h1>{postData.title}</h1>
         <MetaInfo meta={postData} />
-        <article dangerouslySetInnerHTML={{ __html: postData.contentHtml }}></article>
+        <article dangerouslySetInnerHTML={{ __html: postData.contentHtml!! }}></article>
       </div>
     </>
   )

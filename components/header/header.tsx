@@ -24,7 +24,7 @@ export const Header = ({ mobileMenu, toggleMenu }: Props) => {
 
     console.log(router.asPath, pathname)
     setPathname(pathname)
-  }, [router.pathname])
+  }, [router.asPath])
 
   // const [scrollTop, setScrollTop] = useState({ top: 0, delta: 0 })
   const [visibility, setVisibility] = useState({ mobileMenu: false, header: true })
