@@ -1,11 +1,6 @@
-import Head from "next/head"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
-const siteTitle = "Motion Path"
-const description = "Where keguigong's thoughts were built"
-const title = siteTitle + " - " + description
-
-export default function Playground() {
+export function MotionPath() {
   const [offsetDistance, setOffset] = useState(0)
 
   const moveDistance = async () => {
@@ -16,28 +11,8 @@ export default function Playground() {
     setOffset(100)
   }
 
-  // useEffect(() => {
-  //   if (offsetDistance >= 100) {
-  //     setOffset(0)
-  //   }
-  // }, [offsetDistance])
-
   return (
-    <section>
-      <Head>
-        <title>{title}</title>
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="description" content={description} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta
-          property="og:image"
-          content={`https://og-image.vercel.app/${encodeURI(
-            description
-          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
-        />
-        <meta name="og:title" content={siteTitle} />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
+    <>
       <h1>CSS Motion Path</h1>
       <button onClick={moveDistance}>MOVE</button>
       <div className="path-bg bg-1">
@@ -80,12 +55,6 @@ export default function Playground() {
           );
         }
       `}</style>
-    </section>
+    </>
   )
-}
-
-export async function getStaticProps() {
-  return {
-    props: {}
-  }
 }

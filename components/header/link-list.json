@@ -1,0 +1,10 @@
+[
+  {
+    "title": "Writings",
+    "pathname": "/"
+  },
+  {
+    "title": "Works",
+    "pathname": "/works"
+  }
+]

@@ -1,10 +1,9 @@
-import Link from "next/link"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import classNames from "classnames"
 
 import styles from "./header.module.scss"
-import navList from "./nav.json"
+import navList from "./link-list.json"
 import { ColorScheme } from "./color-scheme"
 import { MenuBtn } from "./menu-btn/menu-btn"
 
@@ -13,17 +12,21 @@ type Props = {
   toggleMenu?: (e: boolean) => void
 }
 
+const DEFAULT_NAV_TITLE = "Writings"
+
 export const Header = ({ mobileMenu, toggleMenu }: Props) => {
   const router = useRouter()
-  const [pathname, setPathname] = useState("Writings.")
+  const [pathname, setPathname] = useState(DEFAULT_NAV_TITLE)
 
   useEffect(() => {
-    const index = navList.map((nav) => nav.pathname).indexOf(router.pathname)
-    const pathname = index < 0 ? "Writings." : navList[index].title
+    const index = navList.map((nav) => nav.pathname).indexOf(router.asPath)
+    const pathname = index < 0 ? DEFAULT_NAV_TITLE : navList[index].title
+
+    console.log(router.asPath, pathname)
     setPathname(pathname)
   }, [router.pathname])
 
-  const [scrollTop, setScrollTop] = useState({ top: 0, delta: 0 })
+  // const [scrollTop, setScrollTop] = useState({ top: 0, delta: 0 })
   const [visibility, setVisibility] = useState({ mobileMenu: false, header: true })
 
   useEffect(() => {
@@ -64,10 +67,7 @@ export const Header = ({ mobileMenu, toggleMenu }: Props) => {
       <div className={styles.headerWrapper}>
         <nav className={styles.navBar}>
           {/* Mobile menu */}
-          <div
-            className={classNames(styles.mobileHeaderTitle, styles.mobile)}
-            onClick={toggleMobileMenu}
-          >
+          <div className={classNames(styles.mobileHeaderTitle, styles.mobile)} onClick={toggleMobileMenu}>
             <MenuBtn isOpen={visibility.mobileMenu} />
             <h1>{pathname}</h1>
           </div>

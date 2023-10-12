@@ -1,7 +1,7 @@
 import Head from "next/head"
 
 import { getAllPostIds, getPostData } from "@/utils/posts"
-import { PostMeta } from "@/components/layouts"
+import { MetaInfo } from "@/components"
 
 const description = "Where keguigong's thoughts were built"
 
@@ -30,7 +30,7 @@ export default function Post({ postData }: Props) {
       </Head>
       <div className="blog-content">
         <h1>{postData.title}</h1>
-        <PostMeta meta={postData} />
+        <MetaInfo meta={postData} />
         <article dangerouslySetInnerHTML={{ __html: postData.contentHtml }}></article>
       </div>
     </>

@@ -3,7 +3,7 @@ import { useRouter } from "next/router"
 import classNames from "classnames"
 
 import styles from "./mobile-menu.module.scss"
-import navList from "../nav.json"
+import navList from "../link-list.json"
 
 type Props = {
   isOpen: boolean

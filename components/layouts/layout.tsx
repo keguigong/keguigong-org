@@ -1,8 +1,7 @@
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 import styles from "./layout.module.scss"
-import { Briefing } from "./briefing/briefing"
 import { Header, MobileMenu } from "@/components/header"
 
 type Props = {
