@@ -1,7 +1,7 @@
 ---
 title: "参考Party Animals制作游戏角色选择组件"
 date: "2023-02-12"
-coverImage: "/blogcontent/party-animals-otta.webp"
+coverImage: "/blogcontent/party-animals-logo.png"
 ---
 
 [Party Animals](https://partyanimals.com/) 是一个基于物理引擎的多人派对游戏，我在看到它的官网的时候发现一些还不错的实现方式，于是决定参照其中的角色选择功能，实现一个类似的效果。

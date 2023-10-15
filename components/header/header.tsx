@@ -22,7 +22,6 @@ export const Header = ({ mobileMenu, toggleMenu }: Props) => {
     const index = navList.map((nav) => nav.pathname).indexOf(router.asPath)
     const pathname = index < 0 ? DEFAULT_NAV_TITLE : navList[index].title
 
-    console.log(router.asPath, pathname)
     setPathname(pathname)
   }, [router.asPath])
 

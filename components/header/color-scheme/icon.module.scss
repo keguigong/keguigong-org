@@ -12,24 +12,20 @@
 
 .button {
   color: var(--color-fg-muted);
-  background-color: var(--color-canvas-default);
-  border-color: var(--color-border-subtle);
+  background-color: transparent;
+  cursor: pointer;
   border-radius: var(--border-radius-small);
-  border-style: solid;
-  border-width: 1px;
-  padding: 3px 3px;
-  font-size: 12px;
-  line-height: 20px;
+  border: none;
+  padding: 3px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 36px;
-  width: 48px;
-  transition: color ease-out .3s, background-color ease-out .3s;
+  width: 2rem;
+  height: 2rem;
+  transition: color ease-out 0.3s;
 }
 
 .button:hover {
   color: var(--color-fg-default);
-  background-color: var(--color-canvas-subtle);
   border-color: var(--color-border-default);
 }
