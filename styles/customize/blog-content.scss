@@ -51,16 +51,19 @@ code {
 
 div[data-rehype-pretty-code-fragment] {
   pre {
+    box-sizing: border-box;
     background-color: var(--color-pre-dark) !important;
     border-radius: var(--border-radius-medium);
     padding: 0.825rem;
+    overflow-x: auto;
 
     code {
+      box-sizing: border-box;
       color: unset;
       padding: 0;
       border: none;
-      border-radius: none;
       background: none;
+      text-wrap: nowrap;
     }
   }
 }
