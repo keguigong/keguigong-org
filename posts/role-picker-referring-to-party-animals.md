@@ -2,6 +2,7 @@
 title: "参考Party Animals制作游戏角色选择组件"
 date: "2023-02-12"
 coverImage: "/blogcontent/party-animals-logo.png"
+excerpt: "**Party Animals**虽然是一款体量较小的游戏，但是不管是游戏美术还是网站设计来说，还是可以看出来是比较追求细节的。"
 ---
 
 [Party Animals](https://partyanimals.com/) 是一个基于物理引擎的多人派对游戏，我在看到它的官网的时候发现一些还不错的实现方式，于是决定参照其中的角色选择功能，实现一个类似的效果。

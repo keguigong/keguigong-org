@@ -2,6 +2,7 @@
 title: "[WIP]使用Canvas开发Chrome小恐龙游戏"
 date: "2023-03-29"
 coverImage: "/blogcontent/dino-sprite.png"
+excerpt: "The _Chrome Dino_ is a built-in browser game developed by Google. It's small and great for learning _Canvas_ and game development."
 ---
 
 **绘制元素**

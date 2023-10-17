@@ -26,12 +26,14 @@ export function getSortedPostsData() {
     // Use gray-matter to parse the post metadata section
     const frontMatter = matter(fileContents)
     const timeToRead = readingTime(fileContents)
+    const excerpt = md2html(frontMatter.data.excerpt)
 
     // Combine the data with the id
     return {
       id,
       timeToRead,
-      ...frontMatter.data
+      ...frontMatter.data,
+      excerpt
     }
   })
 
@@ -85,4 +87,15 @@ export async function getPostData(id: string) {
     contentHtml,
     ...frontMatter.data
   }
+}
+
+export function md2html(md: string) {
+  // Use remark to convert markdown into HTML string
+  const processContent = unified()
+    .use(remarkParse)
+    .use(remarkRehype)
+    .use(rehypeStringify)
+    .processSync(md)
+  const contentHtml = processContent.toString()
+  return contentHtml
 }

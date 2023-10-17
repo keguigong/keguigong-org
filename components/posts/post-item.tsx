@@ -2,7 +2,6 @@ import Link from "next/link"
 
 import styles from "./post-item.module.scss"
 import { MetaInfo } from "@/components"
-import Image from "next/image"
 import { Meta } from "@/types"
 
 type Props = {
@@ -10,25 +9,19 @@ type Props = {
 }
 
 export function PostItem({ content }: Props) {
-  const { id, date, title, timeToRead, coverImage } = content
+  const { id, date, title, timeToRead, coverImage, excerpt } = content
   const cups = new Array(Math.ceil(timeToRead.minutes / 5)).fill("☕️").join("")
   const meta: Meta = {
     date,
-    suffix: ` • ${cups} ${timeToRead.text}`,
+    suffix: ` • ${cups} ${timeToRead.text}`
   }
 
   return (
     <li className={styles.postItem}>
-      <Image
-        className={styles.image}
-        src={coverImage || '/images/og-image.svg'}
-        alt={coverImage || '/images/og-image.svg'}
-        width={100}
-        height={100}
-      ></Image>
-      <h2 className={styles.link}>
+      <h2 className={styles.title}>
         <Link href={`/posts/${id}`}>{title}</Link>
       </h2>
+      <div className={styles.excerpt} dangerouslySetInnerHTML={{ __html: excerpt }}></div>
       <MetaInfo meta={meta}></MetaInfo>
     </li>
   )

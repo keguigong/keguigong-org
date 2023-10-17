@@ -53,7 +53,7 @@ export const Header = () => {
           <ul className={classNames(styles.navContent, visibility.menu && styles.navContentOpen)} onClick={handleClose}>
             <li>
               <Link className={styles.navLink} href="/">
-                Blogs
+                Home
               </Link>
             </li>
             <li>
