@@ -51,7 +51,7 @@ code {
 
 div[data-rehype-pretty-code-fragment] {
   pre {
-    background-color: var(--color-pre-dark);
+    background-color: var(--color-pre-dark) !important;
     border-radius: var(--border-radius-medium);
     padding: 0.825rem;
 

@@ -1,19 +1,19 @@
 @use "./light";
 @use "./dark";
-
 @import "./breakpoints.scss";
 @import "./border.scss";
-
 @import "./color-modes.scss";
-@import "./blog-content.scss";
 
-@import url("/fonts/stylesheet.css");
+@import "./customize/blog-content.scss";
+@import "./customize/font.scss";
 
 :root {
   --font-mono-default: Menlo, Monaco, "Cascadia Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace",
     "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
   --font-text-default: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
     Droid Sans, Helvetica Neue, sans-serif;
+  --font-heading-default: "Sanchez Slab", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
     #16abff33 0deg,
@@ -23,6 +23,7 @@
     transparent 360deg
   );
   --color-pre-dark: #161b22;
+  --color-transition: color 0.15s ease-out, background-color 0.15s ease-out;
 }
 
 @include color-mode-theme(light) {
@@ -31,6 +32,10 @@
 
 @include color-mode-theme(dark) {
   @include dark.primer-colors();
+}
+
+html {
+  font-size: 16px;
 }
 
 * {
@@ -46,7 +51,7 @@ body {
   color: var(--color-fg-default);
   background-color: var(--color-canvas-default);
   font-family: var(--font-text-default);
-  transition: color 0.15s ease-out, background-color 0.15s ease-out;
+  transition: var(--color-transition);
   position: relative;
 }
 
@@ -63,6 +68,11 @@ code {
   font-family: var(--font-mono-default);
 }
 
-html {
-  font-size: 16px;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading-default);
 }
