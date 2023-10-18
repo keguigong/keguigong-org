@@ -29,7 +29,7 @@ export default function Post({ postData }: Props) {
         <meta name="og:title" content={postData.id} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <div className="blog-content">
+      <div className="markdown-body">
         <h1>{postData.title}</h1>
         <MetaInfo meta={postData} />
         <article dangerouslySetInnerHTML={{ __html: postData.contentHtml!! }}></article>
@@ -47,7 +47,7 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params }: { [key: string]: any }) {
+export async function getStaticProps({ params }: any) {
   // Fetch necessary data for the blog post using params.id
   const postData = await getPostData(params.id)
   return {

@@ -3,9 +3,8 @@
 @import "./breakpoints.scss";
 @import "./border.scss";
 @import "./color-modes.scss";
-
-@import "./customize/blog-content.scss";
 @import "./customize/font.scss";
+@import "./customize/markdown-body.scss";
 
 :root {
   --font-mono-default: Menlo, Monaco, "Cascadia Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace",
@@ -23,7 +22,7 @@
     transparent 360deg
   );
   --color-pre-dark: #161b22;
-  --color-transition: color 0.15s ease-out, background-color 0.15s ease-out;
+  --color-transition-default: color 0.15s ease-out, background-color 0.15s ease-out;
 }
 
 @include color-mode-theme(light) {
@@ -51,7 +50,7 @@ body {
   color: var(--color-fg-default);
   background-color: var(--color-canvas-default);
   font-family: var(--font-text-default);
-  transition: var(--color-transition);
+  transition: var(--color-transition-default);
   position: relative;
 }
 
@@ -62,17 +61,4 @@ a {
 
 a:hover {
   text-decoration: underline;
-}
-
-code {
-  font-family: var(--font-mono-default);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-heading-default);
 }

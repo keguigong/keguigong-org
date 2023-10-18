@@ -3,6 +3,7 @@ import path from "path"
 import matter from "gray-matter"
 import { unified } from "unified"
 import remarkParse from "remark-parse"
+import remarkGfm from "remark-gfm"
 import remarkRehype from "remark-rehype"
 import rehypePrettyCode from "rehype-pretty-code"
 import rehypeStringify from "rehype-stringify"
@@ -59,7 +60,8 @@ export function getAllPostIds() {
 }
 
 const PRETTY_CODE_OPTIONS = {
-  theme: "one-dark-pro"
+  theme: "one-dark-pro",
+  keepBackground: false,
 }
 
 export async function getPostData(id: string) {
@@ -73,6 +75,7 @@ export async function getPostData(id: string) {
   // Use remark to convert markdown into HTML string
   const processContent = await unified()
     .use(remarkParse) // Parse markdown.
+    .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true }) // Turn it into HTML.
     .use(rehypePrettyCode, PRETTY_CODE_OPTIONS)
     .use(rehypeStringify) // Turn it into HTML.
@@ -90,6 +93,18 @@ export async function getPostData(id: string) {
 }
 
 export function md2html(md: string) {
+  // Use remark to convert markdown into HTML string
+  const processContent = unified()
+    .use(remarkParse)
+    .use(remarkRehype)
+    .use(rehypeStringify)
+    .processSync(md)
+  const contentHtml = processContent.toString()
+  return contentHtml
+}
+
+export function mdfile2html(path: string) {
+  const md = fs.readFileSync(path, { encoding: "utf-8"})
   // Use remark to convert markdown into HTML string
   const processContent = unified()
     .use(remarkParse)
