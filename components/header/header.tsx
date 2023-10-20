@@ -32,12 +32,12 @@ export const Header = () => {
   useEffect(() => {
     const { top, deltaY } = scrollTop
     if (top != deltaY) {
-      if (Math.abs(deltaY) >= 10) {
+      if (Math.abs(deltaY) >= 50) {
         if (deltaY > 0) setVisibility((prev) => ({ ...prev, secondaryTitle: true }))
         else setVisibility((prev) => ({ ...prev, secondaryTitle: false }))
       }
     }
-    if (top < 10) setVisibility((prev) => ({ ...prev, secondaryTitle: false }))
+    if (top < 100) setVisibility((prev) => ({ ...prev, secondaryTitle: false }))
   }, [scrollTop])
 
   // Handle menu btn click

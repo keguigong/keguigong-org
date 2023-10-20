@@ -5,6 +5,7 @@ import { getAllPostIds, getPostData } from "@/utils/posts"
 import { MetaInfo } from "@/components"
 import { Meta } from "@/types"
 import { useEffect } from "react"
+import Link from "next/link"
 
 const description = "Where keguigong's thoughts were built"
 
@@ -37,6 +38,7 @@ export default function Post({ postData }: Props) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <div className="markdown-body">
+        {/* <Link href="/">← Back Home</Link> */}
         <h1 id="markdown-title">{postData.title}</h1>
         <MetaInfo meta={postData} />
         <article dangerouslySetInnerHTML={{ __html: postData.contentHtml!! }}></article>
