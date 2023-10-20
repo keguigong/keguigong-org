@@ -5,6 +5,8 @@ coverImage: "/blogcontent/dino-sprite.png"
 excerpt: "The _Chrome Dino_ is a built-in browser game developed by Google. It's small and great for learning _Canvas_ and game development."
 ---
 
+> 《恐龙游戏》（Dinosaur Game）是一款由 Google 开发、内置于 Google Chrome 的网页游戏。
+
 计划按照以下步骤进行任务分解以及开发：
 
 | 步骤                   | 说明                                                   | 难度            |

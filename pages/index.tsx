@@ -1,5 +1,4 @@
 import Head from "next/head"
-
 import { getSortedPostsData } from "@/utils/posts"
 import { AllPosts } from "@/components/posts"
 

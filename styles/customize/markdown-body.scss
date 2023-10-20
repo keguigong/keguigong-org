@@ -26,13 +26,15 @@
       content: "-";
       color: var(--color-fg-subtle);
       position: absolute;
+      z-index: -1;
       margin-left: -1em;
     }
   }
 
   img {
     width: 100%;
-    min-height: 10rem;
+    min-height: 5rem;
+    min-width: min(10rem, 100%);
     object-fit: scale-down;
     background-color: var(--color-canvas-subtle);
     border-radius: var(--border-radius-medium);

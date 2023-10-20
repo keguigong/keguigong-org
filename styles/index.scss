@@ -9,9 +9,9 @@
 :root {
   --font-mono-default: Menlo, Monaco, "Cascadia Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace",
     "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
-  --font-text-default: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
-    Droid Sans, Helvetica Neue, sans-serif;
-  --font-heading-default: "Sanchez Slab", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+  --font-text-default: "Pangea Text", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  --font-heading-default: "Pangea", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
     Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
@@ -51,7 +51,6 @@ body {
   background-color: var(--color-canvas-default);
   font-family: var(--font-text-default);
   transition: var(--color-transition-default);
-  position: relative;
 }
 
 a {

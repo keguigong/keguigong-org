@@ -4,7 +4,7 @@ date: "2023-02-18"
 excerpt: "暗黑模式，或者说主题切换，核心思想就是运用CSS变量进行替换，但是如何工程化的去应用，其实还是有很多需要优化以及注意的地方。"
 ---
 
-从 iOS13 开始，苹果引入了暗黑模式 `Dark Mode`, macOS 也在不久后支持了暗黑模式，自此开始，Android、Chrome 以及 Windows 也悉数跟进，都支持了暗黑模式，提供了相应的接口以及开发手册，不少 App 也都新增了暗黑模式，方便在暗光条件下使用。到现在为止，暗黑模式几乎成为了一个成熟产品的标配，表明开发者是尊重用户使用感受以及平台规范的。
+> 从 iOS13 开始，苹果引入了暗黑模式 `Dark Mode`, macOS 也在不久后支持了暗黑模式，自此开始，Android、Chrome 以及 Windows 也悉数跟进，都支持了暗黑模式，提供了相应的接口以及开发手册，不少 App 也都新增了暗黑模式，方便在暗光条件下使用。到现在为止，暗黑模式几乎成为了一个成熟产品的标配，表明开发者是尊重用户使用感受以及平台规范的。
 
 在浏览器中，Chrome 从 Chrome 74 开始支持了内建的暗黑模式（[Google Chrome gained a built-in dark theme on Windows in Chrome 74.](https://www.howtogeek.com/360650/how-to-enable-dark-mode-for-google-chrome/)），能够根据操作系统的应用主题切换暗黑模式，我们也可以方便的为网站增添支持。
 

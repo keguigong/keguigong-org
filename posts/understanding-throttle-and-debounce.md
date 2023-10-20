@@ -10,6 +10,8 @@ coverImage: "/blogcontent/debounceThrottle.svg"
 
 使用 js 进行开发的时候，需要处理一些高频事件，如 `mousemove`，`resize` 以及 `keydown` 等事件，这些事件会频繁的调用回调函数，如 `mousemove` 可能在一小段距离上会调用上百次，有一些场景下我们希望它的执行有一个时间间隔，比如说 1 秒，对事件进行调用次数的限制，对此我们就可以采用防抖（debounce）和 节流（throttle） 的方式来减少调用频率。如果不做额外处理，容易造成性能资源的浪费。
 
+![debounceThrottle.svg](/blogcontent/debounceThrottle.svg)
+
 对节流和防抖的定义是
 
 - **节流**：n 秒内只运行一次，若在 n 秒内重复触发，只有一次生效。
