@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import classNames from "classnames"
 import Link from "next/link"
 import { useSelector } from "react-redux"
-import { getIsBlogBody, getSecondaryTitle } from "@/store/header-slice"
+import { getIsBlogBody, getSecondaryTitle, getIsHome } from "@/store/header-slice"
 import styles from "./header.module.scss"
 import { ColorScheme } from "./color-scheme"
 import { MenuBtn } from "./menu-btn"
@@ -11,6 +11,7 @@ import { BackTopBtn } from "./back-top-btn"
 export const Header = () => {
   const [scrollTop, setScrollTop] = useState({ top: 0, deltaY: 0 })
   const [visibility, setVisibility] = useState({ menu: false, secondaryTitle: true })
+  const isHome = useSelector(getIsHome)
   const secondaryTitle = useSelector(getSecondaryTitle)
   const isBlogBody = useSelector(getIsBlogBody)
 
@@ -54,7 +55,7 @@ export const Header = () => {
   }
 
   return (
-    <header className={styles.header}>
+    <header className={classNames(styles.header, isHome && !visibility.menu && styles.headerHome)}>
       <div className={classNames(styles.headerContent, styles.titleBarWrapper)}>
         <div className={classNames(styles.titleBar, isBlogBody && visibility.secondaryTitle && styles.alterTitle)}>
           <MenuBtn isOpen={visibility.menu} onToggle={(next) => setVisibility((prev) => ({ ...prev, menu: next }))} />
@@ -82,7 +83,12 @@ export const Header = () => {
               </Link>
             </li>
             <li>
-              <Link className={styles.navLink} href="/plog">
+              <Link className={styles.navLink} href="/blogs">
+                Blogs
+              </Link>
+            </li>
+            <li>
+              <Link className={styles.navLink} href="/plogs">
                 Plogs
               </Link>
             </li>

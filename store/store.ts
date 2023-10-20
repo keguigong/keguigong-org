@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit"
 import { createWrapper } from "next-redux-wrapper"
 
-import { cartSlice } from "./cart-slice"
-import { headerSlice } from "./header-slice"
+import { slice as cartSlice } from "./cart-slice"
+import { slice as headerSlice } from "./header-slice"
 
 const makeStore = () =>
   configureStore({

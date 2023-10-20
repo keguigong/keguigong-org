@@ -2,18 +2,18 @@ import { createSlice } from "@reduxjs/toolkit"
 import { AppState } from "./store";
 
 // ## CartState Interface
-export interface CartState {
+export interface State {
   itemsInCart: number
   totalAmount: number
 }
 
 // ## Define the initial state of Cart State
-const initialState: CartState = {
+const initialState: State = {
   itemsInCart: 0,
   totalAmount: 0
 }
 
-export const cartSlice = createSlice({
+export const slice = createSlice({
   name: "cart",
   initialState,
   reducers: {
@@ -26,9 +26,9 @@ export const cartSlice = createSlice({
   }
 })
 
-export const { setItemsInCart, setTotalAmount } = cartSlice.actions
+export const { setItemsInCart, setTotalAmount } = slice.actions
 
 export const getItemsInCart = (state: AppState) => state.cart.itemsInCart;
 export const getTotalAmount = (state: AppState) => state.cart.totalAmount;
 
-export default cartSlice.reducer
+export default slice.reducer

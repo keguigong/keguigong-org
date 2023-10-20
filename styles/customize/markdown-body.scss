@@ -40,7 +40,7 @@
     width: 100%;
     min-height: 5rem;
     min-width: min(10rem, 100%);
-    object-fit: scale-down;
+    object-fit: contain;
     background-color: var(--color-canvas-subtle);
     border-radius: var(--border-radius-medium);
   }
@@ -57,8 +57,8 @@ h6 {
 
 code {
   font-family: var(--font-mono-default);
-  padding: 0.2em 0.4em;
-  font-size: 0.85em;
+  padding: 0.175em 0.375em;
+  font-size: min(0.875em, 87.5%);
   background-color: var(--color-neutral-muted);
   border-radius: 6px;
 }
@@ -68,17 +68,13 @@ div[data-rehype-pretty-code-fragment] {
     background-color: var(--color-pre-dark) !important;
     border-radius: var(--border-radius-medium);
     padding: 0.825rem;
-    max-width: 100%;
-    min-width: 0;
     overflow-x: auto;
 
     code {
       color: unset;
       padding: 0;
-      font-size: 0.85em;
       background: none;
-      min-width: 0;
-      min-height: 0;
+      width: max-content;
     }
   }
 }

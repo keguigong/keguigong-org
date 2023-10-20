@@ -15,19 +15,16 @@ function App({ Component, pageProps }: AppProps) {
     const path = router.asPath
     if (path === "/") {
       dispatch(setIsHome(true))
-      dispatch(setIsBlogBody(false))
-      dispatch(setSecondaryTitle(false))
-      return
+    } else {
+      dispatch(setIsHome(false))
     }
 
     if (path.match(/^\/posts\/.*/i)) {
-      dispatch(setIsHome(false))
       dispatch(setIsBlogBody(true))
-      return
+    } else {
+      dispatch(setIsBlogBody(false))
+      dispatch(setSecondaryTitle(""))
     }
-
-    dispatch(setIsHome(false))
-    dispatch(setIsBlogBody(false))
   }, [router.asPath])
 
   return (

@@ -1,15 +1,12 @@
 import Head from "next/head"
-import path from "path"
-import { md2html, mdfile2html } from "@/utils/posts"
+import { getSortedPostsData } from "@/utils/posts"
+import { AllPosts } from "@/components/posts"
 
-const siteTitle = "Works"
+const siteTitle = "Blogs"
 const description = "Where keguigong's thoughts were built"
 const title = siteTitle + " - " + description
-const md = `
-# Under Construction... 🚧
-`
 
-export default function Works({ content }: any) {
+export default function Home({ allPostsData }: { [key: string]: any }) {
   return (
     <section>
       <Head>
@@ -26,16 +23,16 @@ export default function Works({ content }: any) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <div className="markdown-body" dangerouslySetInnerHTML={{ __html: content }}></div>
+      <AllPosts allPostsData={allPostsData}></AllPosts>
     </section>
   )
 }
 
 export async function getStaticProps() {
-  const content = md2html(md)
+  const allPostsData = getSortedPostsData()
   return {
     props: {
-      content
+      allPostsData
     }
   }
 }

@@ -8,11 +8,11 @@ const title = siteTitle + " - " + description
 const md = `
 计划有一个地方可以放置一些自己拍的照片，并简单的按照主题、日期或者相册的形式进行整理，其他希望能够实现的效果大致罗列如下
 
-- 照片的详细信息。包括光圈等参数信息和说明
-- 时间线。可以按照时间线的形式展示照片
-- 列表可以像苹果相册一样放大缩小
-- 加载优化，通过 Progressive JPEG 的形式或者其他
-- 能够有一些类似于 SharedComponent 一样的图片交互动画
+1. 照片的详细信息。包括光圈等参数信息和说明
+2. 时间线。可以按照时间线的形式展示照片
+3. 列表可以像苹果相册一样放大缩小
+4. 加载优化，通过 Progressive JPEG 的形式或者其他
+5. 能够有一些类似于 SharedComponent 一样的图片交互动画
 
 
 同时需要考虑一下图片托管的问题，直接放在 git 中可能存在着无法进行检索以及加载优化的。如果使用 CDN 鉴权啥的\
@@ -28,7 +28,7 @@ const md = `
 6. [Wall Calendar 2019 - bulbul_bab](https://dribbble.com/shots/5334334-Wall-Calendar-2019)
 `
 
-export default function Home({ content }: any) {
+export default function Plog({ content }: any) {
   return (
     <section>
       <Head>
