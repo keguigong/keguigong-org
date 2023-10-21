@@ -56,7 +56,7 @@ export const Header = () => {
 
   return (
     <header className={classNames(styles.header, isHome && !visibility.menu && styles.headerHome)}>
-      <div className={classNames(styles.headerContent, styles.titleBarWrapper)}>
+      <div className={classNames(styles.headerContent, styles.titleBarWrapper, isHome && styles.headerContentHome)}>
         <div className={classNames(styles.titleBar, isBlogBody && visibility.secondaryTitle && styles.alterTitle)}>
           <MenuBtn isOpen={visibility.menu} onToggle={(next) => setVisibility((prev) => ({ ...prev, menu: next }))} />
           <h3>keguigong</h3>

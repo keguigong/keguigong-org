@@ -17,6 +17,11 @@
   margin: 0 auto;
   max-width: 48rem;
   padding: 0 1.5rem;
+  transition: max-width .1s ease-in;
+}
+
+.headerContentHome {
+  max-width: 60rem;
 }
 
 // title

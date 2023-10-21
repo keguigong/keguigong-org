@@ -60,8 +60,9 @@ export function getAllPostIds() {
 }
 
 const PRETTY_CODE_OPTIONS = {
-  theme: "one-dark-pro",
-  keepBackground: false,
+  // keepBackground: false,
+  theme: "github-dark",
+  grid: false
 }
 
 export async function getPostData(id: string) {
@@ -94,23 +95,15 @@ export async function getPostData(id: string) {
 
 export function md2html(md: string) {
   // Use remark to convert markdown into HTML string
-  const processContent = unified()
-    .use(remarkParse)
-    .use(remarkRehype)
-    .use(rehypeStringify)
-    .processSync(md)
+  const processContent = unified().use(remarkParse).use(remarkRehype).use(rehypeStringify).processSync(md)
   const contentHtml = processContent.toString()
   return contentHtml
 }
 
 export function mdfile2html(path: string) {
-  const md = fs.readFileSync(path, { encoding: "utf-8"})
+  const md = fs.readFileSync(path, { encoding: "utf-8" })
   // Use remark to convert markdown into HTML string
-  const processContent = unified()
-    .use(remarkParse)
-    .use(remarkRehype)
-    .use(rehypeStringify)
-    .processSync(md)
+  const processContent = unified().use(remarkParse).use(remarkRehype).use(rehypeStringify).processSync(md)
   const contentHtml = processContent.toString()
   return contentHtml
 }

@@ -67,13 +67,13 @@ assign beep = beep_r;
 需要注意的点如下：
 
 - wire 类型必须被其他东西驱动而不能用于存储数据
-- wire 类型在 `always@{:verilog}` 块中不能作为 = 或 <= 的左值
+- wire 类型在 `always` 块中不能作为 = 或 <= 的左值
 - wire 类型是 `assign` 语句中左值的唯一合法类型
 
 同样的，对于寄存器 `reg`，我们也需要注意：
 
-- reg 类型是 `always@{:verilog}` 块中作为 = 或 <= 左值的唯一合法类型
-- reg 类型能用于创建寄存器，以用于 `always@(posedge clk){:verilog}` 块
+- reg 类型是 `always` 块中作为 = 或 <= 左值的唯一合法类型
+- reg 类型能用于创建寄存器，以用于 `always@(posedge clk)` 块
 - reg 类型是 `initial` 块中作为 = 左值的唯一合法类型（用于 TestBench）
 - reg 类型不能作为 `assign` 语句的左值
 

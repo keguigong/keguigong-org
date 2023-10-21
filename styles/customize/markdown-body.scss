@@ -65,7 +65,7 @@ code {
 
 div[data-rehype-pretty-code-fragment] {
   pre {
-    background-color: var(--color-pre-dark) !important;
+    // background-color: var(--color-pre-dark);
     border-radius: var(--border-radius-medium);
     padding: 0.825rem;
     overflow-x: auto;
@@ -74,7 +74,6 @@ div[data-rehype-pretty-code-fragment] {
       color: unset;
       padding: 0;
       background: none;
-      width: max-content;
     }
   }
 }
