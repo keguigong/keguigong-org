@@ -1,10 +1,13 @@
 ---
-title: "树形结构Tree和扁平结构的转换"
-date: "2023-03-20"
-coverImage: "/blogcontent/flatten-tree.svg"
+title: '树形结构Tree和扁平结构的转换'
+date: '2023-03-20'
+hero: '/blogcontent/flatten-tree.svg'
+author: keguigong
 ---
 
 在开发中经常会遇到树形结构和扁平数据的转换，比如树形权限结构拍平为数组用来便捷的查找权限等。
+
+![flatten-tree.svg](/blogcontent/flatten-tree.svg)
 
 **1. 扁平数据结构**
 

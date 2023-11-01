@@ -1,5 +1,5 @@
 import { useSpring, animated } from "@react-spring/web"
-import styles from "./icon.module.scss"
+import styles from "./theme-icon.module.scss"
 
 type Props = {
   darkMode?: boolean

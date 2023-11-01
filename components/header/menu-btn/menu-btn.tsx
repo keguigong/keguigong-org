@@ -2,8 +2,8 @@ import classNames from "classnames"
 import styles from "./menu-btn.module.scss"
 
 type Props = {
-  isOpen: boolean
-  onToggle?: (prev: boolean) => void
+  isOpen?: boolean
+  onToggle?: (next: boolean) => void
 }
 
 export const MenuBtn = ({ isOpen, onToggle }: Props) => {

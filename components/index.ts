@@ -1,4 +1,4 @@
-export * from "./header/color-scheme"
+export * from "./header/theme-btn"
 
 export { MetaInfo  } from "./meta-info"
 export { Layout } from "./layouts"

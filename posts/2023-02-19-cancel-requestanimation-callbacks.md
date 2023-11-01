@@ -1,6 +1,7 @@
 ---
-title: "如何取消requestAnimationFrame发起的动画"
-date: "2023-02-19"
+title: '如何取消requestAnimationFrame发起的动画'
+date: '2023-02-19'
+author: keguigong
 ---
 
 > 查看最终实现的效果：[Bouncing Balls Start](https://keguigong.github.io/bubble-sort-animation/bouncing-balls)。
@@ -89,10 +90,11 @@ Ball.prototype.update = function (...) {
 创建小球比较耗费资源，如果在 `useEffect` 中直接创建，`Next.js` 会提示可以通过 `useCallback` 进行优化。同样的，我们进行改造。
 
 ```tsx
-const memoLoop = useCallback(
-  canvasCtx && width && height ? loop(canvasCtx, width, height) : () => {},
-  [canvasCtx, width, height]
-)
+const memoLoop = useCallback(canvasCtx && width && height ? loop(canvasCtx, width, height) : () => {}, [
+  canvasCtx,
+  width,
+  height
+])
 ```
 
 将 `memoLoop` 用来保存 `loop` 函数返回的 `start` 函数，并且只有在 `canvasCtx`、`canvasCtx` 以及 `canvasCtx` 变化的时候才会重新调用 `loop` 函数。同样的，对于 `useEffect` 同样进行改造。

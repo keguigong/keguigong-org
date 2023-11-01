@@ -1,11 +1,11 @@
-import { PostItem } from "./post-item"
-import styles from "./post-item.module.scss"
+import { PostItem } from './post-item'
+import styles from './blog-list.module.scss'
 
 type Props = {
   allPostsData: any
 }
 
-export const AllPosts = ({ allPostsData }: Props) => (
+export const BlogList = ({ allPostsData }: Props) => (
   <ul className={styles.list}>
     {allPostsData.map((data: any) => (
       <PostItem key={data.id} content={data}></PostItem>

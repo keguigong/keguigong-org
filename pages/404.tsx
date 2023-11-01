@@ -10,7 +10,7 @@ export default function NotFound() {
       <Head>
         <title>{title}</title>
       </Head>
-      <h1>💦 Page Not Found</h1>
+      <h1>Page Not Found</h1>
       <p>Sorry, nothing to see here.</p>
     </>
   )

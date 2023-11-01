@@ -3,7 +3,6 @@ import { useSelector } from "react-redux"
 import { getIsHome, getIsBlogBody } from "@/store/header-slice"
 import styles from "./layout.module.scss"
 import { Header } from "@/components/header"
-import classNames from "classnames"
 
 type Props = {
   children?: JSX.Element
@@ -17,11 +16,11 @@ export default function Layout({ children, home }: Props) {
   return (
     <>
       <Header />
-      <main className={classNames(styles.contentLayout, isHome && styles.contentLayoutHome)}>{children}</main>
-      <footer className={classNames(styles.footer, isHome && styles.footerHome)}>
+      <main className={styles.contentLayout}>{children}</main>
+      <footer className={styles.footer}>
         {!home ? (
           <div className={styles.backToHome}>
-            <Link href={isBlogBody ? "/blogs" : "/"}>← Back {isBlogBody ? "Blogs" : "Home"}</Link>
+            <Link replace href={isBlogBody ? "/blogs" : "/"}>← Back {isBlogBody ? "" : "Home"}</Link>
           </div>
         ) : (
           <div>

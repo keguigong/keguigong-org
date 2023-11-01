@@ -1,8 +1,9 @@
 ---
-title: "[WIP]使用Canvas开发Chrome小恐龙游戏"
-date: "2023-03-29"
-coverImage: "/blogcontent/dino-sprite.png"
-excerpt: "The _Chrome Dino_ is a built-in browser game developed by Google. It's small and great for learning _Canvas_ and game development."
+title: '开发Chrome小恐龙游戏Vol. 1：了解帧序列动画'
+excerpt: "Chrome Dino is a built-in browser game developed by Google. It's small and great for learning Canvas and game development."
+date: '2023-03-29'
+hero: '/blogcontent/dino-sprite.png'
+author: keguigong
 ---
 
 > 《恐龙游戏》（Dinosaur Game）是一款由 Google 开发、内置于 Google Chrome 的网页游戏。
@@ -18,6 +19,8 @@ excerpt: "The _Chrome Dino_ is a built-in browser game developed by Google. It's
 | 小恐龙的运动           | 小恐龙有自己的动作，可以被操作，实现跳跃、下蹲灯操作   | ⭐️⭐️⭐️⭐️    |
 | 碰撞检测               | 通过逐帧的计算，判定游戏结果                           | ⭐️⭐️⭐️⭐️⭐️ |
 | 游戏结果展示和其他要素 | 展示结果以及其他要素                                   | ⭐️⭐️⭐️       |
+
+这是整个过程的第一步，先熟悉一下绘制的基本接口和动画的原理等。
 
 ## 绘制元素
 

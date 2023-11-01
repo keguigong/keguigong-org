@@ -1,6 +1,6 @@
 import Head from "next/head"
 import { getSortedPostsData } from "@/utils/posts"
-import { AllPosts } from "@/components/posts"
+import { BlogList } from "@/components/posts"
 
 const siteTitle = "Blogs"
 const description = "Where keguigong's thoughts were built"
@@ -23,7 +23,7 @@ export default function Home({ allPostsData }: { [key: string]: any }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <AllPosts allPostsData={allPostsData}></AllPosts>
+      <BlogList allPostsData={allPostsData}></BlogList>
     </section>
   )
 }

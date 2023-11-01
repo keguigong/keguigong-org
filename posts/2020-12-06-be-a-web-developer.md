@@ -1,7 +1,8 @@
 ---
-title: "作为一名Web开发工程师"
-date: "2020-12-06"
-coverImage: "/blogcontent/pixeltrue-web-development.svg"
+title: '作为一名Web开发工程师'
+date: '2020-12-06'
+hero: '/blogcontent/pixeltrue-web-development.svg'
+author: keguigong
 ---
 
 Hi，我是可圭共，我喜欢把我的一些有关前端的问题以及其他我感兴趣的东西记录在这儿，希望可以帮助到你。

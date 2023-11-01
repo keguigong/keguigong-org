@@ -19,7 +19,7 @@ function App({ Component, pageProps }: AppProps) {
       dispatch(setIsHome(false))
     }
 
-    if (path.match(/^\/posts\/.*/i)) {
+    if (path.match(/^\/post\/.*/i)) {
       dispatch(setIsBlogBody(true))
     } else {
       dispatch(setIsBlogBody(false))

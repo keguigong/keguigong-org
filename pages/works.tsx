@@ -1,6 +1,5 @@
 import Head from "next/head"
-import path from "path"
-import { md2html, mdfile2html } from "@/utils/posts"
+import { md2html } from "@/utils/posts"
 
 const siteTitle = "Works"
 const description = "Where keguigong's thoughts were built"

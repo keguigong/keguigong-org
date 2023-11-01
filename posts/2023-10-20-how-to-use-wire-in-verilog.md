@@ -1,7 +1,8 @@
 ---
-title: "VeriLog中如何使用wire？记初见wire遇到的问题"
-date: "2023-10-20"
-excerpt: "最近正在学习VeriLog，但是对于一些数据类型使用上还不够熟练。"
+title: 'VeriLog中如何使用wire？记初见wire遇到的问题'
+excerpt: '最近正在学习VeriLog，但是对于一些数据类型使用上还不够熟练。'
+date: '2023-10-20'
+author: keguigong
 ---
 
 > [Verilog](https://zh.wikipedia.org/wiki/Verilog) 是一种用于描述、设计电子系统的硬件描述语言，主要用于在集成电路设计。既可以在晶体管级、逻辑门级进行描述，也可以在寄存器传输级对电路信号在寄存器之间的传输情况进行描述。

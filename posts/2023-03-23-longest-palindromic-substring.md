@@ -1,7 +1,8 @@
 ---
-title: "最长回文子串以及动态规划"
-date: "2023-03-23"
-coverImage: "/blogcontent/leetcode-logo.svg"
+title: '回忆最长回文子串以及动态规划的几种思路'
+date: '2023-03-23'
+hero: '/blogcontent/leetcode-logo.svg'
+author: keguigong
 ---
 
 最长回文子串（[5. 最长回文子串](https://leetcode.cn/problems/longest-palindromic-substring/)）的问题在面试中经常会被提及，能够考察基础的算法以及代码实现的能力。如果看过相关解析的同学能很方便的写出几种不同的方法，而使用暴力求解的方式则很难有比较好的性能表现。我根据自己的理解以及回忆，对这个问题再求解一次，其中使用动态规划的方式也能进行求解，对动态规划再进行一些延伸，也希望能加深对于动态规划的理解。
@@ -43,13 +44,13 @@ coverImage: "/blogcontent/leetcode-logo.svg"
 ```ts
 function longestPalindrome(s: string) {
   let maxLen = 0
-  let ans = ""
+  let ans = ''
   for (let i = 0; i < s.length; i++) {
     // 长度从1开始变化，直到s的末尾
     for (let len = 1; i + len <= s.length; len++) {
       let str = s.slice(i, i + length)
       // 反转字符串，回文串中心对称，反转相等
-      let reversed = Array.from(str).reverse().join("")
+      let reversed = Array.from(str).reverse().join('')
       if (str === reversed) {
         if (len > maxLen) {
           maxLen = len
@@ -78,7 +79,7 @@ function longestPalindrome(s: string) {
 
 ```ts
 function longestPalindrome(s: string): string {
-  let str = ""
+  let str = ''
   for (let i = 0, start = 0, end = 0; i < s.length; i++) {
     start = i
     end = i

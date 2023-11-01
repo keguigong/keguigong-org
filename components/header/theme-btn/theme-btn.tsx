@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from "react"
 import { setColorMode, COLOR_MODE, getSystemPrefersColorScheme } from "@/utils/color-mode"
-import Icon from "./icon"
-import styles from "./icon.module.scss"
+import Icon from "./theme-icon"
+import styles from "./theme-icon.module.scss"
 
-export const ColorScheme = () => {
+export const ThemeBtn = () => {
   const [mode, setMode] = useState(() => getSystemPrefersColorScheme())
 
   const animatedIcon = useMemo(() => <Icon darkMode={mode === COLOR_MODE.DARK} />, [mode])

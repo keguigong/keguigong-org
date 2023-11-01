@@ -19,30 +19,20 @@
     margin: 1.25rem 0;
   }
 
-  ul {
-    list-style-type: none;
-  }
-
   ol > li,
   ul > li {
     margin-bottom: 0.5em;
   }
 
-  ul > li::before {
-    content: "-";
-    color: var(--color-fg-subtle);
-    position: absolute;
-    z-index: -1;
-    margin-left: -1em;
-  }
-
   img {
+    display: inline-block;
+    min-height: 8rem;
+    max-height: min(50vh, 100vw);
     width: 100%;
-    min-height: 5rem;
     min-width: min(10rem, 100%);
     object-fit: contain;
-    background-color: var(--color-canvas-subtle);
     border-radius: var(--border-radius-medium);
+    border: 1px solid var(--color-border-subtle);
   }
 }
 

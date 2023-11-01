@@ -1,28 +1,37 @@
-import fs from "fs"
-import path from "path"
-import matter from "gray-matter"
-import { unified } from "unified"
-import remarkParse from "remark-parse"
-import remarkGfm from "remark-gfm"
-import remarkRehype from "remark-rehype"
-import rehypePrettyCode from "rehype-pretty-code"
-import rehypeStringify from "rehype-stringify"
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
+import { unified } from 'unified'
+import remarkParse from 'remark-parse'
+import remarkGfm from 'remark-gfm'
+import remarkRehype from 'remark-rehype'
+import rehypePrettyCode from 'rehype-pretty-code'
+import rehypeStringify from 'rehype-stringify'
+import yaml from 'js-yaml'
 
-import readingTime from "reading-time"
-import { getLastModifiedDate } from "./git-info"
+import readingTime from 'reading-time'
+import { getLastModifiedDate } from './git-info'
 
-export const POSTS_DIR = path.join(process.cwd(), "posts")
+export const POSTS_DIR = path.join(process.cwd(), 'posts')
+
+function getEligibleFileNames(dir: string) {
+  return fs.readdirSync(dir).filter((filename) => {
+    const extname = path.extname(filename).toLowerCase()
+    return ['.md'].indexOf(extname) > -1
+  })
+}
 
 export function getSortedPostsData() {
   // Get file names under /posts
-  const fileNames = fs.readdirSync(POSTS_DIR)
+  const fileNames = getEligibleFileNames(POSTS_DIR)
+
   const allPostsData = fileNames.map((fileName) => {
     // Remove ".md" from file name to get id
-    const id = fileName.replace(/\.md$/, "")
+    const id = fileName.replace(/^\d{4}-\d{1,2}-\d{1,2}-/, '').replace(/\.md$/, '')
 
     // Read markdown file as string
     const fullPath = path.join(POSTS_DIR, fileName)
-    const fileContents = fs.readFileSync(fullPath, "utf8")
+    const fileContents = fs.readFileSync(fullPath, 'utf-8')
 
     // Use gray-matter to parse the post metadata section
     const frontMatter = matter(fileContents)
@@ -49,25 +58,23 @@ export function getSortedPostsData() {
 }
 
 export function getAllPostIds() {
-  const fileNames = fs.readdirSync(POSTS_DIR)
+  const fileNames = getEligibleFileNames(POSTS_DIR)
   return fileNames.map((fileName) => {
     return {
       params: {
-        id: fileName.replace(/\.md$/, "")
+        id: fileName.replace(/^\d{4}-\d{1,2}-\d{1,2}-/, '').replace(/\.md$/, '')
       }
     }
   })
 }
 
-const PRETTY_CODE_OPTIONS = {
-  // keepBackground: false,
-  theme: "github-dark",
-  grid: false
-}
-
 export async function getPostData(id: string) {
-  const fullPath = path.join(POSTS_DIR, `${id}.md`)
-  const fileContents = fs.readFileSync(fullPath, "utf-8")
+  const filename = getEligibleFileNames(POSTS_DIR).find((filename) => filename.indexOf(id) > -1)
+
+  if (!filename) return
+
+  const fullPath = path.join(POSTS_DIR, filename)
+  const fileContents = fs.readFileSync(fullPath, 'utf-8')
   const lastModifiedDate = getLastModifiedDate(fullPath)
 
   // Use gray-matter to parse the post metadata section
@@ -78,31 +85,33 @@ export async function getPostData(id: string) {
     .use(remarkParse) // Parse markdown.
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true }) // Turn it into HTML.
-    .use(rehypePrettyCode, PRETTY_CODE_OPTIONS)
+    .use(rehypePrettyCode, {
+      // keepBackground: false,
+      theme: 'github-dark',
+      grid: false
+    })
     .use(rehypeStringify) // Turn it into HTML.
     .process(frontMatter.content)
 
   const contentHtml = processContent.toString()
+
+  // Parse authors.yaml
+  const yamlPath = path.join(POSTS_DIR, 'authors.yml')
+  const yamlContents = fs.readFileSync(yamlPath, 'utf-8')
+  const authors: any = yaml.load(yamlContents)
+  const author = authors[frontMatter.data.author] || null
 
   // Combine the data with the id
   return {
     id,
     lastModifiedDate,
     contentHtml,
-    ...frontMatter.data
+    ...frontMatter.data,
+    author
   }
 }
 
 export function md2html(md: string) {
-  // Use remark to convert markdown into HTML string
-  const processContent = unified().use(remarkParse).use(remarkRehype).use(rehypeStringify).processSync(md)
-  const contentHtml = processContent.toString()
-  return contentHtml
-}
-
-export function mdfile2html(path: string) {
-  const md = fs.readFileSync(path, { encoding: "utf-8" })
-  // Use remark to convert markdown into HTML string
   const processContent = unified().use(remarkParse).use(remarkRehype).use(rehypeStringify).processSync(md)
   const contentHtml = processContent.toString()
   return contentHtml

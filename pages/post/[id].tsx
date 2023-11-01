@@ -1,20 +1,19 @@
-import Head from "next/head"
-import { useDispatch } from "react-redux"
-import { setSecondaryTitle } from "@/store/header-slice"
-import { getAllPostIds, getPostData } from "@/utils/posts"
-import { MetaInfo } from "@/components"
-import { Meta } from "@/types"
-import { useEffect } from "react"
-import Link from "next/link"
+import Head from 'next/head'
+import { useDispatch } from 'react-redux'
+import { setSecondaryTitle } from '@/store/header-slice'
+import { getAllPostIds, getPostData } from '@/utils/posts'
+import { MetaInfo } from '@/components'
+import { useEffect } from 'react'
+import Link from 'next/link'
 
 const description = "Where keguigong's thoughts were built"
 
 interface Props {
-  postData: Meta
+  postData: any
 }
 
 export default function Post({ postData }: Props) {
-  const title = postData.title + " - " + description
+  const title = postData.title + ' - ' + description
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -38,9 +37,9 @@ export default function Post({ postData }: Props) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <div className="markdown-body">
-        {/* <Link href="/">← Back Home</Link> */}
+        {/* <Link replace href="/blogs">← Back</Link> */}
         <h1 id="markdown-title">{postData.title}</h1>
-        <MetaInfo meta={postData} />
+        <MetaInfo meta={postData} author />
         <article dangerouslySetInnerHTML={{ __html: postData.contentHtml!! }}></article>
       </div>
     </>
