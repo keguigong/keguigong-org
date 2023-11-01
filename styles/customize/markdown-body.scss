@@ -27,7 +27,7 @@
   img {
     display: inline-block;
     min-height: 8rem;
-    max-height: min(50vh, 100vw);
+    max-height: min(50vw, 100vw);
     width: 100%;
     min-width: min(10rem, 100%);
     object-fit: contain;

@@ -1,6 +1,6 @@
 ---
-title: '练习：参考Party Animals制作游戏角色选择组件'
-date: '2023-02-12'
+title: '开发一个游戏角色选择器，参考Party Animals风格'
+date: '2023-02-28'
 hero: '/blogcontent/party-animals-logo.png'
 excerpt: 'Party Animals虽然是一款体量较小的游戏，但是不管是游戏美术还是网站设计来说，还是可以看出来是比较追求细节的。'
 author: keguigong
@@ -19,7 +19,7 @@ author: keguigong
 
 查看 [在线演示](https://keguigong.github.io/role-picker-referring-to-party-animals/)。
 
-![role-picker.gif](/blogcontent/party-animals-picker.png)
+![role-picker.gif](/blogcontent/party-animals-picker-progressive.jpg)
 
 我们参考 React 官方指导手册 [Thinking in React](https://reactjs.org/docs/thinking-in-react.html) 来进行开发。
 

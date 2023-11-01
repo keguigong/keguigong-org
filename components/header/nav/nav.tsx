@@ -17,19 +17,19 @@ export function Nav(props: Props) {
             Home
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link className={styles.navLink} href="/blogs">
             Blogs
           </Link>
-        </li>
-        <li>
-          <Link className={styles.navLink} href="/plogs">
-            Plogs
-          </Link>
-        </li>
+        </li> */}
         <li>
           <Link className={styles.navLink} href="/works">
             Works
+          </Link>
+        </li>
+        <li>
+          <Link className={styles.navLink} href="/photos">
+            Photos
           </Link>
         </li>
       </ul>

@@ -45,7 +45,7 @@ export const Header = () => {
   // Handle menu btn click
   const handleClose = () => setVisibility((prev) => ({ ...prev, menu: false }))
   const handleBackToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
-  const handleBackPrev = () => router.replace('/blogs')
+  const handleBackPrev = () => router.replace('/')
 
   return (
     <header className={classNames(styles.header, isHome && !visibility.menu && styles.headerHome)}>

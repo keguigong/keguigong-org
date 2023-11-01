@@ -1,19 +1,14 @@
 import Head from "next/head"
-import { md2html } from "@/utils/posts"
-import Link from "next/link"
+import { getSortedPostsData } from "@/utils/posts"
+import { BlogList } from "@/components/posts"
 
-const siteTitle = "Home"
+const siteTitle = "Blogs"
 const description = "Where keguigong's thoughts were built"
 const title = siteTitle + " - " + description
-const md = `
-# Hey there,
-# I'm keguigong.
-## A front-end developer (Mostly) based in Shanghai.
-`
 
-export default function About({ content }: any) {
+export default function Home({ allPostsData }: { [key: string]: any }) {
   return (
-    <>
+    <section>
       <Head>
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
@@ -28,16 +23,16 @@ export default function About({ content }: any) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <h1>Hello Motherfucker</h1>
-    </>
+      <BlogList allPostsData={allPostsData}></BlogList>
+    </section>
   )
 }
 
 export async function getStaticProps() {
-  const content = md2html(md)
+  const allPostsData = getSortedPostsData()
   return {
     props: {
-      content
+      allPostsData
     }
   }
 }

@@ -1,8 +1,8 @@
-import Link from "next/link"
-import { useSelector } from "react-redux"
-import { getIsHome, getIsBlogBody } from "@/store/header-slice"
-import styles from "./layout.module.scss"
-import { Header } from "@/components/header"
+import Link from 'next/link'
+import { useSelector } from 'react-redux'
+import { getIsHome, getIsBlogBody } from '@/store/header-slice'
+import styles from './layout.module.scss'
+import { Header } from '@/components/header'
 
 type Props = {
   children?: JSX.Element
@@ -20,7 +20,7 @@ export default function Layout({ children, home }: Props) {
       <footer className={styles.footer}>
         {!home ? (
           <div className={styles.backToHome}>
-            <Link replace href={isBlogBody ? "/blogs" : "/"}>← Back {isBlogBody ? "" : "Home"}</Link>
+            <Link href="/">← Back</Link>
           </div>
         ) : (
           <div>
@@ -28,7 +28,7 @@ export default function Layout({ children, home }: Props) {
           </div>
         )}
         <div className={styles.backToHome}>
-          <a href="https://github.com/keguigong">GitHub</a> • <a href="https://www.behance.net/keguigong">Behance</a> •{" "}
+          <a href="https://github.com/keguigong">GitHub</a> • <a href="https://www.behance.net/keguigong">Behance</a> •{' '}
           <a href="https://www.instagram.com/keguigong/">Instagram</a>
         </div>
       </footer>

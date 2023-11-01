@@ -1,10 +1,12 @@
-import Head from "next/head"
-import { md2html } from "@/utils/posts"
+import Head from 'next/head'
+import { md2html } from '@/utils/posts'
 
-const siteTitle = "Plogs"
+const siteTitle = 'Photos'
 const description = "Where keguigong's thoughts were built"
-const title = siteTitle + " - " + description
+const title = siteTitle + ' - ' + description
 const md = `
+> 🚧 开发中
+
 计划有一个地方可以放置一些自己拍的照片，并简单的按照主题、日期或者相册的形式进行整理，其他希望能够实现的效果大致罗列如下
 
 1. 照片的详细信息。包括光圈等参数信息和说明
