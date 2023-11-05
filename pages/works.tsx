@@ -11,17 +11,17 @@ const md = `
 
 1. [游戏角色选择器, 参考 Party Animals 风格](https://keguigong.github.io/role-picker-referring-to-party-animals/)
 
-![party-animals-progressive.jpg](/images/party-animals-picker.jpg)
+![Party Animals role picker](/images/party-animals-picker.jpg)
 
 2. [搜索框组件, 优化搜索体验](https://keguigong.github.io/search-box-component/)
 
-![search-box-component.jpg](/images/search-box-component.jpg)
+![Search box component](/images/search-box-component.jpg)
 
 3. [B端平台: 故障分析与诊断平台](https://keguigong.github.io/sample-alarm-analysis-platform/)
 
 4. [Canvas 练习: 碰撞小球](https://keguigong.github.io/bubble-sort-animation/bouncing-balls)
 
-![bouncing-balls.jpg](/images/bouncing-balls.jpg)
+![Bouncing balls](/images/bouncing-balls.jpg)
 
 5. [Canvas练习: 可视化冒泡排序过程](https://keguigong.github.io/bubble-sort-animation/)
 6. [Android自定义控件: 使用自定义 View 绘制一个步进进度条](https://github.com/keguigong/android-step-progress-bar)
@@ -44,7 +44,7 @@ export default function Works({ content }: any) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <div className="markdown-body" dangerouslySetInnerHTML={{ __html: content }}></div>
+      <div data-markdown-body dangerouslySetInnerHTML={{ __html: content }}></div>
     </section>
   )
 }

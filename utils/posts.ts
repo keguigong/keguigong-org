@@ -7,6 +7,8 @@ import remarkGfm from 'remark-gfm'
 import remarkRehype from 'remark-rehype'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeStringify from 'rehype-stringify'
+import rehypeRaw from 'rehype-raw'
+// import rehypeSanitize from 'rehype-sanitize'
 import yaml from 'js-yaml'
 
 import readingTime from 'reading-time'
@@ -85,10 +87,9 @@ export async function getPostData(id: string) {
     .use(remarkParse) // Parse markdown.
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true }) // Turn it into HTML.
-    .use(rehypePrettyCode, {
-      theme: 'github-dark',
-      // grid: false
-    })
+    .use(rehypePrettyCode, { theme: 'github-dark' })
+    .use(rehypeRaw)
+    // .use(rehypeSanitize)
     .use(rehypeStringify) // Turn it into HTML.
     .process(frontMatter.content)
 

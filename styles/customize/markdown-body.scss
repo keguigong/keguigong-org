@@ -1,4 +1,4 @@
-.markdown-body {
+[data-markdown-body] {
   line-height: 1.5;
   word-wrap: break-word;
 
@@ -25,26 +25,33 @@
   }
 }
 
-@media screen and (max-width: 900px) {
-  .markdown-body img {
-    max-height: 100vh;
-  }
+[data-markdown-body] figure {
+  margin-inline-start: 0;
+  margin-inline-end: 0;
 }
 
-@media screen and (min-width: 901px) {
-  .markdown-body img {
-    max-height: min(50vh, 50vw);
-  }
-}
-
-.markdown-body img {
+[data-markdown-body] img {
   display: inline-block;
   min-height: 8rem;
   width: 100%;
   min-width: min(10rem, 100%);
   object-fit: contain;
   border-radius: var(--border-radius-medium);
-  border: 1px solid var(--color-border-subtle);
+  background-color: var(--color-img-bg);
+  // border: 1px solid var(--color-border-subtle);
+  box-shadow: var(--shadow-card-default);
+}
+
+@media screen and (max-width: 900px) {
+  [data-markdown-body] img {
+    max-height: 100vh;
+  }
+}
+
+@media screen and (min-width: 901px) {
+  [data-markdown-body] img {
+    max-height: 35rem;
+  }
 }
 
 h1,
@@ -83,7 +90,7 @@ h6 {
 
 [data-chars-id] {
   border-bottom-width: 2px;
-  padding: 0.25rem;
+  padding: 0.125em 0.175em;
   box-shadow: 0 0 #000, 0 0 #000;
 }
 
@@ -171,7 +178,7 @@ table {
   border-collapse: collapse;
 }
 
-.markdown-body table {
+[data-markdown-body] table {
   display: block;
   width: 100%;
   width: max-content;

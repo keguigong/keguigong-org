@@ -46,7 +46,7 @@ export default function Plog({ content }: any) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <div className="markdown-body" dangerouslySetInnerHTML={{ __html: content }}></div>
+      <div data-markdown-body dangerouslySetInnerHTML={{ __html: content }}></div>
     </section>
   )
 }

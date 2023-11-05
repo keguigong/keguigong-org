@@ -21,7 +21,13 @@ typeof 1.0 // number
 
 根据国际标准 [IEEE 754](https://en.wikipedia.org/wiki/IEEE_754)，JavaScript 浮点数包含 64 个二进制位。
 
-![IEEE_754_Double_Floating_Point_Format.svg](/blogcontent/IEEE_754_Double_Floating_Point_Format.svg)
+<figure>
+  <img src="/blogcontent/IEEE_754_Double_Floating_Point_Format.svg" alt="IEEE 754 Double Floating-Point Format"/>
+  <figcaption>
+  <cite><a href="https://commons.wikimedia.org/wiki/File:IEEE_754_Double_Floating_Point_Format.svg">IEEE 754 Double Floating Point Format</a></cite>
+   by Codekaizen, CC BY-SA 4.0, via Wikimedia Commons
+</figcaption>
+</figure>
 
 - 第一部分（蓝色）：用来存储符号位（sign），第 1 位：符号位，0 表示正数，1 表示负数
 - 第二部分（绿色）：用来存储指数（exponent），第 2 位到第 12 位（共 11 位），指数部分

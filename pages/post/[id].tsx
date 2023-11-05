@@ -36,7 +36,7 @@ export default function Post({ postData }: Props) {
         <meta name="og:title" content={postData.id} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <div className="markdown-body">
+      <div data-markdown-body>
         <Link href="/">← Back</Link>
         <h1 id="markdown-title">{postData.title}</h1>
         <MetaInfo meta={postData} author />
