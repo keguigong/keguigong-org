@@ -16,10 +16,6 @@
 }
 
 .titleText {
-  background: linear-gradient(to right, #22d3ee, #3d6acc);
-  background-clip: text;
-  color: #0000;
-
   span {
     display: inline-block;
     transition: margin 0.35s linear;
@@ -27,7 +23,6 @@
 }
 
 .titleText:hover {
-  color: var(--color-fg-default);
   span {
     margin: 0 1px;
     @for $i from 0 through 8 {
