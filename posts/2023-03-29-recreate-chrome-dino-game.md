@@ -38,7 +38,7 @@ drawImage(image: CanvasImageSource, sx: number, sy: number, sw: number, sh: numb
 
 小恐龙的动作切换是使用的帧序帧动画。
 
-```ts
+```ts title="Trex.ts" showLineNumbers
 Trex.animFrames = {
   WAITING: {
     frames: [44, 0],

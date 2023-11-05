@@ -15,6 +15,39 @@
   }
 }
 
+.titleText {
+  background: linear-gradient(to right, #22d3ee, #3d6acc);
+  background-clip: text;
+  color: #0000;
+
+  span {
+    display: inline-block;
+    transition: margin 0.35s linear;
+  }
+}
+
+.titleText:hover {
+  color: var(--color-fg-default);
+  span {
+    margin: 0 1px;
+    @for $i from 0 through 8 {
+      &:nth-child(#{$i + 1}) {
+        filter: blur(0px);
+        animation: blur-text 1.5s (#{$i/7}) + s infinite linear alternate;
+      }
+    }
+  }
+}
+
+@keyframes blur-text {
+  0% {
+    filter: blur(0px);
+  }
+  100% {
+    filter: blur(5px);
+    transform: translateY(5px);
+  }
+}
 
 .alterTitleBar {
   transform: translateY(-100%);

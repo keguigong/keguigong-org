@@ -12,9 +12,9 @@ author: keguigong
 
 在不使用 JS 的前提下，使用 `@media` 以及 CSS 变量可以方便的为自己的网站添加支持。
 
-使用 `prefers-color-scheme` （了解 [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme)）查询当前系统主题设置，并设置对应的 CSS 变量，可以实现 `dark` `light` 模式之间跟随系统主题自动切换。
+使用 `prefers-color-scheme` （了解 [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme)）查询当前系统主题设置，并设置对应的 CSS 变量，可以实现 `dark/light` 模式之间跟随系统主题自动切换。
 
-```css
+```css title="global.css" showLineNumbers {6}
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 214, 219, 220;
@@ -54,7 +54,7 @@ blockquote {
 
 搭配 JavaScript 可以动态的修改主题，通过往 `html`/`body` 标签上添加或者移除 `class="light"` 可以实现对 `:root` 中定义的变量的覆盖，实现主题的切换。
 
-```css
+```css title="global.css" showLineNumbers
 .light {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 214, 219, 220;
@@ -66,7 +66,7 @@ blockquote {
 }
 ```
 
-我们使用搭配按钮以及 js 对 `html` 标签上添加 `dark`/`light`的 `class`，实现覆盖变量，主题得以切换。首先我们要获取到当前系统的主题设置，通过
+我们使用搭配按钮以及 js 对 `html` 标签上添加 `dark/light`的 `class`，实现覆盖变量，主题得以切换。首先我们要获取到当前系统的主题设置，通过
 
 ```ts
 window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -74,7 +74,7 @@ window.matchMedia('(prefers-color-scheme: dark)').matches
 
 来查询当前是否为暗黑模式，然后设置当前主题，使用函数 `setMode`，然后我们也不希望刷新页面导致主题丢失，所以将主题名称保存在 `localStorage` 中。
 
-```ts
+```ts title="theme.ts" showLineNumbers
 export function setMode(darkMode: boolean) {
   if (typeof document == 'undefined') return
   let classNames = document.documentElement.classList
@@ -87,7 +87,7 @@ export function setMode(darkMode: boolean) {
 
 页面加载的时候需要首先读取 `localStorage` 中保存的主题，如果没有再使用系统当前的主题即可。
 
-```ts
+```ts showLineNumbers
 export function checkDarkMode() {
   if (typeof window === 'undefined') return false
   let localMode = localStorage.getItem('darkMode')
@@ -102,7 +102,7 @@ export function checkDarkMode() {
 
 设置完之后我们的网页就会变成这样，`.dark` 中的所有变量都会挂载到 `html` 上并且可以全局访问到。
 
-```html
+```html /class="dark"/#v
 <html lang="en" class="dark">
   <head>
     ...
@@ -117,14 +117,14 @@ export function checkDarkMode() {
 
 使用上面的方案会丢失自动跟随系统切换主题的功能，我们需要单独处理一下，有如下两种方法
 
-- 借用 CSS 自己的能力，在设置为 `auto` 的时候，将 `light`/`dark` 样式移除，回退回默认的样式，在默认样式使用前文中的方案一，但是优先级低于 `light`/`dark`，以保证能够覆盖样式。
+- 借用 CSS 自己的能力，在设置为 `auto` 的时候，将 `light/dark` 样式移除，回退回默认的样式，在默认样式使用前文中的方案一，但是优先级低于 `light/dark`，以保证能够覆盖样式。
 - 使用 js 直接监听主题变化，并赋予对应的样式。
 
 ### 搭配 CSS 自动切换
 
-在 `light` `dark` 样式之前，添加基础样式，因为样式会在 `:root` 和 `.dark` 中复用，所以我们使用 `scss` 开发以实现样式复用
+在 `light/dark` 样式之前，添加基础样式，因为样式会在 `:root` 和 `.dark` 中复用，所以我们使用 `scss` 开发以实现样式复用
 
-```scss
+```scss title="global.scss" showLineNumbers
 @mixin light {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 214, 219, 220;
@@ -156,7 +156,7 @@ export function checkDarkMode() {
 
 在主题切换设置为 `auto` 的时候，使用函数 `clearMode` 清除掉样式覆盖，让浏览器自己去决定什么主题。
 
-```ts
+```ts title="theme.ts" showLineNumbers
 export function clearMode() {
   if (typeof document == 'undefined') return
   let classNames = document.documentElement.classList
@@ -170,7 +170,7 @@ export function clearMode() {
 
 也可以直接通过事件监听直接改变样式，通过监听 `prefers-color-scheme: dark` 系统是否是暗黑模式实现监听。
 
-```ts
+```ts showLineNumbers
 export function watchDarkMode(cb: (e: boolean) => void) {
   if (typeof window === 'undefined') return () => {}
   const darkModeMedia = window.matchMedia('(prefers-color-scheme: dark)')
@@ -182,7 +182,7 @@ export function watchDarkMode(cb: (e: boolean) => void) {
 
 注意看我们返回了一个函数，这个主要是方便 `listener` 的清除，尤其是在使用 React Hook 的时候，会频繁的创建监听，需要注意清除。
 
-```tsx
+```tsx title="App.tsx" showLineNumbers
 const [darkMode, setDarkMode] = useState(false)
 
 useEffect(() => {

@@ -45,26 +45,112 @@ h6 {
   font-family: var(--font-heading-default);
 }
 
+* {
+  border: 0 solid #e5e7eb;
+}
+
+[data-line] {
+  border-left-width: 2px;
+  border-left-color: #0000;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+[data-highlighted-line] {
+  background: #1616161a;
+  --border-opacity: 1;
+  border-left-color: rgb(96 165 250 / var(--border-opacity));
+}
+
+[data-highlighted-chars] {
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+  font-weight: 700;
+  background-color: #52525b80;
+}
+
+[data-chars-id] {
+  border-bottom-width: 2px;
+  padding: 0.25rem;
+  box-shadow: 0 0 #000, 0 0 #000;
+}
+
+[data-chars-id='s'],
+[data-chars-id='v'],
+[data-chars-id='i'] {
+  --border-opacity: 1;
+  font-weight: 700;
+  --text-opacity: 1;
+}
+
+[data-chars-id='v'] {
+  border-bottom-color: rgb(219 39 119 / var(--border-opacity));
+  background-color: #9f123980;
+  color: rgb(249 168 212 / var(--text-opacity)) !important;
+}
+
+[data-chars-id='s'] {
+  border-bottom-color: rgb(202 138 4 / var(--border-opacity));
+  background-color: #854d0e80;
+  color: rgb(253 224 71 / var(--text-opacity)) !important;
+}
+
+[data-chars-id='i'] {
+  border-bottom-color: rgb(147 51 234 / var(--border-opacity));
+  background-color: #6b21a880;
+  color: rgb(233 213 255 / var(--text-opacity)) !important;
+}
+
 code {
   font-family: var(--font-mono-default);
   padding: 0.175em 0.375em;
   font-size: min(0.875em, 87.5%);
   background-color: var(--color-neutral-muted);
   border-radius: 6px;
+  counter-reset: line;
+}
+
+code[data-line-numbers] > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+  /* Other styling */
+  display: inline-block;
+  width: 1rem;
+  margin-right: 1rem;
+  text-align: right;
+  color: invert($color: #0000004f);
 }
 
 div[data-rehype-pretty-code-fragment] {
-  pre {
-    // background-color: var(--color-pre-dark);
-    border-radius: var(--border-radius-medium);
-    padding: 0.825rem;
-    overflow-x: auto;
+  div[data-rehype-pretty-code-title] {
+    display: flex;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--border-radius-medium) var(--border-radius-medium) 0 0;
+    background-color: var(--color-canvas-muted);
+    color: var(--color-fg-subtle);
+  }
 
-    code {
-      color: unset;
-      padding: 0;
-      background: none;
-    }
+  & > :first-child {
+    margin-top: 1rem;
+  }
+
+  & > :not(:first-child) {
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  pre {
+    border-radius: var(--border-radius-medium);
+    padding: 0.825rem 0;
+    overflow-x: auto;
+  }
+
+  pre > code {
+    color: unset;
+    padding: unset;
+    background-color: unset;
   }
 }
 

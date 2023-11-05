@@ -86,9 +86,8 @@ export async function getPostData(id: string) {
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true }) // Turn it into HTML.
     .use(rehypePrettyCode, {
-      // keepBackground: false,
       theme: 'github-dark',
-      grid: false
+      // grid: false
     })
     .use(rehypeStringify) // Turn it into HTML.
     .process(frontMatter.content)

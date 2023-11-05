@@ -13,7 +13,17 @@ export function GeneralTitleBar(props: Props) {
   return (
     <div className={classNames(styles.titleBar, props.alter && styles.alterTitleBar)}>
       <MenuBtn isOpen={props.isMenuOpen} onToggle={props.onMenuToggle} />
-      <h3>keguigong</h3>
+      <h3 className={styles.titleText}>
+        <span>k</span>
+        <span>e</span>
+        <span>g</span>
+        <span>u</span>
+        <span>i</span>
+        <span>g</span>
+        <span>o</span>
+        <span>n</span>
+        <span>g</span>
+      </h3>
       <ThemeBtn />
     </div>
   )

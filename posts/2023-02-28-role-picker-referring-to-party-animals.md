@@ -27,7 +27,7 @@ author: keguigong
 
 参考视频中的样子，我们可以搭建起静态的框架。定义一个 `RolePicker` 组件，里面包含了一个由 `RoleAvatar` 组成的列表。
 
-```tsx
+```tsx title="RolePicker.tsx" showLineNumbers
 export default function RolePicker() {
   return (
     <div className={styles['roles-container']}>
@@ -43,7 +43,7 @@ export default function RolePicker() {
 
 `RoleAvatar` 组件有名为 `isActive` 的 props，会影响组件的样式，同时该组件也有自己的样式，针对需要应用多个样式的情况，可以使用 `classNames` 库来合并多个 `className`。
 
-```tsx
+```tsx title="RoleAvatar.tsx" showLineNumbers /isActive/#v /onClick/
 export default function RoleAvatar({ name, onClick, isActive }) {
   return (
     <li onClick={onClick} className={classNames(styles['source-item'], isActive && styles['active'])}>
@@ -67,7 +67,7 @@ export default function RoleAvatar({ name, onClick, isActive }) {
 
 我们可以使用 `animation` 来实现这样的效果，它本身也支持将值设置为多个动画，并逐个执行。因为悬浮效果为变大，所以我们通过 `@keyframes` 定义了一个变大的效果，然后两段动画其实结果一样，只是变化的过程不一样，变化过程我们使用贝塞尔曲线来加以区别。最终的效果如下：
 
-```scss
+```scss title="RoleAvatar.module.scss"
 .avatar-bg {
   ...
   animation: pop 1s cubic-bezier(0.02, 1.2, 1, 1), pop 1s cubic-bezier(0, 0, 0.36, 1.14) infinite alternate;
@@ -86,7 +86,7 @@ export default function RoleAvatar({ name, onClick, isActive }) {
 
 若要实现鼠标拖动的效果，我们可以搭配使用 `onmousedown`，`onmousemove` 以及 `onmouseup` 三个事件来实现。
 
-```tsx
+```tsx title="RolePicker.tsx" showLineNumbers {5-7,10-12}
 useEffect(() => {
   const mousedown = () => setFlag(true)
   const mouseup = () => setFlag(false)
@@ -105,7 +105,7 @@ useEffect(() => {
 
 使用标志 `dragFlag` 来判断当前是否在按住并拖动鼠标，只有按下的时候鼠标移动才被认为是在拖动。同时在鼠标抬起之后需要将标志清除掉。
 
-```ts
+```tsx showLineNumbers
 const [dragFlag, setDragFlag] = useState(false)
 
 function handleMoveStart() {
@@ -132,7 +132,7 @@ function handleMoveEnd() {
 
 同时需要注意一些边界条件，不能将列表拖到容器外。计算容器的宽度以及列表的实际宽度（即滚动宽度 `scrollWidth`），左右两侧需要分别计算。
 
-```ts
+```tsx showLineNumbers
 const slideCallback = useCallback(
   (e: MouseEvent | TouchEvent) => {
     if (domRef.current && conRef.current && moveFlag) {
@@ -152,7 +152,7 @@ const slideCallback = useCallback(
 
 现在我们已经可以正常使用鼠标拖动我们的列表了，但是别忘了添加移动端的支持，我们将触摸滑动的事件对应的也进行一下处理，事件类型有些许区别，在获取指针位置的时候需要注意一下。
 
-```ts
+```tsx showLineNumbers
 const [startX, setStartX] = useState(0)
 
 useEffect(() => {
@@ -176,7 +176,7 @@ useEffect(() => {
 
 这一步我们需要添加方向按键的支持，可以通过左右方向按键切换选中的角色，并将角色自动居中。我们首先监听一下键盘事件，按左方向键选中上一个角色，按右方向键选中下一个角色。
 
-```ts
+```tsx showLineNumbers
 const keyCallback = useCallback((e: KeyboardEvent) => {
   const len = rolesList.length * 2
   if (e.code === 'ArrowLeft') setActive((prev) => (prev - 1 >= 0 ? prev - 1 : 0)), setArrowLeft(1)
@@ -196,7 +196,7 @@ useEffect(() => {
 
 分别计算以当前选中角色的中心为切分点的左边的宽度 `leftWidth` 以及右边的宽度 `rightWidth`， 并将这个结果与容器的一半宽度 `halfConWidth` 做比较，如果 `leftWidth > halfConWidth` 则将位移量设置为差值，反之则不移动，因为已经到了列表的边界了。右侧 `rightWidth` 同理进行计算。
 
-```ts
+```tsx showLineNumbers
 useEffect(() => {
   if (!domRef.current || !conRef.current) return
   const len = rolesList.length * 2
