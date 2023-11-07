@@ -1,8 +1,9 @@
 ---
 title: '了解 JavaScript 的继承与原型链'
 excerpt: '在使用 JavaScript 的时候对原型有一些迷惑，这篇笔记用于理解 JavaScript 原型链以及继承方式'
-date: '2023-11-06'
+date: '2023-10-20'
 author: keguigong
+tags: ['tutorial', 'prototype']
 ---
 
 ### 原型和原型链
@@ -76,8 +77,8 @@ o1.getName() // 'Bob'，可以访问到原型的属性
 除了通过 `new` 创建实例，还可以通过字面量的隐式构造函数创建对象实例。如对象 `{ a: 1 }`、数组 `[]`、正则 `/^hello$/` 都使用了隐式构造函数。
 
 ```js showLineNumbers
-const a1 = [1, 2, 3]
-Object.getPrototypeOf(aq) === Array.prototype // true
+const arr = [1, 2, 3]
+Object.getPrototypeOf(arr) === Array.prototype // true
 ```
 
 构造函数的 `prototype` 默认具有一个 `constructor` 属性，指向构造函数本身，用于记录对象的构造函数。
@@ -134,8 +135,6 @@ Function instanceof Object // true
 // Function --> Function.prototype ---> Object.prototype
 Object instanceof Function // true
 // Object --> Function.prototype
-Object instanceof Object // true
-// Object ---> Function.prototype ---> Object.prototype
 ```
 
 ECMA 对于 Function prototype 对象的说明
@@ -143,8 +142,6 @@ ECMA 对于 Function prototype 对象的说明
 > The Function prototype object is itself a **Function object** (its [[Class]] is "Function") that, when invoked, accepts any arguments and returns undefined.
 >
 > The value of the [[Prototype]] internal property of the Function prototype object is the standard built-in Object prototype object (15.2.4). The initial value of the [[Extensible]] internal property of the Function prototype object is true.
->
-> The Function prototype object does not have a valueOf property of its own; however, it inherits the valueOf property from the Object prototype Object.
 >
 > [_Standard ECMA-262_](https://262.ecma-international.org/5.1/#sec-15.3.4)
 
@@ -155,24 +152,30 @@ ECMA 对于 Function prototype 对象的说明
 
 然后就可以解释通了，`Object.prototype` 是原型链的顶端，它创建了 `Function.prototype`，`Function.prototype` 又创建了 `Object`、`Function` 等构造函数。
 
-```js showLineNumbers
-null <--- Object.prototype <--- Function.prototype <--- Object, Function, Array, String...
+```js
+Object.prototype <--- Function.prototype <--- Object, Function, Array, String...
 ```
 
 ### 改变原型的方法
 
-1. （👍 **推荐**）修改 `__proto__` 指向
+1. `Object.create()`
    ```js showLineNumbers
-   const o = { a: 1 }
-   const p = { b: 2, __proto__: o }
-   // p ---> o ---> Object.prototype ---> null
+   const o1 = { a: 1 }
+   const o2 = Object.create(o1)
+   // o2 ---> o1 ---> Object.prototype ---> null
    ```
-2. 使用 `Object.setPrototypeOf()` 修改
+2. （👍 **推荐**）使用 `__proto__` 访问器
    ```js showLineNumbers
-   const o = { a: 1 }
-   const p = { b: 2 }
-   Object.setPrototypeOf(p, o)
-   // p ---> o ---> Object.prototype ---> null
+   const o1 = { a: 1 }
+   const o2 = { b: 2, __proto__: o1 }
+   // o2 ---> o1 ---> Object.prototype ---> null
+   ```
+3. 使用 `Object.setPrototypeOf()` 修改
+   ```js showLineNumbers
+   const o1 = { a: 1 }
+   const o2 = { b: 2 }
+   Object.setPrototypeOf(o1, o2)
+   // o2 ---> o1 ---> Object.prototype ---> null
    ```
 
 在需要修改原型指向的时候，推荐使用 `__proto__` 直接修改。
