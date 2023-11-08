@@ -10,26 +10,16 @@ import rehypeStringify from 'rehype-stringify'
 import rehypeRaw from 'rehype-raw'
 // import rehypeSanitize from 'rehype-sanitize'
 import yaml from 'js-yaml'
-
 import readingTime from 'reading-time'
 import { getLastModifiedDate } from './git-info'
+import { POSTS_DIR, getEligibleFiles, fileName2Id } from './file-operations'
 
-export const POSTS_DIR = path.join(process.cwd(), 'posts')
-
-function getEligibleFileNames(dir: string) {
-  return fs.readdirSync(dir).filter((filename) => {
-    const extname = path.extname(filename).toLowerCase()
-    return ['.md'].indexOf(extname) > -1
-  })
-}
-
+/** Get sorted posts data for blog list */
 export function getSortedPostsData() {
   // Get file names under /posts
-  const fileNames = getEligibleFileNames(POSTS_DIR)
-
+  const fileNames = getEligibleFiles(POSTS_DIR)
   const allPostsData = fileNames.map((fileName) => {
-    // Remove ".md" from file name to get id
-    const id = fileName.replace(/^\d{4}-\d{1,2}-\d{1,2}-/, '').replace(/\.md$/, '')
+    const id = fileName2Id(fileName)
 
     // Read markdown file as string
     const fullPath = path.join(POSTS_DIR, fileName)
@@ -50,7 +40,7 @@ export function getSortedPostsData() {
   })
 
   // Sort posts by date
-  return allPostsData.sort((a: { [key: string]: any }, b: { [key: string]: any }) => {
+  return allPostsData.sort((a: any, b: any) => {
     if (a.date < b.date) {
       return 1
     } else {
@@ -59,21 +49,22 @@ export function getSortedPostsData() {
   })
 }
 
+/** Get all post ids to generate static paths for dynamic routes */
 export function getAllPostIds() {
-  const fileNames = getEligibleFileNames(POSTS_DIR)
+  const fileNames = getEligibleFiles(POSTS_DIR)
   return fileNames.map((fileName) => {
     return {
       params: {
-        id: fileName.replace(/^\d{4}-\d{1,2}-\d{1,2}-/, '').replace(/\.md$/, '')
+        id: fileName2Id(fileName)
       }
     }
   })
 }
 
+/** Get one post body data */
 export async function getPostData(id: string) {
-  const filename = getEligibleFileNames(POSTS_DIR).find((filename) => filename.indexOf(id) > -1)
-
-  if (!filename) return
+  const filename = getEligibleFiles(POSTS_DIR).find((filename) => filename.indexOf(id) > -1)
+  if (!filename) return {}
 
   const fullPath = path.join(POSTS_DIR, filename)
   const fileContents = fs.readFileSync(fullPath, 'utf-8')
@@ -111,6 +102,7 @@ export async function getPostData(id: string) {
   }
 }
 
+/** Convert markdown to html */
 export function md2html(md: string) {
   const processContent = unified().use(remarkParse).use(remarkRehype).use(rehypeStringify).processSync(md)
   const contentHtml = processContent.toString()
