@@ -3,7 +3,7 @@ import { md2html } from '@/utils/posts'
 
 const siteTitle = 'Photos'
 const description = "Where keguigong's thoughts were built"
-const title = siteTitle + ' - ' + description
+const title = siteTitle + ' - ' + description + ' - ' + '可圭共'
 const md = `
 > 🚧 开发中
 

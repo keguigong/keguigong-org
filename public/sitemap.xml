@@ -14,10 +14,6 @@
     <lastmod>2023-11-08</lastmod>
   </url>
   <url>
-    <loc>https://keguigong.org/post/unstanding-Inheritance-and-the-prototype-chain</loc>
-    <lastmod>2023-11-08</lastmod>
-  </url>
-  <url>
     <loc>https://keguigong.org/post/oversized-text-when-using-pre-and-grid-on-ios</loc>
     <lastmod>2023-11-08</lastmod>
   </url>
@@ -68,5 +64,9 @@
   <url>
     <loc>https://keguigong.org/post/pre-rendering</loc>
     <lastmod>2023-11-01</lastmod>
+  </url>
+  <url>
+    <loc>https://keguigong.org/post/unstanding-inheritance-and-the-prototype-chain</loc>
+    <lastmod></lastmod>
   </url>
 </urlset>

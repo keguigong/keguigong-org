@@ -34,7 +34,7 @@ function App({ Component, pageProps }: AppProps) {
       dispatch(setIsBlogBody(false))
       dispatch(setSecondaryTitle(''))
     }
-  }, [router.asPath])
+  }, [router.asPath, dispatch])
 
   // Listen route change
   const routerChangeStartListener = useCallback(() => {
@@ -55,7 +55,7 @@ function App({ Component, pageProps }: AppProps) {
       router.events.off('routeChangeComplete', routerChangeCompleteListener)
       router.events.off('routeChangeError', routerChangeCompleteListener)
     }
-  }, [routerChangeStartListener, routerChangeCompleteListener])
+  }, [routerChangeStartListener, routerChangeCompleteListener, router.events])
 
   return (
     <>

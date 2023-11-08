@@ -1,10 +1,10 @@
-import Head from "next/head"
-import { getSortedPostsData } from "@/utils/posts"
-import { BlogList } from "@/components/posts"
+import Head from 'next/head'
+import { getSortedPostsData } from '@/utils/posts'
+import { BlogList } from '@/components/posts'
 
-const siteTitle = "Blogs"
+const siteTitle = 'Blogs'
 const description = "Where keguigong's thoughts were built"
-const title = siteTitle + " - " + description
+const title = siteTitle + ' - ' + description + ' - ' + '可圭共'
 
 export default function Home({ allPostsData }: { [key: string]: any }) {
   return (
