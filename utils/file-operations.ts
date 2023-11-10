@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 import fs from 'fs'
 import path from 'path'
 import { getLastModifiedDate } from './git-info'
@@ -25,10 +25,12 @@ export function getSortedPostsIndex() {
     const id = fileName2Id(fileName)
     const fullPath = path.join(POSTS_DIR, fileName)
     const lastModifiedDate = getLastModifiedDate(fullPath)
+    const publishedDate = fileName.slice(0, 10)
 
     return {
       id,
-      lastModifiedDate
+      lastModifiedDate,
+      publishedDate
     }
   })
 

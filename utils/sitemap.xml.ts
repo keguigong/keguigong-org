@@ -17,11 +17,11 @@ function generateSiteMap(posts: any[]) {
   <url>
     <loc>${EXTERNAL_DATA_URL}/photos</loc>
   </url>${posts
-    .map(({ id, lastModifiedDate }) => {
+    .map(({ id, lastModifiedDate, publishedDate }) => {
       return `
   <url>
     <loc>${`${EXTERNAL_DATA_URL}/post/${id}`}</loc>
-    <lastmod>${lastModifiedDate}</lastmod>
+    <lastmod>${publishedDate}</lastmod>
   </url>`
     })
     .join('\r')}
