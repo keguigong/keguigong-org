@@ -10,63 +10,63 @@
     <loc>https://keguigong.org/photos</loc>
   </url>
   <url>
+    <loc>https://keguigong.org/post/unstanding-inheritance-and-the-prototype-chain</loc>
+    <lastmod>2023-11-10</lastmod>
+  </url>
+  <url>
     <loc>https://keguigong.org/post/this-pointer-in-functions</loc>
-    <lastmod>2023-11-07</lastmod>
+    <lastmod>2023-11-08</lastmod>
   </url>
   <url>
     <loc>https://keguigong.org/post/oversized-text-when-using-pre-and-grid-on-ios</loc>
-    <lastmod>2023-10-16</lastmod>
+    <lastmod>2023-11-08</lastmod>
   </url>
   <url>
     <loc>https://keguigong.org/post/recreate-chrome-dino-game</loc>
-    <lastmod>2023-03-29</lastmod>
+    <lastmod>2023-11-08</lastmod>
   </url>
   <url>
     <loc>https://keguigong.org/post/understanding-number-in-javascript</loc>
-    <lastmod>2022-11-23</lastmod>
+    <lastmod>2023-11-07</lastmod>
   </url>
   <url>
     <loc>https://keguigong.org/post/add-dark-mode-support-for-website</loc>
-    <lastmod>2023-02-18</lastmod>
+    <lastmod>2023-11-06</lastmod>
   </url>
   <url>
     <loc>https://keguigong.org/post/role-picker-referring-to-party-animals</loc>
-    <lastmod>2023-02-28</lastmod>
+    <lastmod>2023-11-05</lastmod>
   </url>
   <url>
     <loc>https://keguigong.org/post/longest-palindromic-substring</loc>
-    <lastmod>2023-03-23</lastmod>
+    <lastmod>2023-11-01</lastmod>
   </url>
   <url>
     <loc>https://keguigong.org/post/cancel-requestanimation-callbacks</loc>
-    <lastmod>2023-02-19</lastmod>
+    <lastmod>2023-11-01</lastmod>
   </url>
   <url>
     <loc>https://keguigong.org/post/understanding-throttle-and-debounce</loc>
-    <lastmod>2023-02-15</lastmod>
+    <lastmod>2023-11-01</lastmod>
   </url>
   <url>
     <loc>https://keguigong.org/post/plan-for-year-2023</loc>
-    <lastmod>2023-02-14</lastmod>
+    <lastmod>2023-11-01</lastmod>
   </url>
   <url>
     <loc>https://keguigong.org/post/circular-reference-and-deep-clone</loc>
-    <lastmod>2022-12-28</lastmod>
+    <lastmod>2023-11-01</lastmod>
   </url>
   <url>
     <loc>https://keguigong.org/post/be-a-web-developer</loc>
-    <lastmod>2020-12-06</lastmod>
+    <lastmod>2023-11-01</lastmod>
   </url>
   <url>
     <loc>https://keguigong.org/post/ssg-ssr</loc>
-    <lastmod>2020-01-02</lastmod>
+    <lastmod>2023-11-01</lastmod>
   </url>
   <url>
     <loc>https://keguigong.org/post/pre-rendering</loc>
-    <lastmod>2020-01-01</lastmod>
-  </url>
-  <url>
-    <loc>https://keguigong.org/post/unstanding-inheritance-and-the-prototype-chain</loc>
-    <lastmod>2023-10-20</lastmod>
+    <lastmod>2023-11-01</lastmod>
   </url>
 </urlset>
