@@ -1,22 +1,22 @@
-import { useSpring, animated } from "@react-spring/web"
-import styles from "./theme-icon.module.scss"
+import { useSpring, animated } from '@react-spring/web'
+import styles from './light-dark-icon.module.scss'
 
 type Props = {
   darkMode?: boolean
 }
 
-export default function Icon({ darkMode = false }: Props) {
+export default function LightDarkIcon({ darkMode = false }: Props) {
   const properties = {
     dark: {
       r: 9,
-      transform: "rotate(40deg)",
+      transform: 'rotate(40deg)',
       cx: 12,
       cy: 4,
       opacity: 0
     },
     light: {
       r: 6,
-      transform: "rotate(90deg)",
+      transform: 'rotate(90deg)',
       cx: 30,
       cy: 0,
       opacity: 1
@@ -28,7 +28,7 @@ export default function Icon({ darkMode = false }: Props) {
     }
   }
 
-  const { r, transform, cx, cy, opacity } = properties[darkMode ? "dark" : "light"]
+  const { r, transform, cx, cy, opacity } = properties[darkMode ? 'dark' : 'light']
 
   const svgContainerProps = useSpring({ transform, config: properties.springConfig })
   const centerCircleProps = useSpring({ r, config: properties.springConfig })
@@ -49,21 +49,9 @@ export default function Icon({ darkMode = false }: Props) {
     >
       <mask id="mask">
         <rect x="0" y="0" width="100%" height="100%" fill="white" />
-        <animated.circle
-          cx={maskedCircleProps.cx}
-          cy={maskedCircleProps.cy}
-          r="9"
-          strokeWidth="0"
-          fill="black"
-        />
+        <animated.circle cx={maskedCircleProps.cx} cy={maskedCircleProps.cy} r="9" strokeWidth="0" fill="black" />
       </mask>
-      <animated.circle
-        r={centerCircleProps.r}
-        className={styles.circle}
-        cx="12"
-        cy="12"
-        mask="url(#mask)"
-      />
+      <animated.circle r={centerCircleProps.r} className={styles.circle} cx="12" cy="12" mask="url(#mask)" />
       <animated.g style={linesProps}>
         <line x1="12" y1="1" x2="12" y2="3" />
         <line x1="12" y1="21" x2="12" y2="23" />

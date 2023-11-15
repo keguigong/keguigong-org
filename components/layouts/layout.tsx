@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { getIsHome, getIsBlogBody } from '@/store/header-slice'
 import styles from './layout.module.scss'
 import { Header } from '@/components/header'
+import { ThemeBtn } from '@/components/header/theme-btn'
 
 type Props = {
   children?: JSX.Element

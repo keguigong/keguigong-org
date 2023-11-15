@@ -12,10 +12,10 @@ function generateSiteMap(posts: any[]) {
     <loc>${EXTERNAL_DATA_URL}</loc>
   </url>
   <url>
-    <loc>${EXTERNAL_DATA_URL}/works</loc>
+    <loc>${EXTERNAL_DATA_URL}/work</loc>
   </url>
   <url>
-    <loc>${EXTERNAL_DATA_URL}/photos</loc>
+    <loc>${EXTERNAL_DATA_URL}/photo</loc>
   </url>${posts
     .map(({ id, lastModifiedDate }) => {
       return `

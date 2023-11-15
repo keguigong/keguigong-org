@@ -39,11 +39,11 @@ function App({ Component, pageProps }: AppProps) {
   // Listen route change
   const routerChangeStartListener = useCallback(() => {
     dispatch(setRouteChangeStart(true))
-    console.log('start')
+    // console.log('start')
   }, [])
   const routerChangeCompleteListener = useCallback(() => {
     dispatch(setRouteChangeStart(false))
-    console.log('complete')
+    // console.log('complete')
   }, [])
 
   useEffect(() => {

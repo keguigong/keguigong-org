@@ -1,15 +1,3 @@
-.svg {
-  color: rgba(var(--foreground-rgb), 0.5);
-  stroke: currentColor;
-  fill: none;
-  height: 20px;
-}
-
-.circle {
-  stroke-width: 0;
-  fill: currentColor;
-}
-
 .button {
   color: var(--color-fg-default);
   background-color: transparent;
@@ -17,7 +5,7 @@
   border-radius: var(--border-radius-small);
   border: none;
   padding: 3px;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   width: 2rem;

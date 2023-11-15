@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useMemo, useState } from "react"
-import { setColorMode, COLOR_MODE, getSystemPrefersColorScheme } from "@/utils/color-mode"
-import Icon from "./theme-icon"
-import styles from "./theme-icon.module.scss"
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { setColorMode, COLOR_MODE, getSystemPrefersColorScheme } from '@/utils/color-mode'
+import Icon from './light-dark-icon'
+import styles from './theme-btn.module.scss'
 
 export const ThemeBtn = () => {
   const [mode, setMode] = useState(() => getSystemPrefersColorScheme())
@@ -14,11 +14,11 @@ export const ThemeBtn = () => {
   }, [])
 
   useEffect(() => {
-    const darkModePreference = window.matchMedia("(prefers-color-scheme: dark)")
-    darkModePreference.addEventListener("change", onColorPreferenceChange)
+    const darkModePreference = window.matchMedia('(prefers-color-scheme: dark)')
+    darkModePreference.addEventListener('change', onColorPreferenceChange)
 
     return () => {
-      darkModePreference.removeEventListener("change", onColorPreferenceChange)
+      darkModePreference.removeEventListener('change', onColorPreferenceChange)
     }
   }, [onColorPreferenceChange])
 

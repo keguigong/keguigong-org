@@ -4,7 +4,6 @@ import { setSecondaryTitle } from '@/store/header-slice'
 import { getAllPostIds, getPostData } from '@/utils/posts'
 import { MetaInfo } from '@/components'
 import { useEffect } from 'react'
-import Link from 'next/link'
 
 const description = "Where keguigong's thoughts were built"
 
@@ -37,7 +36,6 @@ export default function Post({ postData }: Props) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <div data-markdown-body>
-        <Link href="/">← Back</Link>
         <h1 id="markdown-title">{postData.title}</h1>
         <MetaInfo meta={postData} author />
         <article dangerouslySetInnerHTML={{ __html: postData.contentHtml!! }}></article>

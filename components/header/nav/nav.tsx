@@ -17,11 +17,6 @@ export function Nav(props: Props) {
             Home
           </Link>
         </li>
-        {/* <li>
-          <Link className={styles.navLink} href="/blogs">
-            Blogs
-          </Link>
-        </li> */}
         <li>
           <Link className={styles.navLink} href="/works">
             Works
