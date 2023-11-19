@@ -19,7 +19,7 @@ author: keguigong
 
 查看 [在线演示](https://keguigong.github.io/role-picker-referring-to-party-animals/)。
 
-![role-picker.gif](/blogcontent/party-animals-picker-progressive.jpg)
+![Role Picker](/blogcontent/party-animals-picker-progressive.jpg)
 
 我们参考 React 官方指导手册 [Thinking in React](https://reactjs.org/docs/thinking-in-react.html) 来进行开发。
 

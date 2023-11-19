@@ -42,3 +42,8 @@ export function getSortedPostsIndex() {
     }
   })
 }
+
+export function getLastedUpdatedPostDate() {
+  const sortedPosts = getSortedPostsIndex()
+  return sortedPosts.length ? sortedPosts[0].lastModifiedDate : null
+}

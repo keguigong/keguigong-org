@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://keguigong.org</loc>
+    <loc>https://keguigong.org</loc>    
+    <lastmod>2023-11-10</lastmod>
+    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://keguigong.org/works</loc>
+    <loc>https://keguigong.org/work</loc>
+    <lastmod>2023-11-16</lastmod>
   </url>
   <url>
-    <loc>https://keguigong.org/photos</loc>
+    <loc>https://keguigong.org/photo</loc>
+    <lastmod>2023-11-16</lastmod>
   </url>
   <url>
     <loc>https://keguigong.org/post/unstanding-inheritance-and-the-prototype-chain</loc>
