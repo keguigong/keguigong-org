@@ -1,6 +1,7 @@
 .contentLayout {
   max-width: 48rem;
   padding: 0 1rem;
+  padding-bottom: calc(2rem + env(safe-area-inset-bottom));
   margin: 1rem auto 0rem;
   margin-top: 1rem;
   transition: max-width 0.1s ease-in;

@@ -104,7 +104,12 @@ export async function getPostData(id: string) {
 
 /** Convert markdown to html */
 export function md2html(md: string) {
-  const processContent = unified().use(remarkParse).use(remarkRehype).use(rehypeStringify).processSync(md)
+  const processContent = unified()
+    .use(remarkParse)
+    .use(remarkGfm)
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeStringify)
+    .processSync(md)
   const contentHtml = processContent.toString()
   return contentHtml
 }

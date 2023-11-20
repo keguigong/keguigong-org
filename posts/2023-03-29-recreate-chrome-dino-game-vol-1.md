@@ -35,32 +35,60 @@ drawImage(image: CanvasImageSource, sx: number, sy: number, sw: number, sh: numb
 
 ## 帧序列动画
 
-小恐龙的动作切换是使用的帧序帧动画。
+小恐龙的动作切换是使用的帧序帧动画，用奔跑的动画来说明
 
-```ts title="Trex.ts" showLineNumbers
-Trex.animFrames = {
-  WAITING: {
-    frames: [44, 0],
-    msPerFrame: 1000 / 3
-  },
-  RUNNING: {
-    frames: [88, 132],
-    msPerFrame: 1000 / 12
-  },
-  CRASHED: {
-    frames: [220],
-    msPerFrame: 1000 / 60
-  },
-  JUMPING: {
-    frames: [0],
-    msPerFrame: 1000 / 60
-  },
-  DUCKING: {
-    frames: [264, 323],
-    msPerFrame: 1000 / 8
+```ts showLineNumbers
+const RUNNING = {
+  frames: [88, 132],
+  msPerFrame: 1000 / 12
+}
+```
+
+- `frames` 动画的帧数。奔跑由两帧构成，交替使用形成奔跑的效果
+- `msPerFrame` 每一帧保持的时长。绘制的时候通过浏览器的 `requestAnimationFrame` 来进行绘制，每秒执行 60 次，但是我们两帧切换如果也按照 60 帧则太快了，所以规定了每一帧的时长，间隔 `msPerFrame` 时间切换到下一帧
+
+对应的，在绘制的时候我们动画的时长应当通过时间去计算，而不是帧数，需要将帧数转化为时间。如果按照帧数计算，120FPS 刷新率的设备动画就回避 60FPS 的设备快一倍，显然不是我们期望看到的。
+
+通过如下方法绘制，记录每一帧存在的时长
+
+```ts showLineNumbers {13,16,20}
+class Trex {
+  frames = []
+  msPerFrame: 1000 / 12
+
+  prevTime = 0 // 记录上一次绘制的时间
+  timer = 0 // 记录帧已经存在的时间
+  currentFrame = 0 // 用于记录当前绘制哪一帧
+
+  update() {
+    const now = Date.now()
+    const deltaTime = now - (this.prevTime || now)
+    this.prevTime = now
+    this.timer += deltaTime
+
+    // 如果计时超过一帧的时间，则绘制下一帧
+    if (this.timer >= this.msPerFrame) {
+      this.currentFrame = this.currentFrame === this.frames.length - 1
+        ? 0
+        : this.currentFrame + 1
+      this.timer = 0 // 切换到下一帧后重新开始计时
+    }
   }
 }
 ```
+
+有一些场景需要通过 FPS 进行计算帧动画，但是同样需要将 FPS 转化为时间。如我们定义整个地面移动的速度的时候，一般会定义为每刷新一帧移动的像素距离，如 6 pixel per frame。那我们计算移动的像素可以通过
+
+```ts showLineNumbers
+const FPS = 60
+const msPerFrame = 1000 / FPS
+const currentSpeed = 6
+const deltaTime = now - (prevTime || now)
+
+let distance = (currentSpeed * deltaTime) / msPerFrame
+```
+
+进行计算。
 
 ## 参考文章
 
@@ -68,4 +96,4 @@ Trex.animFrames = {
 - [从 Chrome 小恐龙游戏学习 2D 游戏制作](https://cloud.tencent.com/developer/article/1735228)
 - [Chrome Dino Replica Game in JavaScript | HTML5 Canvas Tutorial](https://morioh.com/p/683df3b011b7)
 - [Dinosaur Game Chrome - CodePen](https://codepen.io/MysticReborn/pen/rygqao)
-- [Chrome 小恐龙游戏源码探究一 -- 绘制静态地面 #4](https://github.com/liuyib/blog/issues/4)
+- [Chrome 小恐龙游戏源码探究](https://github.com/liuyib/blog/issues/4)
