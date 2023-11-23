@@ -54,9 +54,10 @@ export function getAllPostIds() {
   const fileNames = getEligibleFiles(POSTS_DIR)
   return fileNames.map((fileName) => {
     return {
-      params: {
-        id: fileName2Id(fileName)
-      }
+      // params: {
+      //   id: fileName2Id(fileName)
+      // }
+      id: fileName2Id(fileName)
     }
   })
 }

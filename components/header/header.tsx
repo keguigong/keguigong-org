@@ -1,19 +1,14 @@
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
-import classNames from 'classnames'
-import { useSelector } from 'react-redux'
-import { getIsBlogBody, getSecondaryTitle, getIsHome } from '@/store/header-slice'
-import { GeneralTitleBar, PlainTitleBar } from './title-bar'
-import { Nav } from './nav'
-import styles from './header.module.scss'
+import { useState, useEffect } from "react"
+import classNames from "classnames"
+import { GeneralTitleBar, PlainTitleBar } from "./title-bar"
+import { Nav } from "./nav"
+import styles from "./header.module.scss"
+import { usePathname } from "next/navigation"
 
 export const Header = () => {
   const [scrollTop, setScrollTop] = useState({ top: 0, deltaY: 0 })
   const [visibility, setVisibility] = useState({ menu: false, backtop: true })
-  const isHome = useSelector(getIsHome)
-  const secondaryTitle = useSelector(getSecondaryTitle)
-  const isBlogBody = useSelector(getIsBlogBody)
-  const router = useRouter()
+  const path = usePathname()
 
   // Watch and calc the movement in Y-Axis
   useEffect(() => {
@@ -22,10 +17,10 @@ export const Header = () => {
       const deltaY = top - scrollTop.top
       setScrollTop({ top, deltaY })
     }
-    window.addEventListener('scroll', listener)
+    window.addEventListener("scroll", listener)
 
     return () => {
-      window.removeEventListener('scroll', listener)
+      window.removeEventListener("scroll", listener)
     }
   }, [scrollTop])
 
@@ -43,7 +38,7 @@ export const Header = () => {
 
   // Handle menu btn click
   const handleClose = () => setVisibility((prev) => ({ ...prev, menu: false }))
-  const handleBackToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
+  const handleBackToTop = () => window.scrollTo({ top: 0, behavior: "smooth" })
 
   // const windowRef = useRef<Window | null>(null)
   // useEffect(() => {
@@ -55,7 +50,7 @@ export const Header = () => {
       {/* static header */}
       <header className={styles.header}>
         <div className={classNames(styles.headerContent, styles.titleBarWrapper)}>
-          <PlainTitleBar zen={isBlogBody}></PlainTitleBar>
+          <PlainTitleBar zen={["/", "/work", "/photo"].indexOf(path) === -1}></PlainTitleBar>
         </div>
       </header>
       {/* fixed header */}

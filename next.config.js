@@ -2,9 +2,10 @@ const path = require("path")
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // experimental: {
-  //   appDir: true,
-  // },
+  experimental: {
+    appDir: true
+  },
+  output: "export",
   // Configure pageExtensions to include md and mdx
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   reactStrictMode: true,

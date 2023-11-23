@@ -46,8 +46,6 @@ jobs:
         run: yarn
       - name: Build Production Files
         run: yarn build
-      - name: Export SSG Files
-        run: yarn export
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:

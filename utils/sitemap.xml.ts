@@ -5,8 +5,8 @@ import { getLastModifiedDate } from './git-info'
 
 const EXTERNAL_DATA_URL = 'https://keguigong.org'
 const SITEMAP_PATH = path.join(process.cwd(), 'public/sitemap.xml')
-const workPagePath = path.join(process.cwd(), 'pages', 'work.tsx')
-const photoPagePath = path.join(process.cwd(), 'pages', 'photo.tsx')
+const workPagePath = path.join(process.cwd(), 'app/work', 'page.tsx')
+const photoPagePath = path.join(process.cwd(), 'app/photo', 'page.tsx')
 
 function generateSiteMap(posts: any[]) {
   return `<?xml version="1.0" encoding="UTF-8"?>

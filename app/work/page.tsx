@@ -1,9 +1,12 @@
-import Head from 'next/head'
-import { md2html } from '@/utils/posts'
+import { Metadata } from "next"
+import { description } from "@/package.json"
+import { md2html } from "@/utils/posts"
 
-const siteTitle = 'Works'
-const description = "Where keguigong's thoughts were built"
-const title = siteTitle + ' - ' + description + ' - ' + '可圭共'
+export const metadata: Metadata = {
+  title: `Work - ${description} - 可圭共`,
+  description: "一些平时联系的作品，包括常规的UI功能实现、Canvas小游戏以及其他我感兴趣的内容"
+}
+
 const md = `
 > 🚧 待增加页面样式以及交互。
 
@@ -40,33 +43,7 @@ _一个基础搜索组件，支持节流搜索、请求返回状态显示等。_
 5. [Android自定义控件: 使用自定义 View 绘制一个步进进度条](https://github.com/keguigong/android-step-progress-bar)
 `
 
-export default function Works({ content }: any) {
-  return (
-    <section>
-      <Head>
-        <title>{title}</title>
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="description" content={description} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta
-          property="og:image"
-          content={`https://og-image.vercel.app/${encodeURI(
-            description
-          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
-        />
-        <meta name="og:title" content={siteTitle} />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
-      <div data-markdown-body dangerouslySetInnerHTML={{ __html: content }}></div>
-    </section>
-  )
-}
-
-export async function getStaticProps() {
+export default function Works() {
   const content = md2html(md)
-  return {
-    props: {
-      content
-    }
-  }
+  return <div data-markdown-body dangerouslySetInnerHTML={{ __html: content }}></div>
 }
