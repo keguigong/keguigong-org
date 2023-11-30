@@ -1,18 +1,26 @@
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
-import { unified } from 'unified'
-import remarkParse from 'remark-parse'
-import remarkGfm from 'remark-gfm'
-import remarkRehype from 'remark-rehype'
-import rehypePrettyCode from 'rehype-pretty-code'
-import rehypeStringify from 'rehype-stringify'
-import rehypeRaw from 'rehype-raw'
+import fs from "fs"
+import path from "path"
+import matter from "gray-matter"
+import { unified } from "unified"
+import remarkParse from "remark-parse"
+import remarkGfm from "remark-gfm"
+import remarkRehype from "remark-rehype"
+import rehypePrettyCode from "rehype-pretty-code"
+import rehypeStringify from "rehype-stringify"
+import rehypeRaw from "rehype-raw"
 // import rehypeSanitize from 'rehype-sanitize'
-import yaml from 'js-yaml'
-import readingTime from 'reading-time'
-import { getLastModifiedDate } from './git-info'
-import { POSTS_DIR, getEligibleFiles, fileName2Id } from './file-operations'
+import yaml from "js-yaml"
+import readingTime from "reading-time"
+import { getLastModifiedDate } from "./git-info"
+import { POSTS_DIR, getEligibleFiles, fileName2Id } from "./file-operations"
+
+type PostData = {
+  id: string
+  lastModifiedDate: string
+  contentHtml: string
+  author: string
+  [key: string]: any
+}
 
 /** Get sorted posts data for blog list */
 export function getSortedPostsData() {
@@ -23,7 +31,7 @@ export function getSortedPostsData() {
 
     // Read markdown file as string
     const fullPath = path.join(POSTS_DIR, fileName)
-    const fileContents = fs.readFileSync(fullPath, 'utf-8')
+    const fileContents = fs.readFileSync(fullPath, "utf-8")
 
     // Use gray-matter to parse the post metadata section
     const frontMatter = matter(fileContents)
@@ -63,12 +71,12 @@ export function getAllPostIds() {
 }
 
 /** Get one post body data */
-export async function getPostData(id: string) {
+export async function getPostData(id: string): Promise<PostData> {
   const filename = getEligibleFiles(POSTS_DIR).find((filename) => filename.indexOf(id) > -1)
-  if (!filename) return {}
+  if (!filename) return {} as PostData
 
   const fullPath = path.join(POSTS_DIR, filename)
-  const fileContents = fs.readFileSync(fullPath, 'utf-8')
+  const fileContents = fs.readFileSync(fullPath, "utf-8")
   const lastModifiedDate = getLastModifiedDate(fullPath)
 
   // Use gray-matter to parse the post metadata section
@@ -79,7 +87,7 @@ export async function getPostData(id: string) {
     .use(remarkParse) // Parse markdown.
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true }) // Turn it into HTML.
-    .use(rehypePrettyCode, { theme: 'github-dark' })
+    .use(rehypePrettyCode, { theme: "github-dark" })
     .use(rehypeRaw)
     // .use(rehypeSanitize)
     .use(rehypeStringify) // Turn it into HTML.
@@ -88,8 +96,8 @@ export async function getPostData(id: string) {
   const contentHtml = processContent.toString()
 
   // Parse authors.yaml
-  const yamlPath = path.join(POSTS_DIR, 'authors.yml')
-  const yamlContents = fs.readFileSync(yamlPath, 'utf-8')
+  const yamlPath = path.join(POSTS_DIR, "authors.yml")
+  const yamlContents = fs.readFileSync(yamlPath, "utf-8")
   const authors: any = yaml.load(yamlContents)
   const author = authors[frontMatter.data.author] || null
 

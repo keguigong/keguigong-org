@@ -1,11 +1,8 @@
 const path = require("path")
+const rmAPIRoutes = require("./rm-api-routes")
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true
-  },
-  output: "export",
   // Configure pageExtensions to include md and mdx
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   reactStrictMode: true,
@@ -23,6 +20,11 @@ const nextConfig = {
       ssr: true
     }
   }
+}
+
+if (process.env.NODE_ENV === "production" && process.env.STATIC_EXPORTS === "true") {
+  nextConfig.output = "export"
+  rmAPIRoutes()
 }
 
 // Merge MDX config with Next.js config

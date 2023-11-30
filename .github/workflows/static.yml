@@ -44,6 +44,13 @@ jobs:
           yarn -v
       - name: Install Dependencies
         run: yarn
+      - name: Create .env File
+        run: |
+          touch .env
+          echo ${{ vars.CUSTOM_BUILD_ENV }} >> .env
+          cat .env
+      - name: Build sitemap.xml
+        run: yarn build:sitemap
       - name: Build Production Files
         run: yarn build
       - name: Upload artifact

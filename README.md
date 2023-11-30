@@ -1,5 +1,18 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Deployment Configuration
+
+The app has two parts. Part 1 consiststing of static HTML files was deployed on GitHub Pages. Part 2 includes Next.js API routes, so it need Node runtime, I deployed this part on Vercel.
+
+Use the following configration to differ
+
+```ini
+SITE_NAME=keguigong.org
+SITE_URL=https://keguigong.org
+OG_IMAGE_URL=https://blog-keguigong.vercel.app
+STATIC_EXPORTS=true
+```
+
 ## Getting Started
 
 First, run the development server:

@@ -1,26 +1,26 @@
 import { Metadata } from "next"
 import { getAllPostIds, getPostData } from "@/utils/posts"
 import { MetaInfo } from "@/components"
-import { description } from "@/package.json"
+import { env } from "@/utils/env"
 
 type Props = {
   params: { id: string }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const postData: any = await getPostData(params.id)
+  const { title, excerpt } = await getPostData(params.id)
 
   return {
-    title: `${postData.title} -  ${description} - 可圭共`,
-    description: postData.excerpt || description,
+    title: `${title} | ${env.SITE_NAME}`,
+    description: excerpt,
     openGraph: {
-      title: postData.title,
-      description: postData.excerpt,
-      url: "/",
-      siteName: "keguigong.org",
+      title,
+      description: excerpt,
+      url: `${env.SITE_URL}/post/${params.id}`,
+      siteName: env.SITE_NAME,
       images: [
         {
-          url: `/opengraph?title=${postData.title}&description=${postData.excerpt}`
+          url: `${env.OG_IMAGE_URL}/ogimage?title=${title}&path=${env.SITE_NAME}/post/${params.id}`
         }
       ],
       type: "website"

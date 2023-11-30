@@ -1,10 +1,24 @@
 import { Metadata } from "next"
-import { description } from "@/package.json"
 import { md2html } from "@/utils/posts"
+import { env } from "@/utils/env"
+
+const title = "Work"
+const description = "一些平时练习的作品"
 
 export const metadata: Metadata = {
-  title: `Work - ${description} - 可圭共`,
-  description: "一些平时联系的作品，包括常规的UI功能实现、Canvas小游戏以及其他我感兴趣的内容"
+  title: `${title} | ${env.SITE_NAME}`,
+  description,
+  openGraph: {
+    title,
+    description,
+    url: `${env.SITE_URL}/work`,
+    siteName: env.SITE_NAME,
+    images: [
+      {
+        url: `${env.OG_IMAGE_URL}/ogimage?title=${title}&path=${env.SITE_NAME}/work`
+      }
+    ]
+  }
 }
 
 const md = `

@@ -14,7 +14,7 @@ import {
   getRouteChangeStart
 } from "@/store/header-slice"
 
-import "@/styles/index.scss"
+import "@/styles/global.scss"
 
 function ClientLayout({ children }: { children: React.ReactNode }) {
   const path = usePathname()
@@ -61,7 +61,7 @@ function ClientLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      <Layout>{children}</Layout>
+      <Layout home={path === "/"}>{children}</Layout>
       <PageLoading visible={routeChangeStart}></PageLoading>
     </>
   )

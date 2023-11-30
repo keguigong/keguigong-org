@@ -1,21 +1,24 @@
+import { env } from "@/utils/env"
 import ClientLayout from "./ClientLayout"
 import CustomProvider from "./CustomProvider"
-import { description } from "@/package.json"
+import { URL } from "url"
 
-const baseUrl = process.env.NODE_ENV === "production" ? "https://apis.keguigong.org" : "http://localhost:3000"
+const title = "Welcome to keguigong's homepage"
+const description = "Where keguigong's thoughts were built."
+
+console.log("layout.tsx OG_IMAGE_URL: ", env.OG_IMAGE_URL, new URL(env.OG_IMAGE_URL!))
 
 export const metadata = {
-  metadataBase: new URL(baseUrl),
-  title: "Welcome to keguigong's homepage",
+  title: `${title} | ${env.SITE_NAME}`,
   description,
   openGraph: {
-    title: "Personal blog by keguiong",
+    title,
     description,
-    url: "/",
-    siteName: "keguigong.org",
+    url: `${env.SITE_URL}`,
+    siteName: env.SITE_NAME,
     images: [
       {
-        url: `/opengraph?title=${description}`
+        url: `${env.OG_IMAGE_URL}/ogimage?title=${description}&path=${env.SITE_NAME}`
       }
     ],
     type: "website"

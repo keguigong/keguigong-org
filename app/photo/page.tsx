@@ -1,10 +1,24 @@
 import { Metadata } from "next"
-import { description } from "@/package.json"
 import { md2html } from "@/utils/posts"
+import { env } from "@/utils/env"
+
+const title = "Photo"
+const description = "平时拍摄的一些照片"
 
 export const metadata: Metadata = {
-  title: `Photo - ${description} - 可圭共`,
-  description
+  title: `${title} | ${env.SITE_NAME}`,
+  description,
+  openGraph: {
+    title,
+    description,
+    url: `${env.SITE_URL}/photo`,
+    siteName: env.SITE_NAME,
+    images: [
+      {
+        url: `${env.OG_IMAGE_URL}/ogimage?title=${title}&path=${env.SITE_NAME}/photo`
+      }
+    ]
+  }
 }
 
 const md = `

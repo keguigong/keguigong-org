@@ -1,11 +1,25 @@
 import { Metadata } from "next"
-import { description } from "@/package.json"
 import { getSortedPostsData } from "@/utils/posts"
 import { BlogList } from "@/components/posts"
+import { env } from "@/utils/env"
+
+const title = "Blog"
+const description = "将我的一些思考和学习笔记记录在这儿"
 
 export const metadata: Metadata = {
-  title: `Blog - ${description} - 可圭共`,
-  description: "将我的一些思考和学习笔记记录在这儿"
+  title: `${title} | ${env.SITE_NAME}`,
+  description,
+  openGraph: {
+    title,
+    description,
+    url: `${env.SITE_URL}`,
+    siteName: env.SITE_NAME,
+    images: [
+      {
+        url: `${env.OG_IMAGE_URL}/ogimage?title=${title}&path=${env.SITE_NAME}`
+      }
+    ]
+  }
 }
 
 export default async function Page() {

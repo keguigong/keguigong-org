@@ -1,19 +1,19 @@
-import fs from 'fs'
-import path from 'path'
-import { getLastedUpdatedPostDate, getSortedPostsIndex } from './file-operations'
-import { getLastModifiedDate } from './git-info'
+import fs from "fs"
+import path from "path"
+import { getLastedUpdatedPostDate, getSortedPostsIndex } from "./file-operations"
+import { getLastModifiedDate } from "./git-info"
 
-const EXTERNAL_DATA_URL = 'https://keguigong.org'
-const SITEMAP_PATH = path.join(process.cwd(), 'public/sitemap.xml')
-const workPagePath = path.join(process.cwd(), 'app/work', 'page.tsx')
-const photoPagePath = path.join(process.cwd(), 'app/photo', 'page.tsx')
+const EXTERNAL_DATA_URL = "https://keguigong.org"
+const SITEMAP_PATH = path.join(process.cwd(), "public/sitemap.xml")
+const workPagePath = path.join(process.cwd(), "app/work", "page.tsx")
+const photoPagePath = path.join(process.cwd(), "app/photo", "page.tsx")
 
 function generateSiteMap(posts: any[]) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>${EXTERNAL_DATA_URL}</loc>\
-    ${getLastedUpdatedPostDate() ? `\n    <lastmod>${getLastedUpdatedPostDate()}</lastmod>` : ''}
+    ${getLastedUpdatedPostDate() ? `\n    <lastmod>${getLastedUpdatedPostDate()}</lastmod>` : ""}
     <priority>1.0</priority>
   </url>
   <url>
@@ -31,11 +31,12 @@ function generateSiteMap(posts: any[]) {
     <lastmod>${lastModifiedDate}</lastmod>
   </url>`
     })
-    .join('\r')}
+    .join("\r")}
 </urlset>
 `
 }
 
 const postsData = getSortedPostsIndex()
 const siteMapTxt = generateSiteMap(postsData)
-fs.writeFileSync(SITEMAP_PATH, siteMapTxt, { encoding: 'utf-8' })
+
+fs.writeFileSync(SITEMAP_PATH, siteMapTxt, { encoding: "utf-8" })

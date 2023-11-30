@@ -1,8 +1,7 @@
 import { Metadata } from "next"
-import { description } from "@/package.json"
 
 export const metadata: Metadata = {
-  title: `Not Found - ${description}`
+  title: `Not Found`
 }
 
 export default function NotFound() {
