@@ -19,6 +19,14 @@ const nextConfig = {
     styledComponents: {
       ssr: true
     }
+  },
+  webpack: (config, options) => {
+    config.module.rules.push({
+      test: /\.js.map$/,
+      enforce: "pre",
+      use: ["source-map-loader"]
+    })
+    return config
   }
 }
 

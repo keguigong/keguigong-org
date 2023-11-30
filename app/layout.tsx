@@ -1,14 +1,13 @@
 import { env } from "@/utils/env"
 import ClientLayout from "./ClientLayout"
 import CustomProvider from "./CustomProvider"
-import { URL } from "url"
+import { type Metadata } from "next"
 
 const title = "Welcome to keguigong's homepage"
 const description = "Where keguigong's thoughts were built."
 
-console.log("layout.tsx OG_IMAGE_URL: ", env.OG_IMAGE_URL, new URL(env.OG_IMAGE_URL!))
-
-export const metadata = {
+export const metadata: Metadata = {
+  metadataBase: new URL(env.OG_IMAGE_URL || "/"),
   title: `${title} | ${env.SITE_NAME}`,
   description,
   openGraph: {
@@ -18,7 +17,7 @@ export const metadata = {
     siteName: env.SITE_NAME,
     images: [
       {
-        url: `${env.OG_IMAGE_URL}/ogimage?title=${description}&path=${env.SITE_NAME}`
+        url: `${env.OG_IMAGE_URL}/api/ogimage?title=${description}&path=${env.SITE_NAME}`
       }
     ],
     type: "website"

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     siteName: env.SITE_NAME,
     images: [
       {
-        url: `${env.OG_IMAGE_URL}/ogimage?title=${title}&path=${env.SITE_NAME}/photo`
+        url: `${env.OG_IMAGE_URL}/api/ogimage?title=${title}&path=${env.SITE_NAME}/photo`
       }
     ]
   }

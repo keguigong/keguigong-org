@@ -6,7 +6,7 @@ const path = require("path")
  * @link Understanding "API Routes in Static Export" Warning in Next.js https://nextjs.org/docs/messages/api-routes-static-export
  */
 function rmAPIRoutes() {
-  const APIRoutes = ["app/ogimage"]
+  const APIRoutes = ["app/api/ogimage"]
   const ROOT_DIR = process.cwd()
 
   APIRoutes.forEach((filename) => {

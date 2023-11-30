@@ -1,11 +1,10 @@
+import { NextRequest } from "next/server"
 import puppeteer from "puppeteer"
 import Handlebars from "handlebars"
 import { env } from "@/utils/env"
-import { NextRequest } from "next/server"
 
-// export const runtime = "nodejs"
-
-// export const dynamic = "force-dynamic"
+export const runtime = "nodejs"
+export const dynamic = "force-dynamic"
 
 function getFontSize(title = "") {
   if (!title || typeof title !== "string") return ""
@@ -126,6 +125,8 @@ export async function GET(req: NextRequest) {
 
   // const fontsData = fetch(new URL("./NotoSerifSC-SemiBold.otf", import.meta.url)).then((res) => res.arrayBuffer())
 
+  console.log("__dirname: ", __dirname)
+
   const compiledStyles = Handlebars.compile(templateStyles)({
     fontSize: getFontSize(title)
   })
@@ -138,8 +139,8 @@ export async function GET(req: NextRequest) {
   })
   // Launch Headless browser and capture creenshot
   const browser = await puppeteer.launch({
-    headless: true,
-    args: ["--headless", "--no-sandbox", "--disable-dev-shm-usage"],
+    headless: "new",
+    args: ["--no-sandbox", "--disable-dev-shm-usage"],
     defaultViewport: {
       width: 1200,
       height: 630

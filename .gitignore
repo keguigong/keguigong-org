@@ -37,5 +37,9 @@ yarn-error.log*
 *.tsbuildinfo
 # next-env.d.ts
 
+# editor configuration folder
 .vscode
-**/sitemap.xml
+.idea
+
+public/sitemap.xml
+.cache
