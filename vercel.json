@@ -1,5 +1,5 @@
 {
   "framework": "nextjs",
-  "installCommand": "yarn install && node node_modules/puppeteer/install.mjs",
-  "buildCommand": "bash prebuild.sh && yarn build:sitemap && yarn build"
+  "installCommand": "bash preinstall.sh && yarn install",
+  "buildCommand": "bash prebuild.sh && yarn build:sitemap && yarn build && NODE_ENV=production node node_modules/puppeteer/install.mjs"
 }

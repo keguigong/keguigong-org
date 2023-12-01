@@ -19,6 +19,22 @@ Additional environment variables used in the project are listed below
 - `GITHUB_ACTION` The name of the action currently running, or the id of a step.
 - `VERCEL` An indicator to show that System Environment Variables have been exposed to your project's Deployments.
 
+## Puppeteer Installation Problem
+
+```json
+{
+  "framework": "nextjs",
+  "installCommand": "yarn install && node node_modules/puppeteer/install.mjs",
+  "buildCommand": "bash prebuild.sh && yarn build:sitemap && yarn build"
+}
+```
+
+```json
+{
+  "installCommand": "yarn install && cd node_modules/chrome-aws-lambda/ && npm install"
+}
+```
+
 ## Getting Started
 
 First, run the development server:

@@ -125,7 +125,7 @@ export async function GET(req: NextRequest) {
 
   // const fontsData = fetch(new URL("./NotoSerifSC-SemiBold.otf", import.meta.url)).then((res) => res.arrayBuffer())
 
-  console.log("__dirname: ", __dirname)
+  console.log("ogimage: ", __dirname, process.env.PWD, process.env.PUPPETEER_CACHE_DIR)
 
   const compiledStyles = Handlebars.compile(templateStyles)({
     fontSize: getFontSize(title)
