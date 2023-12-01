@@ -1,5 +1,5 @@
 const path = require("path")
-const rmAPIRoutes = require("./rm-api-routes")
+const customizeNextConfig = require("./customize-next-config")
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -19,21 +19,10 @@ const nextConfig = {
     styledComponents: {
       ssr: true
     }
-  },
-  webpack: (config, options) => {
-    config.module.rules.push({
-      test: /\.js.map$/,
-      enforce: "pre",
-      use: ["source-map-loader"]
-    })
-    return config
   }
 }
 
-if (process.env.NODE_ENV === "production" && process.env.STATIC_EXPORTS === "true") {
-  nextConfig.output = "export"
-  rmAPIRoutes()
-}
+customizeNextConfig(nextConfig)
 
 // Merge MDX config with Next.js config
 module.exports = nextConfig

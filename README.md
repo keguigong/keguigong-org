@@ -13,6 +13,12 @@ OG_IMAGE_URL=https://blog-keguigong.vercel.app
 STATIC_EXPORTS=true
 ```
 
+Additional environment variables used in the project are listed below
+
+- `CI` An indicator that the code is running in a Continuous Integration environment. Both [GitHub Action](https://docs.github.com/en/actions/learn-github-actions/variables#default-environment-variables) and [Vercel](https://vercel.com/docs/projects/environment-variables/system-environment-variables#system-environment-variables) use the same variable name.
+- `GITHUB_ACTION` The name of the action currently running, or the id of a step.
+- `VERCEL` An indicator to show that System Environment Variables have been exposed to your project's Deployments.
+
 ## Getting Started
 
 First, run the development server:

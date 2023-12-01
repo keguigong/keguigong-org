@@ -50,7 +50,7 @@ jobs:
         run: bash prebuild.sh
       - name: Build sitemap.xml
         run: yarn build:sitemap
-      - name: Build Production Files
+      - name: Build Static Files
         run: yarn build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
