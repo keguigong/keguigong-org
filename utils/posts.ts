@@ -12,7 +12,7 @@ import rehypeRaw from "rehype-raw"
 import yaml from "js-yaml"
 import readingTime from "reading-time"
 import { getLastModifiedDate } from "./git-info"
-import { POSTS_DIR, getEligibleFiles, fileName2Id } from "./file-operations"
+import { POSTS_DIR, getEligiblePosts, fileName2Id } from "./file-operations"
 
 type PostData = {
   id: string
@@ -25,7 +25,7 @@ type PostData = {
 /** Get sorted posts data for blog list */
 export function getSortedPostsData() {
   // Get file names under /posts
-  const fileNames = getEligibleFiles(POSTS_DIR)
+  const fileNames = getEligiblePosts(POSTS_DIR)
   const allPostsData = fileNames.map((fileName) => {
     const id = fileName2Id(fileName)
 
@@ -59,7 +59,7 @@ export function getSortedPostsData() {
 
 /** Get all post ids to generate static paths for dynamic routes */
 export function getAllPostIds() {
-  const fileNames = getEligibleFiles(POSTS_DIR)
+  const fileNames = getEligiblePosts(POSTS_DIR)
   return fileNames.map((fileName) => {
     return {
       // params: {
@@ -72,7 +72,7 @@ export function getAllPostIds() {
 
 /** Get one post body data */
 export async function getPostData(id: string): Promise<PostData> {
-  const filename = getEligibleFiles(POSTS_DIR).find((filename) => filename.indexOf(id) > -1)
+  const filename = getEligiblePosts(POSTS_DIR).find((filename) => filename.indexOf(id) > -1)
   if (!filename) return {} as PostData
 
   const fullPath = path.join(POSTS_DIR, filename)
