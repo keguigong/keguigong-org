@@ -1,9 +1,9 @@
 ---
-title: '了解 JavaScript 的继承与原型链'
-excerpt: '在使用 JavaScript 的时候对原型有一些迷惑，这篇笔记用于理解 JavaScript 原型链以及继承方式'
-date: '2023-10-20'
+title: "了解 JavaScript 的继承与原型链"
+excerpt: "在使用 JavaScript 的时候对原型有一些迷惑，这篇笔记用于理解 JavaScript 原型链以及继承方式"
+date: "2023-10-20"
 author: keguigong
-tags: ['tutorial', 'prototype']
+tags: ["tutorial", "prototype"]
 ---
 
 ### 原型和原型链
@@ -58,7 +58,7 @@ o1.b // 2，可以访问原型o2的属性
 
 ```js showLineNumbers {11,15}
 function func() {
-  this.name = 'Bob'
+  this.name = "Bob"
 }
 
 func.prototype.getName = function () {
@@ -94,13 +94,9 @@ Constructor.prototype.constructor === Constructor // true
 
 JavaScript 的原型链层级图可以表示如下
 
-<figure>
-  <img src="/blogcontent/jsobj_full.jpg" alt="JavaScript Object Layout"/>
-  <figcaption>
-  <cite><a href="http://www.mollypages.org/tutorials/js.mp">JavaScript Object Layout</a></cite>
-   from mollypages.org
-</figcaption>
-</figure>
+![JavaScript Object Layout](/blogcontent/jsobj_full.jpg)
+
+_JavaScript Object Layout from [mollypages.org](http://www.mollypages.org/tutorials/js.mp)_
 
 函数对象的原型指向了 `Function.prototype`，普通对象的原型指向了 `Object.prototype`。根据 ECMA 定义，`Function.prototype` 也是一个标准的对象，以 `Object.prototype` 为原型。
 
