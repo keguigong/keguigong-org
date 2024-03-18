@@ -5,10 +5,10 @@ const env = {
   STATIC_EXPORTS: process.env.STATIC_EXPORTS
 }
 
-console.log("\n===========[ENV]============")
+process.env.NODE_ENV === "production" && console.log("\n===========[ENV]============")
 for (let [key, value] of Object.entries(env)) {
   console.log(`${key}: ${value}`)
 }
-console.log("===========[ENV]============\n")
+process.env.NODE_ENV === "production" && console.log("===========[ENV]============\n")
 
 export { env }

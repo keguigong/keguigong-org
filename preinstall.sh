@@ -1,5 +1,0 @@
-#!/bin/bash
-
-echo "\$PWD=$PWD"
-echo "\$PUPPETEER_CACHE_DIR=$PUPPETEER_CACHE_DIR"
-mkdir -p $PUPPETEER_CACHE_DIR

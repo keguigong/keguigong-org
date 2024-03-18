@@ -1,5 +1,4 @@
 const path = require("path")
-const customizeNextConfig = require("./customize-next-config")
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -10,6 +9,7 @@ const nextConfig = {
   images: {
     unoptimized: true
   },
+  output: "export",
   // Read more: https://nextjs.org/docs/basic-features/built-in-css-support#customizing-sass-options
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")]
@@ -39,8 +39,6 @@ const nextConfig = {
     }
   }
 }
-
-customizeNextConfig(nextConfig)
 
 // Merge MDX config with Next.js config
 module.exports = nextConfig

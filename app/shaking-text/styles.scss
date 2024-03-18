@@ -23,7 +23,7 @@
   $symbol: random() > 0.5;
   $symbol1: addOrMinus($symbol);
   $symbol2: minusOradd($symbol);
-  @debug $symbol, $rand;
+  // @debug $symbol, $rand;
 
   @keyframes shaking-#{$i + 1} {
     0% {
