@@ -27,6 +27,16 @@ const nextConfig = {
       use: ["source-map-loader"]
     })
     return config
+  },
+  sassOptions: {
+    logger: {
+      warn: function (message) {
+        console.warn(message)
+      },
+      debug: function (message) {
+        console.log(message)
+      }
+    }
   }
 }
 
