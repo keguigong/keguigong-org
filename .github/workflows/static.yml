@@ -43,7 +43,7 @@ jobs:
           check-latest: false
       - name: Enable `pnpm`
         run: |
-          corepack enable
+          echo -e "\n" | corepack enable
           pnpm -v
       - name: Install Dependencies
         run: pnpm i
