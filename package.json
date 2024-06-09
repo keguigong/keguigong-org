@@ -3,6 +3,7 @@
   "author": "keguigong<keguigong@gmail.com>",
   "description": "Where keguigong's thoughts were built.",
   "version": "0.1.0",
+  "packageManager": "pnpm@9.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",

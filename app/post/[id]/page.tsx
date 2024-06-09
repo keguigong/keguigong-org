@@ -40,7 +40,7 @@ export default async function Post({ params }: Props) {
   )
 }
 
-export const dynamicParams = false
+// export const dynamicParams = false
 
 export async function generateStaticParams() {
   const paths = getAllPostIds()
