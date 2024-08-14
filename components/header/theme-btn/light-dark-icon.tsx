@@ -52,7 +52,6 @@ export default function LightDarkIcon({ darkMode = false }: Props) {
         <animated.circle cx={maskedCircleProps.cx} cy={maskedCircleProps.cy} r="9" strokeWidth="0" fill="black" />
       </mask>
       <animated.circle r={centerCircleProps.r} className={styles.circle} cx="12" cy="12" mask="url(#mask)" />
-      {/* @ts-expect-error */}
       <animated.g style={linesProps}>
         <line x1="12" y1="1" x2="12" y2="3" />
         <line x1="12" y1="21" x2="12" y2="23" />

@@ -87,7 +87,6 @@ export async function getPostData(id: string): Promise<PostData> {
     .use(remarkParse) // Parse markdown.
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true }) // Turn it into HTML.
-    // @ts-expect-error
     .use(rehypePrettyCode, { theme: "github-dark" })
     .use(rehypeRaw)
     // .use(rehypeSanitize)
