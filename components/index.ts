@@ -1,6 +1,6 @@
 "use client"
 
-export { Layout } from "./layouts"
-export { MetaInfo } from "./meta-info"
-export { Date } from "./date"
-export { PageLoading } from "./loading"
+export * from "./layouts"
+export * from "./meta-info"
+export * from "./date"
+export * from "./loading"

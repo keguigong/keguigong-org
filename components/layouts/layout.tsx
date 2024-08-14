@@ -8,7 +8,7 @@ type Props = {
   home?: boolean
 }
 
-export default function Layout({ children, home }: Props) {
+export function Layout({ children, home }: Props) {
   return (
     <>
       <Header />

@@ -1,6 +1,5 @@
 import { env } from "@/utils/env"
 import ClientLayout from "./ClientLayout"
-import CustomProvider from "./CustomProvider"
 import { type Metadata } from "next"
 
 const title = "Welcome to keguigong's homepage"
@@ -34,9 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark">
       <body>
-        <CustomProvider>
-          <ClientLayout>{children}</ClientLayout>
-        </CustomProvider>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   )
