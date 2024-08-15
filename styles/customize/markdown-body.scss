@@ -145,8 +145,8 @@ code[data-line-numbers] > [data-line]::before {
   color: invert($color: #7979794f);
 }
 
-div[data-rehype-pretty-code-fragment] {
-  div[data-rehype-pretty-code-title] {
+[data-rehype-pretty-code-figure] {
+  [data-rehype-pretty-code-title] {
     display: flex;
     padding: 0.5rem 1rem;
     font-size: 0.875em;
