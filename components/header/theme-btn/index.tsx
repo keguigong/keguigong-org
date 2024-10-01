@@ -1,11 +1,47 @@
+import { useCallback, useEffect, useMemo, useState } from "react"
 import { useSpring, animated } from "@react-spring/web"
-import styles from "./light-dark-icon.module.scss"
+import { setColorMode, COLOR_MODE, getSystemPrefersColorScheme } from "@/utils/color-mode"
+import styles from "./index.module.scss"
 
-type Props = {
+export const ThemeBtn = () => {
+  const [mode, setMode] = useState(() => getSystemPrefersColorScheme())
+
+  const animatedIcon = useMemo(() => <Icon darkMode={mode === COLOR_MODE.DARK} />, [mode])
+
+  const onColorPreferenceChange = useCallback((e: MediaQueryListEvent) => {
+    if (e.matches) setMode(COLOR_MODE.DARK)
+    else setMode(COLOR_MODE.LIGHT)
+  }, [])
+
+  useEffect(() => {
+    const darkModePreference = window.matchMedia("(prefers-color-scheme: dark)")
+    darkModePreference.addEventListener("change", onColorPreferenceChange)
+
+    return () => {
+      darkModePreference.removeEventListener("change", onColorPreferenceChange)
+    }
+  }, [onColorPreferenceChange])
+
+  useEffect(() => {
+    setColorMode(mode)
+  }, [mode])
+
+  const toggleColorMode = () => {
+    setMode(mode === COLOR_MODE.DARK ? COLOR_MODE.LIGHT : COLOR_MODE.DARK)
+  }
+
+  return (
+    <button className={styles.button} onClick={toggleColorMode}>
+      {animatedIcon}
+    </button>
+  )
+}
+
+interface Props {
   darkMode?: boolean
 }
 
-export default function LightDarkIcon({ darkMode = false }: Props) {
+export function Icon({ darkMode = false }: Props) {
   const properties = {
     dark: {
       r: 9,

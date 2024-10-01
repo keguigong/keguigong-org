@@ -1,1 +1,1 @@
-export { BlogList } from "./blog-list"
+export { List } from "./list"

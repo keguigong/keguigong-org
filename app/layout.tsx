@@ -1,6 +1,10 @@
-import { env } from "@/utils/env"
 import ClientLayout from "./ClientLayout"
-import { type Metadata } from "next"
+import type { Metadata } from "next"
+
+import { env } from "@/utils/env"
+
+// These styles apply to every route in the application
+import "./global.scss"
 
 const title = "Welcome to keguigong's homepage"
 const description = "Where keguigong's thoughts were built."

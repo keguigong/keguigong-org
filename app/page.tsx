@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import { getSortedPostsData } from "@/utils/posts"
-import { BlogList } from "@/components/posts"
+import { List } from "@/components/posts"
 import { env } from "@/utils/env"
 
 const title = "Blog"
@@ -28,5 +28,5 @@ export default async function Page() {
   // Forward fetched data to your Client Component
   const allPostsData = getSortedPostsData()
 
-  return <BlogList allPostsData={allPostsData}></BlogList>
+  return <List allPostsData={allPostsData}></List>
 }

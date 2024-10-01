@@ -3,7 +3,7 @@ import { getAllPostIds, getPostData } from "@/utils/posts"
 import { MetaInfo } from "@/components"
 import { env } from "@/utils/env"
 
-type Props = {
+interface Props {
   params: { id: string }
 }
 

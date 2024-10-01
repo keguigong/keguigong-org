@@ -50,7 +50,7 @@ jobs:
       - name: Run prebuild.sh
         run: bash prebuild.sh
       - name: Build sitemap.xml
-        run:  pnpm build:sitemap
+        run: pnpm build:sitemap
       - name: Build Static Files
         run: pnpm build
       - name: Upload artifact

@@ -1,1 +1,0 @@
-export { MotionPath } from './motion-path'

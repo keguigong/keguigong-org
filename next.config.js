@@ -1,4 +1,5 @@
 const path = require("path")
+const createMDX = require("@next/mdx")
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -40,5 +41,9 @@ const nextConfig = {
   }
 }
 
+const withMDX = createMDX({
+  // Add markdown plugins here, as desired
+})
+
 // Merge MDX config with Next.js config
-module.exports = nextConfig
+module.exports = withMDX(nextConfig)

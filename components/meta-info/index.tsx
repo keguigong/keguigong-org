@@ -1,7 +1,7 @@
 import { Date } from '@/components/date'
 import styles from './meta-info.module.scss'
 
-type Props = {
+interface Props {
   meta: any
   timetoread?: boolean
   author?: boolean

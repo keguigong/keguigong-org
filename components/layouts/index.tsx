@@ -1,9 +1,9 @@
 import Link from "next/link"
 import { Header } from "@/components/header"
 
-import styles from "./layout.module.scss"
+import styles from "./index.module.scss"
 
-type Props = {
+interface Props {
   children?: React.ReactNode
   home?: boolean
 }

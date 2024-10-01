@@ -1,15 +1,15 @@
-import Link from 'next/link'
+import Link from "next/link"
 
-import styles from './post-item.module.scss'
-import { MetaInfo } from '@/components'
+import styles from "./post.module.scss"
+import { MetaInfo } from "@/components"
 
-type Props = {
+interface Props {
   content: any
 }
 
-export function PostItem({ content }: Props) {
+export function Post({ content }: Props) {
   const { id, date, title, timeToRead, coverImage, excerpt } = content
-  const cups = new Array(Math.ceil(timeToRead.minutes / 5)).fill('☕️').join('')
+  const cups = new Array(Math.ceil(timeToRead.minutes / 5)).fill("☕️").join("")
   const meta = {
     date,
     timeToRead: ` • ${cups} ${timeToRead.text}`
