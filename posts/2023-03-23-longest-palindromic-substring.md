@@ -1,7 +1,7 @@
 ---
-title: '回忆最长回文子串以及动态规划的几种思路'
-date: '2023-03-23'
-hero: '/blogcontent/leetcode-logo.svg'
+title: "回忆最长回文子串以及动态规划的几种思路"
+date: "2023-03-23"
+hero: "/blogcontent/leetcode-logo.svg"
 author: keguigong
 ---
 
@@ -44,13 +44,13 @@ author: keguigong
 ```ts
 function longestPalindrome(s: string) {
   let maxLen = 0
-  let ans = ''
+  let ans = ""
   for (let i = 0; i < s.length; i++) {
     // 长度从1开始变化，直到s的末尾
     for (let len = 1; i + len <= s.length; len++) {
       let str = s.slice(i, i + length)
       // 反转字符串，回文串中心对称，反转相等
-      let reversed = Array.from(str).reverse().join('')
+      let reversed = Array.from(str).reverse().join("")
       if (str === reversed) {
         if (len > maxLen) {
           maxLen = len
@@ -79,7 +79,7 @@ function longestPalindrome(s: string) {
 
 ```ts
 function longestPalindrome(s: string): string {
-  let str = ''
+  let str = ""
   for (let i = 0, start = 0, end = 0; i < s.length; i++) {
     start = i
     end = i

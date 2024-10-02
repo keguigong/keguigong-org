@@ -1,8 +1,8 @@
 ---
-title: '开发一个游戏角色选择器，参考Party Animals风格'
-date: '2023-02-28'
-hero: '/blogcontent/party-animals-logo.png'
-excerpt: 'Party Animals虽然是一款体量较小的游戏，但是不管是游戏美术还是网站设计来说，还是可以看出来是比较追求细节的。'
+title: "开发一个游戏角色选择器，参考Party Animals风格"
+date: "2023-02-28"
+hero: "/blogcontent/party-animals-logo.png"
+excerpt: "Party Animals虽然是一款体量较小的游戏，但是不管是游戏美术还是网站设计来说，还是可以看出来是比较追求细节的。"
 author: keguigong
 ---
 
@@ -30,8 +30,8 @@ author: keguigong
 ```tsx title="RolePicker.tsx" showLineNumbers
 export default function RolePicker() {
   return (
-    <div className={styles['roles-container']}>
-      <ul className={styles['source-item-wrap']}>
+    <div className={styles["roles-container"]}>
+      <ul className={styles["source-item-wrap"]}>
         {rolesList.map((role, index) => (
           <RoleAvatar key={index} name={role} isActive={index === 0} />
         ))}
@@ -46,11 +46,11 @@ export default function RolePicker() {
 ```tsx title="RoleAvatar.tsx" showLineNumbers /isActive/#v /onClick/
 export default function RoleAvatar({ name, onClick, isActive }) {
   return (
-    <li onClick={onClick} className={classNames(styles['source-item'], isActive && styles['active'])}>
-      <div className={styles['avatar-wrap']}>
-        <img className={styles['avatar-bg']} src="/articlecontent/party-animals/characters_avatar_hover.png" />
+    <li onClick={onClick} className={classNames(styles["source-item"], isActive && styles["active"])}>
+      <div className={styles["avatar-wrap"]}>
+        <img className={styles["avatar-bg"]} src="/articlecontent/party-animals/characters_avatar_hover.png" />
         <img
-          className={styles['avatar-source']}
+          className={styles["avatar-source"]}
           src={`/articlecontent/party-animals/characters_${name}_avatar.png`}
           alt={name}
         />
@@ -91,14 +91,14 @@ useEffect(() => {
   const mousedown = () => setFlag(true)
   const mouseup = () => setFlag(false)
   const block = domRef.current
-  block?.addEventListener('mousedown', mousedown)
-  window.addEventListener('mousemove', slideCallback)
-  window.addEventListener('mouseup', mouseup)
+  block?.addEventListener("mousedown", mousedown)
+  window.addEventListener("mousemove", slideCallback)
+  window.addEventListener("mouseup", mouseup)
 
   return () => {
-    block?.removeEventListener('mousedown', mousedown)
-    window.removeEventListener('mousemove', slideCallback)
-    window.removeEventListener('mouseup', mouseup)
+    block?.removeEventListener("mousedown", mousedown)
+    window.removeEventListener("mousemove", slideCallback)
+    window.removeEventListener("mouseup", mouseup)
   }
 }, [domRef, slideCallback])
 ```
@@ -146,7 +146,7 @@ const slideCallback = useCallback(
       setLeft(newLeft)
     }
   },
-  [domRef, conRef, moveFlag, left, startX]
+  [domRef, conRef, moveFlag, left, startX],
 )
 ```
 
@@ -158,14 +158,14 @@ const [startX, setStartX] = useState(0)
 useEffect(() => {
   const touchstart = (e: TouchEvent) => (setFlag(true), setStartX(e.touches[0].clientX))
   const touchend = (e: TouchEvent) => setFlag(true)
-  block?.addEventListener('touchstart', touchstart)
-  window.addEventListener('touchmove', slideCallback)
-  window.addEventListener('touchend', touchend)
+  block?.addEventListener("touchstart", touchstart)
+  window.addEventListener("touchmove", slideCallback)
+  window.addEventListener("touchend", touchend)
 
   return () => {
-    block?.removeEventListener('touchstart', touchstart)
-    window.removeEventListener('touchmove', slideCallback)
-    window.removeEventListener('touchend', touchend)
+    block?.removeEventListener("touchstart", touchstart)
+    window.removeEventListener("touchmove", slideCallback)
+    window.removeEventListener("touchend", touchend)
   }
 }, [domRef, slideCallback])
 ```
@@ -179,15 +179,15 @@ useEffect(() => {
 ```tsx showLineNumbers
 const keyCallback = useCallback((e: KeyboardEvent) => {
   const len = rolesList.length * 2
-  if (e.code === 'ArrowLeft') setActive((prev) => (prev - 1 >= 0 ? prev - 1 : 0)), setArrowLeft(1)
-  else if (e.code === 'ArrowRight') setActive((prev) => (prev + 1 <= len - 1 ? prev + 1 : len - 1)), setArrowLeft(-1)
+  if (e.code === "ArrowLeft") setActive((prev) => (prev - 1 >= 0 ? prev - 1 : 0)), setArrowLeft(1)
+  else if (e.code === "ArrowRight") setActive((prev) => (prev + 1 <= len - 1 ? prev + 1 : len - 1)), setArrowLeft(-1)
   else return
 }, [])
 
 useEffect(() => {
-  window.addEventListener('keydown', keyCallback)
+  window.addEventListener("keydown", keyCallback)
   return () => {
-    window.removeEventListener('keydown', keyCallback)
+    window.removeEventListener("keydown", keyCallback)
   }
 }, [keyCallback])
 ```
@@ -237,11 +237,11 @@ useEffect(() => {
 ```tsx
 <div>
   ...
-  <div className={styles['left-arrow']} onClick={() => keyCallback({ code: 'ArrowLeft' } as KeyboardEvent)}>
-    <div className={styles['arrow-icon-left']}></div>
+  <div className={styles["left-arrow"]} onClick={() => keyCallback({ code: "ArrowLeft" } as KeyboardEvent)}>
+    <div className={styles["arrow-icon-left"]}></div>
   </div>
-  <div className={styles['right-arrow']} onClick={() => keyCallback({ code: 'ArrowRight' } as KeyboardEvent)}>
-    <div className={styles['arrow-icon-right']}></div>
+  <div className={styles["right-arrow"]} onClick={() => keyCallback({ code: "ArrowRight" } as KeyboardEvent)}>
+    <div className={styles["arrow-icon-right"]}></div>
   </div>
   ...
 </div>

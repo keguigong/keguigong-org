@@ -33,7 +33,9 @@
   margin: 0;
   --text-color-start: rgb(244 102 158);
   --text-color-end: rgb(113 47 147);
-  transition: --text-color-start 0.5s, --text-color-end 0.5s;
+  transition:
+    --text-color-start 0.5s,
+    --text-color-end 0.5s;
   background-image: linear-gradient(45deg, var(--text-color-start), var(--text-color-end));
   background-clip: text;
   color: transparent;

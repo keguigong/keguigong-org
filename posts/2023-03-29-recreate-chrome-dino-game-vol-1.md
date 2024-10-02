@@ -1,7 +1,7 @@
 ---
-title: '开发Chrome小恐龙游戏Vol. 1：了解帧序列动画'
-excerpt: 'Chrome Dino是Google开发的一款内置于Chrome的游戏，用于离线时打发时间。这个游戏很小，非常适合用来学习Canvas绘图以及了解基础的游戏开发环节。'
-date: '2023-03-29'
+title: "开发Chrome小恐龙游戏Vol. 1：了解帧序列动画"
+excerpt: "Chrome Dino是Google开发的一款内置于Chrome的游戏，用于离线时打发时间。这个游戏很小，非常适合用来学习Canvas绘图以及了解基础的游戏开发环节。"
+date: "2023-03-29"
 author: keguigong
 ---
 
@@ -40,7 +40,7 @@ drawImage(image: CanvasImageSource, sx: number, sy: number, sw: number, sh: numb
 ```ts showLineNumbers
 const RUNNING = {
   frames: [88, 132],
-  msPerFrame: 1000 / 12
+  msPerFrame: 1000 / 12,
 }
 ```
 

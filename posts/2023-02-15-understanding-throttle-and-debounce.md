@@ -1,7 +1,7 @@
 ---
-title: 'JavaScript小知识：了解节流和防抖'
-date: '2023-02-15'
-hero: '/blogcontent/debounceThrottle.svg'
+title: "JavaScript小知识：了解节流和防抖"
+date: "2023-02-15"
+hero: "/blogcontent/debounceThrottle.svg"
 author: keguigong
 ---
 

@@ -1,7 +1,7 @@
 export const COLOR_MODE = {
   DARK: "dark",
   LIGHT: "light",
-  AUTO: "auto"
+  AUTO: "auto",
 }
 
 export function setColorMode(mode: string) {

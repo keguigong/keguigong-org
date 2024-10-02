@@ -1,8 +1,8 @@
 ---
-title: '在iOS上使用pre搭配grid布局时, 文本大小显示异常'
-date: '2023-10-16'
+title: "在iOS上使用pre搭配grid布局时, 文本大小显示异常"
+date: "2023-10-16"
 author: keguigong
-tags: ['problem', 'css']
+tags: ["problem", "css"]
 ---
 
 近日想优化一下 Markdown 代码块的显示，所以引入了 [rehype-pretty-code](https://rehype-pretty-code.netlify.app/) 用于代码块的解析和高亮。

@@ -1,6 +1,6 @@
 ---
-title: '如何为网站添加暗黑模式并手动切换'
-date: '2023-02-18'
+title: "如何为网站添加暗黑模式并手动切换"
+date: "2023-02-18"
 author: keguigong
 ---
 
@@ -69,19 +69,19 @@ blockquote {
 我们使用搭配按钮以及 js 对 `html` 标签上添加 `dark/light`的 `class`，实现覆盖变量，主题得以切换。首先我们要获取到当前系统的主题设置，通过
 
 ```ts
-window.matchMedia('(prefers-color-scheme: dark)').matches
+window.matchMedia("(prefers-color-scheme: dark)").matches
 ```
 
 来查询当前是否为暗黑模式，然后设置当前主题，使用函数 `setMode`，然后我们也不希望刷新页面导致主题丢失，所以将主题名称保存在 `localStorage` 中。
 
 ```ts title="theme.ts" showLineNumbers
 export function setMode(darkMode: boolean) {
-  if (typeof document == 'undefined') return
+  if (typeof document == "undefined") return
   let classNames = document.documentElement.classList
-  if (classNames.contains('dark')) classNames.remove('dark')
-  if (classNames.contains('light')) classNames.remove('light')
-  classNames.add(darkMode ? 'dark' : 'light')
-  localStorage.setItem('darkMode', darkMode ? 'dark' : 'light')
+  if (classNames.contains("dark")) classNames.remove("dark")
+  if (classNames.contains("light")) classNames.remove("light")
+  classNames.add(darkMode ? "dark" : "light")
+  localStorage.setItem("darkMode", darkMode ? "dark" : "light")
 }
 ```
 
@@ -89,12 +89,12 @@ export function setMode(darkMode: boolean) {
 
 ```ts showLineNumbers
 export function checkDarkMode() {
-  if (typeof window === 'undefined') return false
-  let localMode = localStorage.getItem('darkMode')
-  if (localMode === 'dark' || localMode === 'light') {
-    return localMode === 'dark'
+  if (typeof window === "undefined") return false
+  let localMode = localStorage.getItem("darkMode")
+  if (localMode === "dark" || localMode === "light") {
+    return localMode === "dark"
   } else {
-    const darkModeMedia = window.matchMedia('(prefers-color-scheme: dark)')
+    const darkModeMedia = window.matchMedia("(prefers-color-scheme: dark)")
     return darkModeMedia.matches
   }
 }
@@ -158,11 +158,11 @@ export function checkDarkMode() {
 
 ```ts title="theme.ts" showLineNumbers
 export function clearMode() {
-  if (typeof document == 'undefined') return
+  if (typeof document == "undefined") return
   let classNames = document.documentElement.classList
-  if (classNames.contains('dark')) classNames.remove('dark')
-  if (classNames.contains('light')) classNames.remove('light')
-  localStorage.removeItem('darkMode')
+  if (classNames.contains("dark")) classNames.remove("dark")
+  if (classNames.contains("light")) classNames.remove("light")
+  localStorage.removeItem("darkMode")
 }
 ```
 
@@ -172,11 +172,11 @@ export function clearMode() {
 
 ```ts showLineNumbers
 export function watchDarkMode(cb: (e: boolean) => void) {
-  if (typeof window === 'undefined') return () => {}
-  const darkModeMedia = window.matchMedia('(prefers-color-scheme: dark)')
+  if (typeof window === "undefined") return () => {}
+  const darkModeMedia = window.matchMedia("(prefers-color-scheme: dark)")
   const listener = () => cb.call(undefined, darkModeMedia.matches)
-  darkModeMedia.addEventListener('change', listener)
-  return () => darkModeMedia.removeEventListener('change', listener)
+  darkModeMedia.addEventListener("change", listener)
+  return () => darkModeMedia.removeEventListener("change", listener)
 }
 ```
 

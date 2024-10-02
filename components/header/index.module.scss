@@ -2,7 +2,9 @@
 .header {
   width: 100vw;
   overflow-y: hidden;
-  transition: var(--color-transition-default), height 0.2s ease-in-out;
+  transition:
+    var(--color-transition-default),
+    height 0.2s ease-in-out;
   background-color: rgba(var(--color-canvas-default-rgb), 0.8);
   backdrop-filter: blur(5px);
 }

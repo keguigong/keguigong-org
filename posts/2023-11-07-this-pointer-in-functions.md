@@ -1,9 +1,9 @@
 ---
-title: '函数中的this指针到底指向哪儿？'
-excerpt: 'JavaScipt是动态作用域，对于函数内部的this指针，其指向也是动态的'
-date: '2023-11-07'
+title: "函数中的this指针到底指向哪儿？"
+excerpt: "JavaScipt是动态作用域，对于函数内部的this指针，其指向也是动态的"
+date: "2023-11-07"
 author: keguigong
-tags: ['tutorial', 'function', 'this']
+tags: ["tutorial", "function", "this"]
 ---
 
 ### `this` 的指向问题
@@ -25,12 +25,12 @@ tags: ['tutorial', 'function', 'this']
 函数的 `this` 与声明函数所在的位置无关，而与调用者有关。通过 `obj.sayHello` 调用则指向 `obj`，如果直接调用则指向 `window`。
 
 ```js title="Example 1" showLineNumbers
-var name = 'window'
+var name = "window"
 const obj = {
-  name: 'obj',
+  name: "obj",
   sayHello: function () {
     console.log(this.name)
-  }
+  },
 }
 const sayHello = obj.sayHello
 
@@ -42,13 +42,13 @@ sayHello() // 'window'
 
 ```js title="Example 2" showLineNumbers {4}
 const obj1 = {
-  name: 'obj1',
+  name: "obj1",
   obj2: {
-    name: 'obj2',
+    name: "obj2",
     sayHello: function () {
       console.log(this.name)
-    }
-  }
+    },
+  },
 }
 
 obj1.obj2.sayHello() // 'obj2'
@@ -59,12 +59,12 @@ obj1.obj2.sayHello() // 'obj2'
 对于 Example 1，我们把 `sayHello` 改造为箭头函数。
 
 ```js showLineNumbers {4-6}
-var name = 'window'
+var name = "window"
 const obj = {
-  name: 'obj',
+  name: "obj",
   sayHello: () => {
     console.log(this.name)
-  }
+  },
 }
 const sayHello = obj.sayHello
 
@@ -77,15 +77,15 @@ sayHello() // 'window'
 我们将箭头函数放置在一个函数作用域内，则作用域的 `this` 就是箭头函数的 `this`。箭头函数 `say` 在函数作用域 `sayHello` 中，所以 `say` 的指向作用域 `sayHello` 指向的对象 `obj`。
 
 ```js showLineNumbers {5-8}
-var name = 'window'
+var name = "window"
 const obj = {
-  name: 'obj',
+  name: "obj",
   sayHello: function () {
     let say = () => {
       console.log(this.name)
     }
     return say
-  }
+  },
 }
 
 var sayHello = obj.sayHello()
@@ -95,10 +95,10 @@ sayHello() // 'obj'
 可以通过改变作用域 `this` 的指向改变箭头函数的指向。
 
 ```js showLineNumbers
-var name = 'window'
+var name = "window"
 
 function foo() {
-  this.name = 'function'
+  this.name = "function"
 
   const sayHello = () => {
     console.log(this.name)
@@ -116,16 +116,16 @@ new foo() // 'function'
 注意，一定要是**声明**该函数所在的作用域指向的对象，并不是调用的位置。如果 `say` 声明在全局，那么他的作用域就是 `window`，只有作用域的 `this` 才会影响箭头函数的 `this`。
 
 ```js showLineNumbers {2-4,8-9}
-var name = 'window'
+var name = "window"
 const say = () => {
   console.log(this.name)
 }
 const obj = {
-  name: 'obj',
+  name: "obj",
   sayHello: function () {
     let s = say
     return s
-  }
+  },
 }
 
 var sayHello = obj.sayHello()
@@ -137,9 +137,9 @@ sayHello() // 'window'
 针对内置函数 `setTimeout` 等，如果使用普通函数，则调用的时候 `this` 指向的是 `window`。直接使用箭头函数则化解这一问题，因为箭头函数的 `this` 是作用域的 `this`。
 
 ```js showLineNumbers {5,10}
-var name = 'window'
+var name = "window"
 const obj = {
-  name: 'obj',
+  name: "obj",
   sayHello1: function () {
     setTimeout(function () {
       console.log(this.name)
@@ -149,7 +149,7 @@ const obj = {
     setTimeout(() => {
       console.log(this.name)
     })
-  }
+  },
 }
 
 obj.sayHello1() // 'window'
@@ -161,8 +161,8 @@ obj.sayHello2() // 'obj'
 通过 `apply`、`call`、`bind`可以改变函数 `this` 的指向。对于箭头函数，不可绑定 `this`。
 
 ```js showLineNumbers
-const obj1 = { name: 'obj1' }
-const obj2 = { name: 'obj2' }
+const obj1 = { name: "obj1" }
+const obj2 = { name: "obj2" }
 function foo() {
   console.log(this.name)
 }
@@ -181,8 +181,8 @@ function handleClick(e) {
   console.log(this === e.target) // true when target is currentTarget
 }
 
-const element = document.getElementById('#target')
-element.addEventListener('click', handleClick)
+const element = document.getElementById("#target")
+element.addEventListener("click", handleClick)
 ```
 
 ### 严格模式下的 `this`
@@ -190,13 +190,13 @@ element.addEventListener('click', handleClick)
 在非严格模式（[Sloopy Mode](https://developer.mozilla.org/zh-CN/docs/Glossary/Sloppy_mode)）下，如果函数没有明确指定 `this` 的指向，它将指向全局对象（浏览器中为 `window`，node 环境中为 `globalThis`）。而在严格模式（[Strict Mode](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Strict_mode)）下，如果函数没有明确指定 `this` 的指向，它将保持为 `undefined`。
 
 ```js showLineNumbers {1,7}
-'use strict'
+"use strict"
 function foo() {
   console.log(this) // undefined
 }
 // Or inside function scope
 function bar() {
-  'use strict'
+  "use strict"
   console.log(this) // undefined
 }
 ```
@@ -219,17 +219,17 @@ console.log(func1(), func2()) // undefined Foo { func1: [Function: func1], func2
 ```
 
 ```js title="Problem 2" showLineNumbers
-var name = 'window'
+var name = "window"
 function func() {
   console.log(this.name)
 }
 
 const obj = {
-  name: 'obj',
+  name: "obj",
   method: function (fn) {
     fn()
     arguments[0]()
-  }
+  },
 }
 
 obj.method(func, 1) // 'window' undefined(this ---> arguments)

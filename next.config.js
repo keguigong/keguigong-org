@@ -8,37 +8,27 @@ const nextConfig = {
   reactStrictMode: true,
   // Read more: https://nextjs.org/docs/messages/export-image-api
   images: {
-    unoptimized: true
+    unoptimized: true,
   },
   output: "export",
   // Read more: https://nextjs.org/docs/basic-features/built-in-css-support#customizing-sass-options
   sassOptions: {
-    includePaths: [path.join(__dirname, "styles")]
+    includePaths: [path.join(__dirname, "styles")],
   },
   // Read more: https://nextjs.org/docs/advanced-features/compiler#styled-components
   compiler: {
     styledComponents: {
-      ssr: true
-    }
+      ssr: true,
+    },
   },
   webpack: (config, options) => {
     config.module.rules.push({
       test: /\.js.map$/,
       enforce: "pre",
-      use: ["source-map-loader"]
+      use: ["source-map-loader"],
     })
     return config
   },
-  sassOptions: {
-    logger: {
-      warn: function (message) {
-        console.warn(message)
-      },
-      debug: function (message) {
-        console.log(message)
-      }
-    }
-  }
 }
 
 const withMDX = createMDX({

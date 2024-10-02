@@ -1,6 +1,6 @@
 ---
-title: '如何取消requestAnimationFrame发起的动画'
-date: '2023-02-19'
+title: "如何取消requestAnimationFrame发起的动画"
+date: "2023-02-19"
 author: keguigong
 ---
 
@@ -93,7 +93,7 @@ Ball.prototype.update = function (...) {
 const memoLoop = useCallback(canvasCtx && width && height ? loop(canvasCtx, width, height) : () => {}, [
   canvasCtx,
   width,
-  height
+  height,
 ])
 ```
 

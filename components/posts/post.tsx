@@ -12,7 +12,7 @@ export function Post({ content }: Props) {
   const cups = new Array(Math.ceil(timeToRead.minutes / 5)).fill("☕️").join("")
   const meta = {
     date,
-    timeToRead: ` • ${cups} ${timeToRead.text}`
+    timeToRead: ` • ${cups} ${timeToRead.text}`,
   }
 
   return (

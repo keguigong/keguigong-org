@@ -1,13 +1,13 @@
 ---
-title: 'JavaScript对象循环引用和深拷贝'
-date: '2022-12-28'
+title: "JavaScript对象循环引用和深拷贝"
+date: "2022-12-28"
 author: keguigong
 ---
 
 定义一个对象 `a`，`a` 含有属性 `b` 和 `c`，`c` 属性指向自己，即 `a`，则构成循环引用（[Circular Reference](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Memory_Management)）。
 
 ```js
-let a = { b: 'hello world!' }
+let a = { b: "hello world!" }
 a.c = a
 ```
 
@@ -38,7 +38,7 @@ a.c = a
 
 ```js
 function clone(target) {
-  if (typeof target !== 'object') return target
+  if (typeof target !== "object") return target
   let obj = {}
   for (const key in target) {
     obj[key] = clone(target[key])
@@ -55,7 +55,7 @@ function clone(target) {
 function clone(target) {
   const map = new WeakMap()
   function _clone(target) {
-    if (typeof target !== 'object') return target
+    if (typeof target !== "object") return target
     if (map.get(target)) return target
     let res = {}
     map.set(target, res)
@@ -75,7 +75,7 @@ function clone(target) {
   const map = new WeakMap()
 
   function _clone(target) {
-    if (typeof target !== 'object') return target
+    if (typeof target !== "object") return target
     if (map.get(target)) return target
     let res
     if (target instanceof Function) {

@@ -23,7 +23,7 @@ tags: ["tutorial", "usages", "skills"]
 ```js
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
+  output: process.stdout,
 })
 ```
 

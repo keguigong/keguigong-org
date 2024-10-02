@@ -43,7 +43,7 @@ export function getSortedPostsData() {
       id,
       timeToRead,
       ...frontMatter.data,
-      excerpt
+      excerpt,
     }
   })
 
@@ -65,7 +65,7 @@ export function getAllPostIds() {
       // params: {
       //   id: fileName2Id(fileName)
       // }
-      id: fileName2Id(fileName)
+      id: fileName2Id(fileName),
     }
   })
 }
@@ -107,7 +107,7 @@ export async function getPostData(id: string): Promise<PostData> {
     lastModifiedDate,
     contentHtml,
     ...frontMatter.data,
-    author
+    author,
   }
 }
 

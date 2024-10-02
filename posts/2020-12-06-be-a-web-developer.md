@@ -1,7 +1,7 @@
 ---
-title: '作为一名Web开发工程师'
-date: '2020-12-06'
-hero: '/blogcontent/pixeltrue-web-development.svg'
+title: "作为一名Web开发工程师"
+date: "2020-12-06"
+hero: "/blogcontent/pixeltrue-web-development.svg"
 author: keguigong
 ---
 

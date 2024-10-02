@@ -30,7 +30,7 @@ export function getSortedPostsIndex() {
     return {
       id,
       lastModifiedDate,
-      publishedDate
+      publishedDate,
     }
   })
 

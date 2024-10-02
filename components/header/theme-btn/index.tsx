@@ -48,20 +48,20 @@ export function Icon({ darkMode = false }: Props) {
       transform: "rotate(40deg)",
       cx: 12,
       cy: 4,
-      opacity: 0
+      opacity: 0,
     },
     light: {
       r: 6,
       transform: "rotate(90deg)",
       cx: 30,
       cy: 0,
-      opacity: 1
+      opacity: 1,
     },
     springConfig: {
       mass: 4,
       tension: 250,
-      friction: 35
-    }
+      friction: 35,
+    },
   }
 
   const { r, transform, cx, cy, opacity } = properties[darkMode ? "dark" : "light"]
