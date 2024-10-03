@@ -12,4 +12,5 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  darkMode: ["selector", '[data-color-mode="dark"]'],
 }

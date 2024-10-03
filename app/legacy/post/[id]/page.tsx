@@ -20,11 +20,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       siteName: env.SITE_NAME,
       images: [
         {
-          url: `${env.OG_IMAGE_URL}/api/ogimage?title=${title}&path=${env.SITE_NAME}/post/${params.id}`
-        }
+          url: `${env.OG_IMAGE_URL}/api/ogimage?title=${title}&path=${env.SITE_NAME}/post/${params.id}`,
+        },
       ],
-      type: "website"
-    }
+      type: "website",
+    },
   }
 }
 

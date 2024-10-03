@@ -1,43 +1,50 @@
-import ClientLayout from "./ClientLayout"
-import type { Metadata } from "next"
-
-import { env } from "@/utils/env"
-
+import { Layout } from "@/components/layouts"
+import { Header } from "@/components/header"
+import { cat } from "./cat"
 // These styles apply to every route in the application
 import "./global.scss"
+import { Suspense } from "react"
+import { Loading } from "@/components/loading"
 
-const title = "Welcome to keguigong's homepage"
-const description = "Where keguigong's thoughts were built."
-
-export const metadata: Metadata = {
-  metadataBase: new URL(env.OG_IMAGE_URL || "/"),
-  title: `${title} | ${env.SITE_NAME}`,
-  description,
+export const metadata = {
+  title: "keguigong's blog",
+  description: "Where keguigong's thoughts were built.",
   openGraph: {
-    title,
-    description,
-    url: `${env.SITE_URL}`,
-    siteName: env.SITE_NAME,
-    images: [
-      {
-        url: `${env.OG_IMAGE_URL}/api/ogimage?title=${description}&path=${env.SITE_NAME}`
-      }
-    ],
-    type: "website"
-  }
+    title: "keguigong's blog",
+    description: "Where keguigong's thoughts were built.",
+    url: "https://keguigong.org",
+    siteName: "Welcome to my homepage",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@keguigong",
+    creator: "@keguigong",
+  },
+  metadataBase: new URL("https://keguigong.org"),
 }
 
 export default function RootLayout({
   // Layouts must accept a children prop.
   // This will be populated with nested layouts or pages
-  children
+  children,
 }: {
   children: React.ReactNode
 }) {
   return (
     <html lang="en" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark">
-      <body>
-        <ClientLayout>{children}</ClientLayout>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(${cat.toString()})();`,
+          }}
+        />
+      </head>
+
+      <body className="m-auto max-w-3xl dark:text-gray-100">
+        <Header />
+        <Suspense fallback={<Loading />}>
+          <Layout>{children}</Layout>
+        </Suspense>
       </body>
     </html>
   )

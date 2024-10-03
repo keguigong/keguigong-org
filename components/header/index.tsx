@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import classNames from "classnames"
+import cs from "classnames"
 import { usePathname } from "next/navigation"
 import { TitleBar } from "./title-bar"
 import styles from "./index.module.scss"
@@ -26,7 +26,7 @@ export const Header = () => {
 
   return (
     <header className={styles.header}>
-      <div className={classNames(styles.headerContent, styles.titleBarWrapper)}>
+      <div className={cs(styles.headerContent, styles.titleBarWrapper)}>
         <TitleBar zen={["/", "/work", "/photo"].indexOf(path) === -1}></TitleBar>
       </div>
     </header>

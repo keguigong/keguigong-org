@@ -1,5 +1,5 @@
 import { Date } from "@/components/date"
-import styles from "./meta-info.module.scss"
+import styles from "./index.module.scss"
 
 interface Props {
   meta: any

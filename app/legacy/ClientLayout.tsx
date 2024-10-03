@@ -1,6 +1,6 @@
 "use client"
 
-import { Layout } from "@/components"
+import { Layout } from "@/components/layouts"
 import { usePathname } from "next/navigation"
 
 import "@/styles/global.scss"

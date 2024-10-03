@@ -1,7 +1,4 @@
 import Link from "next/link"
-import { Header } from "@/components/header"
-
-import styles from "./index.module.scss"
 
 interface Props {
   children?: React.ReactNode
@@ -11,11 +8,10 @@ interface Props {
 export function Layout({ children, home }: Props) {
   return (
     <>
-      <Header />
-      <main className={styles.contentLayout}>{children}</main>
-      <footer className={styles.footer}>
+      <main className="min-h-screen p-6 pt-3 md:pt-6">{children}</main>
+      <footer className="mx-auto my-4 flex h-4 justify-between px-4 text-sm">
         {!home ? (
-          <div className={styles.backToHome}>
+          <div>
             <Link href="/">← Back</Link>
           </div>
         ) : (
@@ -23,7 +19,7 @@ export function Layout({ children, home }: Props) {
             With <a href="https://www.nextjs.org/">Next.js</a>.
           </div>
         )}
-        <div className={styles.backToHome}>
+        <div>
           <a href="https://github.com/keguigong">GitHub</a> • <a href="https://www.behance.net/keguigong">Behance</a> •{" "}
           <a href="https://www.instagram.com/keguigong/">Instagram</a>
         </div>
